@@ -1,4 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+//import for custom var/custom colors
+@import "custom-styles.scss";
+@import "~bootstrap/dist/css/bootstrap.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+    height: 100vh;
+    margin: 0;
+    background-color: #0a041f;
+}
+
+p {
+    font-family: var(--font-primary)
+
+    }
+
+
+i {
+    color: white;
+}/* You can add global styles to this file, and also import other style files */
+
+
