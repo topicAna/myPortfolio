@@ -1,4 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+//import for custom var/custom colors
+@import "custom-styles.scss";
+@import "assets/fonts/primary/stylesheet.css";
+@import "assets/fonts/secondary/stylesheet.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body { height: 100vh }
+
+body {
+    margin: 0;
+    background-color: #0a041f;
+    ;
+    
+}
+
+
+i {
+    color: white;
+}/* You can add global styles to this file, and also import other style files */
+
+
