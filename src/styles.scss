@@ -4,6 +4,12 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 
+.divider-white {
+    border-bottom: 1px solid var(--white);
+    width: 75%;
+    margin:auto;
+}
+
 body {
     height: 100vh;
     margin: 0;
