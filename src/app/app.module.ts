@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonComponent } from './components/button/button.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { LandingComponent } from './pages/landing/landing.component';
+import { TitleComponent } from './components/title/title.component';
 
 // Angular material imports
 // ***
@@ -12,7 +16,11 @@ import { ButtonComponent } from './components/button/button.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ButtonComponent
+    ButtonComponent,
+    NavbarComponent,
+    FooterComponent,
+    LandingComponent,
+    TitleComponent
   ],
   imports: [
     BrowserModule,
