@@ -1,10 +1,14 @@
 <div class="container">
 
-    <div>
-<p>Please allow me to introduce myself...</p>
-<app-title [mode]="'title'" [text]="'Ana Topic'" ></app-title>
 
-<p>web developer, wannabe JS wizzard, angular entusiast, in life long relationship with books, board games and craft beer</p>
+<div class="vertical-divider-red">
+<app-title [mode]="'title'" [text]="'Ana Topic'" ></app-title>
+<div class="featured-text">web developer, wannabe JS mage, 
+    angular entusiast, in life long relationship with books, 
+    board games and craft beer</div>
+    <app-button [label]="'Github'" [icon]="'fas fa-code-branch'"></app-button>
+    <app-button [label]="'Contact'" [icon]="'fas fa-phone-alt'"></app-button>
+</div>
 
     <div class="first">
         <i class="fas fa-code fa-2x"></i>
@@ -23,7 +27,6 @@
         <i class="fas fa-jedi fa-2x red"></i>
     </div>
 
-    <app-button [label]="'Envoyer'" [icon]="'fas fa-jedi'"></app-button>
 
-    <app-button [disabled]="'disabled'" [label]="'Envoyer'"></app-button>
 </div>
+

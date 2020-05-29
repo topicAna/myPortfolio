@@ -2,6 +2,12 @@
     height: 100vh;
 }
 
+.vertical-divider-red {
+    height: 24rem;
+    border-left: 4px solid var(--secondary-color);
+    padding: 20px;
+}
+
 .first{
     margin-top: 20%;
     margin-left: 50%;
