@@ -1,32 +1,36 @@
-<div class="container">
+<div class=" container-fluid row landing-title-group">
 
-
-<div class="vertical-divider-red">
-<app-title [mode]="'title'" [text]="'Ana Topic'" ></app-title>
-<div class="featured-text">web developer, wannabe JS mage, 
-    angular entusiast, in life long relationship with books, 
-    board games and craft beer</div>
-    <app-button [label]="'Github'" [icon]="'fas fa-code-branch'"></app-button>
-    <app-button [label]="'Contact'" [icon]="'fas fa-phone-alt'"></app-button>
-</div>
-
-    <div class="first">
-        <i class="fas fa-code fa-2x"></i>
-        <i class="fas fa-beer fa-2x"></i>
-        <i class="fab fa-adobe fa-2x"></i>
-        <i class="fas fa-headphones-alt fa-2x"></i>
-        <i class="fas fa-glasses fa-2x"></i>
-        <i class="fas fa-coffee fa-2x"></i><br>
-    </div>
-    <div class="second">
-        <i class="fab fa-github fa-2x"></i>
-        <i class="far fa-smile-beam fa-2x"></i>
-        <i class="fas fa-code-branch fa-2x"></i>
-        <i class="fas fa-terminal fa-2x"></i>
-        <i class="fab fa-angular fa-2x red"></i>
-        <i class="fas fa-jedi fa-2x red"></i>
+    <div class="col-5 landing-icons">
+        <i class="fas fa-code"></i>
+        <i class="fas fa-headphones-alt"></i>
+        <i class="fab fa-angular fa-4x red"></i>
+        <i class="fas fa-beer"></i>
+        <i class="fas fa-glasses"></i>
+        <i class="fas fa-terminal"></i>
+        <i class="fas fa-jedi red"></i>
     </div>
 
-
+    <div class="col-6 vertical-divider-red">
+        <app-title [mode]="'title'" [text]="'Ana Topic'"></app-title>
+        <div class="featured-text">web developer, wannabe JS mage,
+            angular entusiast, in life long relationship <br> with books,
+            board games and craft beer</div>
+        <app-button [label]="'Git hub profile'" [icon]="'fab fa-github'"></app-button>
+        <app-button [label]="'Contact'" [icon]="'fas fa-phone-alt'"></app-button>
+    </div>
+    
 </div>
 
+<div class="arrow">
+    <i class="fas fa-chevron-down"></i>
+</div>
+
+
+<!-- <div class="second">
+        <i class="fab fa-github"></i>
+        <i class="far fa-smile-beam"></i>
+        <i class="fas fa-code-branch"></i>
+        <i class="fas fa-terminal"></i>
+        <i class="fab fa-angular red"></i>
+        <i class="fas fa-jedi red"></i>
+    </div>  -->

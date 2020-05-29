@@ -4,16 +4,22 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 
+body {
+    height: 100vh;
+    margin: 0px;
+    padding: 0px;
+    background-color: #0a041f;
+}
+
+h1 {
+    margin-bottom: 0px !important;
+    padding: 0px;
+}
+
 .divider-white {
     border-bottom: 1px solid var(--white);
     width: 75%;
     margin:auto;
-}
-
-body {
-    height: 100vh;
-    margin: 0;
-    background-color: #0a041f;
 }
 
 p {
