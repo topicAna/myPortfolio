@@ -8,16 +8,16 @@
     margin: 1%;
 }
 
-// .bio-short-text-container {
-//     margin:1%;
-//     padding: 0px;
-// }
+.image-container {
+    margin: auto;
+    width: 90%;
+    justify-content: center;
+}
 
-// .skillset-container {
-//     margin:1%;
-//     padding: 0px;
-// }
-
+.button-container {
+    margin-top:30px;
+    margin-left: 20px;
+}
 
 .bio-card {
     height: 500px;
@@ -28,8 +28,20 @@
     box-shadow: var(--box-shaddow)
 }
 
+
+i {
+    font-size: 25px;
+    margin:20px;
+}
+
+.social-media-icons {
+    justify-content: center;
+}
+
+
 .bio-short-text {
     height: 50%;
+    padding: 33px;
     border: 1px solid rgb(15, 14, 14);
     border-radius: 20px;
     background: var(--primary-color);
@@ -56,16 +68,11 @@
     box-shadow: var(--box-shaddow) 
 }
 
-.bio-card-divider {
-    display: flex;
-    transform: rotate(90deg);
-    border-bottom: 1px solid var(--white);
-    margin: 10px 10px 10px;
-}
-
 .profile-image {
     display: flex;
-    width: 80%;
+    width: 100%;
+    margin-top: 28px;
+    border-radius: 20px;
 }
 
 .profile-image img {
@@ -73,3 +80,44 @@
     justify-content: center;
     height: 250px;
 }
+
+//short intro with name box
+
+.text-intro {
+    width: 100%;
+    margin: 0;
+    font-size: 10px;
+    opacity: 0.6;
+}
+
+.name {
+    margin-left: 0px;
+    height: 15%;
+}
+
+.text-colums {
+    font-family: var(--font-secondary);
+    columns: 3 auto;
+    margin: 0px;
+    padding: 0px;
+};
+
+.divider-bio{
+    border-bottom: 2px solid var(--secondary-color);
+    width: 73%;
+    height: 15px;
+    margin-left: 33px;
+}
+
+.skillset-container ul li {
+    font-size: 12px;
+    padding: 5px;
+}
+
+.toolbox {
+    columns: 2 auto;
+}
+
+.toolbox-title, .experience-title, .education-title {
+    padding: 10px;
+} 
