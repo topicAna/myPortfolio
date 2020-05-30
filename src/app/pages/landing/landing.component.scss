@@ -2,7 +2,6 @@
     height: 50vh;
     width: 100%;
     overflow-y: hidden;
-
 }
 
 .landing-title-group {
@@ -15,11 +14,11 @@
     padding: 20px;
 }
 
-.featured-text{
+.featured-text {
     line-height: 25px;
 }
 
-.landing-icons{
+.landing-icons {
     margin: 0px;
     padding: 0px;
     display: flex;
@@ -70,13 +69,30 @@ p {
     font-size: 12px;
 }
 
-.arrow {
+.arrow-animated {
     width: 100%;
     text-align: center;
+    animation: bounce 1s infinite alternate;
+    -webkit-animation: bounce 0.4s infinite alternate;
 }
 
-.bounce {
-    -moz-animation   : bounce 2s infinite;
-    -webkit-animation: bounce 2s infinite;
-    animation        : bounce 2s infinite;
+// ----arrow animation----
+
+@keyframes bounce {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-19px);
+    }
 }
+@-webkit-keyframes bounce {
+    from {
+        transform: translateY(0px);
+    }
+    to {
+        transform: translateY(-19px);
+    }
+}
+
+// ----arrow animation----
