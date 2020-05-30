@@ -1,0 +1,35 @@
+.container-fluid {
+    height: 70vh;
+    width: 100%;
+    overflow-y: hidden;
+}
+
+.bio-card {
+    width: 500px;
+    height: 300px;
+    border: 1px solid rgb(15, 14, 14);
+    border-radius: 40px;
+    background: #0F2027;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #0a041f, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #0a041f, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+
+.bio-card-divider {
+    display: flex;
+    transform: rotate(90deg);
+    border-bottom: 1px solid var(--white);
+    margin: 10px 10px 10px;
+}
+
+.profile-image {
+    display: flex;
+    width: 80%;
+}
+
+.profile-image img {
+    margin: auto;
+    justify-content: center;
+    height: 250px;
+}
+

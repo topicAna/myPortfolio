@@ -9,6 +9,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LandingComponent } from './pages/landing/landing.component';
 import { TitleComponent } from './components/title/title.component';
+import { BioComponent } from './pages/bio/bio.component';
 
 // Angular material imports
 // ***
@@ -20,7 +21,8 @@ import { TitleComponent } from './components/title/title.component';
     NavbarComponent,
     FooterComponent,
     LandingComponent,
-    TitleComponent
+    TitleComponent,
+    BioComponent
   ],
   imports: [
     BrowserModule,
