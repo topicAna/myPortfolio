@@ -1,18 +1,59 @@
-.container-fluid {
-    height: 70vh;
+.container {
     width: 100%;
-    overflow-y: hidden;
+    height: 70vh;
 }
 
+.contact-details-container, .bio-short-text-container {
+    width: 30%;
+    margin: 1%;
+}
+
+// .bio-short-text-container {
+//     margin:1%;
+//     padding: 0px;
+// }
+
+// .skillset-container {
+//     margin:1%;
+//     padding: 0px;
+// }
+
+
 .bio-card {
-    width: 500px;
-    height: 300px;
+    height: 500px;
     border: 1px solid rgb(15, 14, 14);
-    border-radius: 40px;
-    background: #0F2027;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #0a041f, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #0a041f, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+    border-radius: 20px;
+    background: var(--primary-color);
+    background: var--primary-gradient;
+    box-shadow: var(--box-shaddow)
+}
+
+.bio-short-text {
+    height: 50%;
+    border: 1px solid rgb(15, 14, 14);
+    border-radius: 20px;
+    background: var(--primary-color);
+    background: var(--primary-gradient);
+    box-shadow: var(--box-shaddow)
+}
+
+.skillset-container {
+    height: 52%;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.toolbox, .experience, .education {
+    min-width: 210px;
+    justify-content: center;
+    height: 85%;
+    border: 1px solid rgb(15, 14, 14);
+    border-radius: 20px;
+    background: var(--primary-color);
+    background: var--primary-gradient;
+    box-shadow: var(--box-shaddow) 
 }
 
 .bio-card-divider {
@@ -32,4 +73,3 @@
     justify-content: center;
     height: 250px;
 }
-
