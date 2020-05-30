@@ -5,11 +5,12 @@ i {
 .action-button {
     background: var(--primary-color) !important;
     border: 1px solid var(--white);
-    font-family: var(--font-primary);
+    font-family: var(--font-secondary);
     text-transform: uppercase;
     font-size: 12px;
     padding: 10px 20px;
     color: white;
+    margin:10px 0px 10px 0px;
 }
 
 .action-button:hover {
