@@ -4,41 +4,24 @@
     margin-top: 12rem !important;
 }
 
-.contact-details-container, .bio-short-text-container {
-    width: 30%;
-    margin: 1%;
-}
-
 .image-container {
     margin: auto;
     width: 90%;
-    justify-content: center;
 }
 
 .button-container {
-    margin-top:30px;
+    margin-top: 30px;
     margin-left: 20px;
 }
 
 .bio-card {
     height: 500px;
-//     border: 1px solid rgb(15, 14, 14);
-//     border-radius: 20px;
-//     background: var(--primary-color);
-//     background: var--primary-gradient;
-//     box-shadow: var(--box-shaddow)
+    //   border: 1px solid rgb(255, 253, 253);
+    //     border-radius: 20px;
+    //     background: var(--primary-color);
+    //     background: var--primary-gradient;
+    //     box-shadow: var(--box-shaddow)
 }
-
-
-i {
-    font-size: 25px;
-    margin:20px;
-}
-
-.social-media-icons {
-    justify-content: center;
-}
-
 
 .bio-short-text {
     height: 39%;
@@ -50,15 +33,9 @@ i {
     // box-shadow: var(--box-shaddow)
 }
 
-.skillset-container {
-    height: 70%;
-    justify-content: center;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-.toolbox, .experience, .education {
+.toolbox,
+.experience,
+.education {
     padding: 10px;
     min-width: 210px;
     justify-content: center;
@@ -67,7 +44,7 @@ i {
     // border-radius: 20px;
     // background: var(--primary-color);
     // background: var--primary-gradient;
-    // box-shadow: var(--box-shaddow) 
+    // box-shadow: var(--box-shaddow)
 }
 
 .profile-image {
@@ -82,8 +59,6 @@ i {
     justify-content: center;
     height: 250px;
 }
-
-//short intro with name box
 
 .text-intro {
     width: 100%;
@@ -103,9 +78,9 @@ i {
     margin: 0px;
     padding: 0px;
     margin-top: 15px;
-};
+}
 
-.divider-bio{
+.divider-bio {
     border-bottom: 2px solid var(--secondary-color);
     width: 73%;
     height: 15px;
@@ -121,7 +96,9 @@ i {
     columns: 2 auto;
 }
 
-.toolbox-title, .experience-title, .education-title {
+.toolbox-title,
+.experience-title,
+.education-title {
     margin-left: 10px;
     margin-top: 10px;
-} 
+}
