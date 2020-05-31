@@ -11,6 +11,7 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { TitleComponent } from './components/title/title.component';
 import { BioComponent } from './pages/bio/bio.component';
 import { MainComponent } from './pages/main/main.component';
+import { ProjectsComponent } from './pages/projects/projects.component';
 
 // Angular material imports
 // ***
@@ -24,7 +25,8 @@ import { MainComponent } from './pages/main/main.component';
     LandingComponent,
     TitleComponent,
     BioComponent,
-    MainComponent
+    MainComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

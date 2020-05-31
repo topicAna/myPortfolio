@@ -69,30 +69,3 @@ p {
     font-size: 12px;
 }
 
-.arrow-animated {
-    width: 100%;
-    text-align: center;
-    animation: bounce 1s infinite alternate;
-    -webkit-animation: bounce 0.4s infinite alternate;
-}
-
-// ----arrow animation----
-
-@keyframes bounce {
-    from {
-        transform: translateY(0px);
-    }
-    to {
-        transform: translateY(-19px);
-    }
-}
-@-webkit-keyframes bounce {
-    from {
-        transform: translateY(0px);
-    }
-    to {
-        transform: translateY(-19px);
-    }
-}
-
-// ----arrow animation----
