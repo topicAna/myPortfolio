@@ -22,8 +22,15 @@ h1 {
     margin:auto;
 }
 
-p {
+p, ul, li {
     font-family: var(--font-secondary);
+    color: var(--white);
+    padding: 0px;
+}
+
+ul, li {
+    list-style: none;
+    text-decoration: none;
 }
 
 .featured-text{
@@ -34,6 +41,6 @@ p {
 
 i {
     color: white;
-}/* You can add global styles to this file, and also import other style files */
+}
 
 

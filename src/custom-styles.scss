@@ -2,7 +2,8 @@
     --font-primary: 'Ubuntu', sans-serif;
     --font-secondary: 'Raleway', sans-serif;
     --primary-darkened: #0a041f;
-    --primary-gradient: linear-gradient(45deg, #0a041f, #0e0430);
+    --primary-gradient: linear-gradient(to bottom, #0a041f, #0b0424); 
+    --box-shaddow: -2px -3px 13px -3px rgba(221, 222, 224, 0.28);
     --primary-color: #0a041f; //primary
     --secondary-color: #ff0000; //secondary, hoover, warning
     --grey: #d6d6d6;
