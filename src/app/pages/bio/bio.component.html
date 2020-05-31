@@ -4,55 +4,57 @@
         <!-- big box -->
         <div class="col-4 contact-details-container">
             <div class="col bio-card">
-                <div class="row image-container"><img  class="img-fluid profile-image" src="./assets/profile -img-bw.JPG" alt=""></div>
+                <div class="row image-container"><img class="img-fluid profile-image" src="./assets/profile -img-bw.JPG"
+                        alt=""></div>
                 <div class="row button-container">
-                    <app-button [label]="'download CV'" [icon]="'fas fa-download'"></app-button>  
-                    </div>  
+                    <app-button [label]="'download CV'" [icon]="'fas fa-download'"></app-button>
+                </div>
             </div>
         </div>
         <!-- --------big box---->
-        
-        <div class="col-7 bio-short-text-container"><!-------container long box + 4 sm boxes ------->
 
-            <div class="row bio-short-text"> <!-------container long box ------->
+        <div class="col-7 bio-short-text-container">
+            <!-------container long box + 4 sm boxes ------->
+            <div class="row bio-short-text">
+                <!-------container long box ------->
                 <p class="row text-intro">please allow me to introduce myself</p>
                 <app-title class="row name" [mode]="'subtitle'" [text]="'Ana Topic'"></app-title>
                 <div class="divider-bio"></div>
                 <p class="text-colums">
-                    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque 
-                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi 
-                    architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas 
+                    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
+                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+                    architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
                     sit aspernatur aut odit aut fugit.
                 </p>
             </div>
-
-            <div class="row skillset-container"> <!-------container 4 sm boxes -------> 
-                <ul class="col-3 toolbox">
-                    <li><app-title class="toolbox-title" [mode]="'subsubtitle'" [text]="'Toolbox'"></app-title></li>
-                    <div>
-                    <li>JavaScript</li>
-                    <li>Angular</li>
-                    <li>HTML</li>
-                    <li>CSS SCSS</li>
-                    <li>Java</li>
-                    <li>OOP</li>
-                    <li>Git, GiHub & GitFlow</li>
-                    <li>NodeJS</li>
-                    <li>RESTful API</li>
-                    <li>AGILE</li>
-                    </div>
-                </ul>
+            <div class="row skillset-container">
+                <!-------container 4 sm boxes ------->
+                <div class="col-3 toolbox">
+                    <app-title class="toolbox-title" [mode]="'subsubtitle'" [text]="'Toolbox'"></app-title>
+                    <ul>
+                        <li>JavaScript</li>
+                        <li>Angular</li>
+                        <li>HTML</li>
+                        <li>CSS SCSS</li>
+                        <li>Java</li>
+                        <li>OOP</li>
+                        <li>Git, GiHub & GitFlow</li>
+                        <li>NodeJS</li>
+                        <li>RESTful API</li>
+                    </ul>
+                </div>
                 <div class="col-3 experience">
-                        <ul>
-                            <app-title class="row experience-title" [mode]="'subsubtitle'" [text]="'Experience'"></app-title>
-                            <li>front-end developer / Finalgo / 6 months / internship</li>
-                            <li>front-end developer / Wild Code School / 6 months / formation</li>
-                            <li>supervisor / Coast / 2 years</li>
-                        </ul>
+                    <app-title class="experience-title" [mode]="'subsubtitle'" [text]="'Experience'">
+                    </app-title>
+                    <ul>
+                        <li>front-end developer / Finalgo / 6 months / internship</li>
+                        <li>front-end developer / Wild Code School / 6 months / formation</li>
+                        <li>supervisor / Coast / 2 years</li>
+                    </ul>
                 </div>
                 <div class="col-3 education">
+                    <app-title class="education-title" [mode]="'subsubtitle'" [text]="'Education'"></app-title>
                     <ul>
-                        <app-title class="row name" [mode]="'subsubtitle'" [text]="'Education'"></app-title>
                         <li>front-end developer / Wild Code School / 6 months / formation</li>
                         <li>Master degree, Faculty of Humanities and Social Sciences, University of Zagreb</li>
                         <li>bac +4 degree, Faculty of Humanities and Social Sciences, University of Zagreb</li>
@@ -64,7 +66,3 @@
     </div>
 
 </div>
-
-
-
-
