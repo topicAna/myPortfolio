@@ -1,22 +1,17 @@
-import { Post } from './../models/post';
-import { MysqlConnection } from './../loaders/mysql';
+import { Project } from '../models/project';
+import { MysqlConnection } from '../loaders/mysql';
 
-/**
- * Cette classe est un repository
- * C'est ici qu'on met tout les accès à la bdd
- * Attention, aucune logique javascript ne doit apparaitre ici.
- * Il s'agit seulement de la couche de récupération des données (requeêe sql)
- */
-export class PostsRepository {
 
-    private static instance: PostsRepository;
+export class ProjectsRepository {
+
+    private static instance: ProjectsRepository;
     private connection: MysqlConnection = MysqlConnection.getInstance();
 
-    private table: string = 'posts';
+    private table: string = 'projects';
 
     static getInstance() {
         if (!this.instance) {
-            this.instance = new PostsRepository();
+            this.instance = new ProjectsRepository();
         }
         return this.instance;
     }
@@ -27,10 +22,10 @@ export class PostsRepository {
     /**
      * Make a query to the database to retrieve all posts and return it in a promise.
      */
-    findAll(): Promise<Post[]> {
+    findAll(): Promise<Project[]> {
         return this.connection.query(`SELECT * from ${this.table}`)
             .then((results: any) => {
-                return results.map((post: any) => new Post(post));
+                return results.map((project: any) => new Project(project));
             });
     }
 
@@ -39,36 +34,38 @@ export class PostsRepository {
      * Return the post found in a promise.
      * @param id post id
      */
-    findById(id: number): Promise<Post> {
+
+    findById(id: number): Promise<Project> {
         return this.connection.query(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
-            .then((results: any) => new Post(results[0]));
+            .then((results: any) => new Project(results[0]));
     }
 
 
     /**
      * Make a query to the database to insert a new post and return the created post in a promise.
-     * @param post post to create
+     * @param project post to create
      */
-    insert(post: Post) {
+    insert(project: Project) {
         return this.connection.query(
-            `INSERT INTO ${this.table} (title, content) VALUES (?,?)`,
-            [post.title, post.content]
+            `INSERT INTO ${this.table} (name, description, youtube_link, github_link ) VALUES (?,?,?,?)`,
+            [project.name, project.description, project.youtube_link, project.github_link]
         ).then((result: any) => {
             // After an insert the insert id is directly passed in the promise
             return this.findById(result.insertId);
         });
     }
 
+
     /**
      * Make a query to the database to update an existing post and return the updated post in a promise.
-     * @param post post to update
+     * @param project post to update
      */
-    update(post: Post) {
+    update(project: Project) {
         return this.connection.query(
-            `UPDATE ${this.table} SET title = ?, content = ? WHERE id = ?`,
-            [post.title, post.content, post.id]
+            `UPDATE ${this.table} SET name = ?, description = ?, youtube_link, github_link WHERE id = ?`,
+            [project.name, project.description, project.youtube_link, project.github_link]
         ).then(() => {
-            return this.findById(post.id);
+            return this.findById(project.id);
         });
     }
 
