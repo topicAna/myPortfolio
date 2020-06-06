@@ -1,11 +1,10 @@
-import { ProjectsController } from './controller/projects.controller';
 import express from 'express';
 import loaders from './loaders';
-import { ProductsController } from './controller/product.controller';
 import bodyParser from 'body-parser';
+
+import { ProjectsController } from './controller/projects.controller';
 import { UsersController } from './controller/user.controller';
-import { Menu_typeController } from './controller/menu_type.controller'
-import { DishesController } from './controller/dishes.controller';
+import { ToolboxItemController } from './controller/toolboxItem.controller';
 
 async function startServer() {
     // Récupération de l'application initiale
@@ -13,19 +12,12 @@ async function startServer() {
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
 
-
     await loaders(app);
 
-
     ProjectsController(app);
-    ProductsController(app);
+    ToolboxItemController(app);
 
     UsersController(app);
-    Menu_typeController(app)
-    DishesController(app)
-
-    // Démarrage du serveur une fois que tout est correctement init
     app.listen(3000, () => console.log('Express server is running on port 3000'));
   }
-
 startServer();
