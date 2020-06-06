@@ -11,8 +11,7 @@ export class MysqlConnection {
       host: 'localhost', // address of the server
       user: 'root', // username
       password: 'root',
-      database: 'Dondelyon',
-      //port : 8889,
+      database: 'portfolio_db',
     });
   }
 
@@ -32,7 +31,7 @@ export class MysqlConnection {
           }
 
           resolve(results);
-      })
-    })
+      });
+    });
   }
 }

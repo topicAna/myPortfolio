@@ -6,14 +6,14 @@
   import express from 'express';
 
   // user
-  declare global{
-    namespace Express{
-      interface Request{
-        user : any
+  declare global {
+    namespace Express {
+      interface Request {
+        user: any;
       }
     }
   }
-  
+
   export default async ( app: Application) => {
 
     app.get('/status', (req, res) => { res.status(200).end(); });
@@ -24,9 +24,9 @@
 
     app.use(fileUpload({
       createParentPath: true,
-      //limits: { 
+      // limits: {
         //  fileSize: 2 * 1024 * 1024 * 1024 //2MB max file(s) size
-      //},
+      // },
   }));
     app.use(cors());
     app.use(bodyParser.json());

@@ -3,7 +3,7 @@ import { Project } from '../models/project';
 import express, { Router, Request, Response, Application } from 'express';
 import { ProjectsService } from '../services/projects.service';
 
-export const ReservationController = (app: Application) => {
+export const ProjectsController = (app: Application) => {
 
   const router: Router = express.Router();
   const projectsService = ProjectsService.getInstance();
@@ -62,5 +62,5 @@ export const ReservationController = (app: Application) => {
       });
   });
 
-  app.use('/reservation', router);
+  app.use('/projects', router);
 };

@@ -1,4 +1,4 @@
-import { ReservationController } from './controller/projects.controller';
+import { ProjectsController } from './controller/projects.controller';
 import express from 'express';
 import loaders from './loaders';
 import { ProductsController } from './controller/product.controller';
@@ -6,7 +6,6 @@ import bodyParser from 'body-parser';
 import { UsersController } from './controller/user.controller';
 import { Menu_typeController } from './controller/menu_type.controller'
 import { DishesController } from './controller/dishes.controller';
-
 
 async function startServer() {
     // Récupération de l'application initiale
@@ -18,7 +17,7 @@ async function startServer() {
     await loaders(app);
 
 
-    ReservationController(app);
+    ProjectsController(app);
     ProductsController(app);
 
     UsersController(app);
