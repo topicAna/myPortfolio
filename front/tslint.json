@@ -45,7 +45,9 @@
     ],
     "no-consecutive-blank-lines": false,
     "no-console": [
-      true,
+      false,
+      "log",
+      "error",
       "debug",
       "info",
       "time",
