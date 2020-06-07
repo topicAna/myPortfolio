@@ -1,0 +1,27 @@
+@import "../../../custom-styles.scss";
+
+.container-fluid {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+} 
+.navbar {
+    height: 100px;
+    width: 100%;
+    background-color: var(--primary-color) !important;    
+    justify-content: flex-end;
+}
+
+a {
+    color: var(--white);
+    font-family: var(--font-primary);
+    font-size: 18px;
+    font-weight: lighter;
+    margin-right: 40px;
+    cursor: pointer;
+}
+
+a:hover {
+    color: var(--secondary-color);
+    cursor: pointer;
+}

@@ -1,0 +1,28 @@
+<div class=" container-fluid row landing-title-group">
+
+    <div class="col-5 landing-icons">
+        <i class="fas fa-code"></i>
+        <i class="fas fa-headphones-alt"></i>
+        <i class="fab fa-angular fa-4x red"></i>
+        <i class="fas fa-beer"></i>
+        <i class="fas fa-glasses"></i>
+        <i class="fas fa-terminal"></i>
+        <i class="fas fa-jedi red"></i>
+    </div>
+
+    <div class="col-6 vertical-divider-red">
+        <app-title [mode]="'title'" [text]="'Ana Topic'"></app-title>
+        <div class="featured-text">web developer, wannabe JS mage,
+            angular entusiast, in life long relationship <br> with books,
+            board games and craft beer</div>
+        <a href="https://github.com/lattara" target="_blank">
+            <app-button class="git-hub-button" [label]="'Git hub profile'" [icon]="'fab fa-github'"></app-button>
+        </a>
+        <app-button [label]="'Contact'" [icon]="'fas fa-phone-alt'"></app-button>
+    </div>
+
+</div>
+
+<div div class="arrow-animated" routerLink="bio">
+    <i class="fas fa-chevron-down"></i>
+</div>

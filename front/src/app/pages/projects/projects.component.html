@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="col-5 project-details" *ngFor ="let project of projects">
+            <ul class="number col-2"> {{project.id}}. </ul>
+            <li class="technologies">
+                <i class="fab fa-sass"></i>
+                <i class="fab fa-angular"></i>
+                <i class="fab fa-node-js"></i>
+                <i class="fab fa-js"></i>
+            </li>
+            <li class="project-title"><app-title class="row name" [mode]="'subsubtitle'" [text]="project.name"></app-title></li>
+            <li class="project-description col-9">{{project.description}}
+            </li> 
+            <div class="buttons">
+            <a href="{{project.github_link}}">
+                <app-button class="button" [label]="'Github'" [icon]="'fab fa-github'"></app-button>
+            </a>
+            <a href="{{project.youtube_link}}" target="_blank">
+                <app-button class="button" [label]="'Demo'" [icon]="'fab fa-youtube'"></app-button>
+            </a>
+            </div>
+        </div>
+    </div>    
+</div>
+
+        <div div class="arrow-animated" routerLink="bio">
+            <i class="fas fa-chevron-down"></i>
+        </div>
