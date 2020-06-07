@@ -13,6 +13,7 @@ import { TitleComponent } from './components/title/title.component';
 import { BioComponent } from './pages/bio/bio.component';
 import { MainComponent } from './pages/main/main.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
+import { ToolboxComponent } from './pages/toolbox/toolbox.component';
 
 // Angular material imports
 // ***
@@ -27,7 +28,8 @@ import { ProjectsComponent } from './pages/projects/projects.component';
     TitleComponent,
     BioComponent,
     MainComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    ToolboxComponent
   ],
   imports: [
     BrowserModule,
