@@ -33,6 +33,8 @@ export class ToolboxItemRepository {
         .then((results: any) => new ToolboxItem(results[0]));
     }
 
+    // SELECT * from toolbox_item, toolbox where  toolbox_item.id = toolbox.toolbox_item_id;
+
     // findByProjectId (id: number): Promise <ToolboxItem> {
     //     return this.connection.query(TODO >> : finish this when DB is done)
     // }
