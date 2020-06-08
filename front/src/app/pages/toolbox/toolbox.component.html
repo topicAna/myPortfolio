@@ -1,17 +1,39 @@
 <div class="container">
-    <div class="row">
-<div class="col-5 justify-content-center">
-    <ul  *ngFor ="let item of toolboxItems">
-        <li><i class="{{item.sortcut}}"></i> {{item.name}} </li>
-    </ul>
-</div>  
-    <div class="col-5 github activity">
-        Last Github activity: 
-        <div *ngFor = "let event of githubEvents">
-            <span>Type: {{event.type}} </span>
-            <span>Repositoy name: {{event.repo.name}} </span>
-            <span>Time: {{event.created_at}} </span>
-            </div>
+    <div class="row github-activity">
+        <div class="repos-gists">
+        <div class="repository-nmb"> Total repositories: {{repos}}</div> 
+        <div class="gitst-nmb"> Total Gists: {{gists}}</div>
+    </div>
+            <table class="table">
+                <thead>
+                    <th colspan="6">Recent Github activity</th>
+                    <tr>
+                        <th scope="col">INDEX</th>
+                        <th scope="col">EVENT TYPE</th>
+                        <th scope="col">REPOSITORY</th>
+                        <th scope="col">TIME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let event of githubEvents.slice(0,5), let i = index">
+                        <tr>
+                            <td scope="row">{{i+1}}</td>
+                            <td>{{event.type}} </td>
+                            <td>{{event.repo.name}}</td>
+                            <td>{{event.created_at}}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+    </div>
+ 
+        <div class="row toolbox justify-content-center">
+            <app-title class="toolbox-title row justify-content-center " [mode]="'subtitle'" [text]="'Technologies I feel comfortable working with'"></app-title>
+            <div *ngFor="let item of toolboxItems" class="toolboxItems col-12 justify-content-center">
+                <div class="skill-grouped col-12 justify-content-center"><i class="{{item.sortcut}}"></i> {{item.name}} <mat-progress-bar mode="determinate" value="{{item.master_level}}"></mat-progress-bar> </div>
+            <div>
         </div>
-  </div>
-</div>
+        </div>
+    </div>
+
+    

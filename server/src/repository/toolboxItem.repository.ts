@@ -42,8 +42,8 @@ export class ToolboxItemRepository {
     // Insert new ToolboxItem
     insert(toolboxItem: ToolboxItem) {
     return this.connection.query(
-        `INSERT INTO ${this.table} (name, shortcut) VALUES (?,?)`,
-        [toolboxItem.name, toolboxItem.shortcut],
+        `INSERT INTO ${this.table} (name, shortcut, master_level) VALUES (?,?,?)`,
+        [toolboxItem.name, toolboxItem.shortcut, toolboxItem.masterLevel],
     ).then((result: any) => {
         return this.findById(result.insertId);
     });
@@ -52,8 +52,8 @@ export class ToolboxItemRepository {
     // Modify ToolboxItem
     update(toolboxItem: ToolboxItem) {
     return this.connection.query(
-        `UPDATE ${this.table} SET name = ?, shortcut = ? WHERE id = ?`,
-        [toolboxItem.name, toolboxItem.shortcut],
+        `UPDATE ${this.table} SET name = ?, shortcut = ?, master_level = ? WHERE id = ?`,
+        [toolboxItem.name, toolboxItem.shortcut, toolboxItem.masterLevel],
     ).then(() => {
         return this.findById(toolboxItem.id);
     });

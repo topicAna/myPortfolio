@@ -1,20 +1,20 @@
-INSERT INTO toolbox_item (id, name, sortcut) VALUES
-(1, 'Angular', 'fab fa-angular'),
-(2, 'JavaScript', 'fab fa-js'),
-(3, 'TypeScript', ' '),
-(4, 'NodeJS', 'fab fa-node-js'),
-(5, 'Express', ' '),
-(6, 'HTML', 'fab fa-html5'),
-(7, 'CSS', 'fab fa-css3'),
-(8, 'SASS', 'fab fa-sass'),
-(9, 'Bootstrap', 'fab fa-bootstrap'),
-(10, 'MySQL', 'fas fa-database'),
-(11, 'GitHub', 'fab fa-github'),
-(12, 'Bash', 'fas fa-terminal'),
-(13, 'SCRUM', ' '),
-(14, 'Agile', ' '),
-(15, 'Git', ' '),
-(16, 'Java', 'fab fa-java');
+INSERT INTO toolbox_item (id, name, sortcut, master_level) VALUES
+(1, 'Angular', 'fab fa-angular', 50),
+(2, 'JavaScript', 'fab fa-js', 60),
+(3, 'TypeScript', ' ', 50),
+(4, 'NodeJS', 'fab fa-node-js', 45),
+(5, 'Express', ' ', 55),
+(6, 'HTML', 'fab fa-html5', 70),
+(7, 'CSS', 'fab fa-css3', 70),
+(8, 'SASS', 'fab fa-sass', 66),
+(9, 'Bootstrap', 'fab fa-bootstrap', 45),
+(10, 'MySQL', 'fas fa-database', 44),
+(11, 'GitHub', 'fab fa-github', 34),
+(12, 'Bash', 'fas fa-terminal', 55),
+(13, 'SCRUM', ' ', 90),
+(14, 'Agile', ' ', 90),
+(15, 'Git', ' ', 74),
+(16, 'Java', 'fab fa-java', 7);
 
 
 INSERT INTO projects (id, name, description, youtube_link, github_link) VALUES

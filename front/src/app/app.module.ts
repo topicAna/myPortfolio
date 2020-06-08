@@ -14,6 +14,7 @@ import { BioComponent } from './pages/bio/bio.component';
 import { MainComponent } from './pages/main/main.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ToolboxComponent } from './pages/toolbox/toolbox.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 // Angular material imports
 // ***
@@ -35,7 +36,8 @@ import { ToolboxComponent } from './pages/toolbox/toolbox.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

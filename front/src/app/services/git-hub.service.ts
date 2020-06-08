@@ -16,4 +16,8 @@ export class GitHubService {
   getEvents(): Observable<any> {
     return this.http.get(`${this.baseUrl}/events`);
   }
+
+  getProfile() {
+    return this.http.get(`${this.baseUrl}`)
+  }
 }
