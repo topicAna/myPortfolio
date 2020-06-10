@@ -1,9 +1,15 @@
-<div class="container">
-    <div class="row github-activity">
-        <div class="repos-gists">
-        <div class="repository-nmb"> Total repositories: {{repos}}</div> 
-        <div class="gitst-nmb"> Total Gists: {{gists}}</div>
-    </div>
+<div class="container justify-content-center">
+    <div class="row">
+
+        <app-title class="toolbox-title col-12 justify-content-center" [mode]="'subtitle'"
+            [text]="'Technologies I feel comfortable working with'"></app-title>
+        <ul *ngFor="let item of toolboxItems" class="toolboxItems justify-content-center col-6">
+            <li class="skill-grouped"><i class="{{item.sortcut}}"></i> {{item.name}}
+                <mat-progress-bar mode="determinate" value="{{item.master_level}}"></mat-progress-bar>
+            </li>
+        </ul>
+
+        <div class="github-activity col-12">
             <table class="table">
                 <thead>
                     <th colspan="6">Recent Github activity</th>
@@ -25,15 +31,11 @@
                     </ng-container>
                 </tbody>
             </table>
-    </div>
- 
-        <div class="row toolbox justify-content-center">
-            <app-title class="toolbox-title row justify-content-center " [mode]="'subtitle'" [text]="'Technologies I feel comfortable working with'"></app-title>
-            <div *ngFor="let item of toolboxItems" class="toolboxItems col-12 justify-content-center">
-                <div class="skill-grouped col-12 justify-content-center"><i class="{{item.sortcut}}"></i> {{item.name}} <mat-progress-bar mode="determinate" value="{{item.master_level}}"></mat-progress-bar> </div>
-            <div>
-        </div>
-        </div>
-    </div>
 
-    
+            <div class="repos-gists">
+                <div class="repository-nmb"> Total repositories: {{repos}}</div>
+                <div class="gitst-nmb"> Total Gists: {{gists}}</div>
+            </div>
+        </div>
+    </div>
+</div>

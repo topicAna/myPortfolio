@@ -7,6 +7,10 @@ table {
     
 }
 
+ul {
+    margin: auto;
+}
+
 th,td {
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     border-top: 1px solid rgba(255, 255, 255, 0.25);
@@ -29,31 +33,22 @@ th[colspan="6"] {
 }
 
 .repository-nmb, .gitst-nmb {
-    //background-color: rgba(245, 245, 245, 0.3);
-    border-radius: 7px;
     width: 15%;
     height:30px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
-    margin: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
 
 }
 
+.toolboxItems {
+    list-style-type: disc;
+}
+:last-child
 .toolbox{
     margin-bottom: 50px;
 }
 
-.toolboxItems {
-    width: 52%;
-    columns: 2 !important;
-}
-
 .mat-progress-bar {
     width: 70%;
-}
-
-.skill-grouped {
-    width: 50%;
 }
