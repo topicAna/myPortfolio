@@ -1,5 +1,6 @@
 * {
     color: var(--white);
+    justify-content: center;
 }
 
 table {
@@ -41,14 +42,11 @@ th[colspan="6"] {
 
 }
 
-.toolboxItems {
-    list-style-type: disc;
-}
 :last-child
 .toolbox{
     margin-bottom: 50px;
 }
 
 .mat-progress-bar {
-    width: 70%;
+    width: 100%;
 }

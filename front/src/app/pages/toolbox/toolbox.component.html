@@ -1,7 +1,7 @@
 <div class="container justify-content-center">
     <div class="row">
 
-        <app-title class="toolbox-title col-12 justify-content-center" [mode]="'subtitle'"
+        <app-title class="toolbox-title justify-content-center" [mode]="'subtitle'"
             [text]="'Technologies I feel comfortable working with'"></app-title>
         <ul *ngFor="let item of toolboxItems" class="toolboxItems justify-content-center col-6">
             <li class="skill-grouped"><i class="{{item.sortcut}}"></i> {{item.name}}
