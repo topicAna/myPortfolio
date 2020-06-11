@@ -18,6 +18,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ContactComponent } from './pages/contact/contact.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 // Angular material imports
 // ***
@@ -43,7 +45,8 @@ import {MatInputModule} from '@angular/material/input';
     HttpClientModule,
     MatProgressBarModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

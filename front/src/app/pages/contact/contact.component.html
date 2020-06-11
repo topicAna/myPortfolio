@@ -1,25 +1,38 @@
 <div class="container">
 
-    <div class="row">
-        <div class="col-4 contact-text-container" >
-            <app-title [mode]="'subtitle'" [text]="'Say Hi!'"></app-title>
-            <p>Feeling shy?</p>
-            <p>Here are some good reasons to fill that form</p>
-            <ul>
-                <li>motivated</li>
-                <li>persistent</li>
-                <li>positive</li>
-                </ul>
+    <div class="row">  
+
+        <div class="col-5 contact-text-container">
+        <i class="far fa-envelope envelope-big"></i>
+        <app-title class="col-12" [mode]="'subtitle-float-right'" [text]="'Say Hi!'"></app-title>
+        <p>Feeling shy?</p>
+        <p>Here are some good reasons to fill that form</p>
+        <p>motivated</p>
+        <p>persistent</p>
+        <p>positive</p> 
         </div>
 
-        <div class="col-7 contact-form-container" >
-            <mat-form-field appearance="outline">
-                <mat-label>Outline form field</mat-label>
-                <input matInput placeholder="Placeholder">
-                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-                <mat-hint>Hint</mat-hint>
-              </mat-form-field>
+        <div class="col-5 contact-form-container">
+        <mat-form-field class="col-12" appearance="outline">
+                        <mat-label>Input</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="col-6" appearance="outline">
+                        <mat-label>Input</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <mat-form-field class="col-6"  appearance="outline">
+                        <mat-label>Input</mat-label>
+                        <input matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="col-12" appearance="outline">
+                        <mat-label>Textarea</mat-label>
+                        <textarea matInput></textarea>
+        </mat-form-field>
+        <app-button class="contact-button" [label]="'Contact'" [icon]="'far fa-envelope'"></app-button>
+        </div>
     </div>
-</div>
 
 </div>
