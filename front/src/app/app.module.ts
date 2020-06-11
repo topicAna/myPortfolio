@@ -15,6 +15,9 @@ import { MainComponent } from './pages/main/main.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ToolboxComponent } from './pages/toolbox/toolbox.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ContactComponent } from './pages/contact/contact.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 // Angular material imports
 // ***
@@ -30,14 +33,17 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     BioComponent,
     MainComponent,
     ProjectsComponent,
-    ToolboxComponent
+    ToolboxComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

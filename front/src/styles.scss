@@ -8,12 +8,13 @@
 // have to load a single css file for Angular Material in your app.
 
 // Fonts
-@import 'https://fonts.googleapis.com/css?family=Material+Icons';
+@import 'https://fonts.googleapis.com/css?family=Material+Icons+Two+Tone';
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:300,400,500');
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
      
 $fontConfig: (
-  display-4: mat-typography-level(112px, 112px, 300, 'Roboto', -0.0134em),
-  display-3: mat-typography-level(56px, 56px, 400, 'Roboto', -0.0089em),
+  display-4: mat-typography-level(112px, 112px, 300, 'Ubuntu', -0.0134em),
+  display-3: mat-typography-level(56px, 56px, 400, 'Ubuntu', -0.0089em),
   display-2: mat-typography-level(45px, 48px, 400, 'Roboto', 0.0000em),
   display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
   headline: mat-typography-level(24px, 32px, 400, 'Roboto', 0.0000em),
@@ -30,7 +31,7 @@ $fontConfig: (
 // Foreground Elements
 
 // Light Theme Text
-$dark-text: #0a041f;
+$dark-text: #ffffff;
 $dark-primary-text: rgba($dark-text, 0.87);
 $dark-accent-text: rgba($dark-primary-text, 0.54);
 $dark-disabled-text: rgba($dark-primary-text, 0.38);
@@ -148,56 +149,38 @@ $mat-dark-theme-background: (
 
 $mat-primary: (
   main: #ff0000,
-  lighter: #2d2649,
-  darker: #ff0000,
+  lighter: #0a041f,
+  darker: #ffffff,
   200: #ff0000, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $light-primary-text,
-    darker: $light-primary-text,
+    darker: $dark-primary-text,
   )
 );
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
-body {
-  --accent-color: #0a041f;
-  --accent-lighter-color: #b6b4bc;
-  --accent-darker-color: #050212;
-  --text-accent-color: #{$light-primary-text};
-  --text-accent-lighter-color: #{$dark-primary-text};
-  --text-accent-darker-color: #{$light-primary-text};
-}
-
 $mat-accent: (
-  main: #0a041f,
-  lighter: #b6b4bc,
-  darker: #050212,
-  200: #0a041f, // For slide toggle,
+  main: #ffffff,
+  lighter: #ffffff,
+  darker: #ffffff,
+  200: #ffffff, // For slide toggle,
   contrast : (
-    main: $light-primary-text,
+    main: $dark-primary-text,
     lighter: $dark-primary-text,
-    darker: $light-primary-text,
+    darker: $dark-primary-text,
   )
 );
 $theme-accent: mat-palette($mat-accent, main, lighter, darker);
 
-body {
-  --warn-color: #0a041f;
-  --warn-lighter-color: #b6b4bc;
-  --warn-darker-color: #050212;
-  --text-warn-color: #{$light-primary-text};
-  --text-warn-lighter-color: #{$dark-primary-text};
-  --text-warn-darker-color: #{$light-primary-text};
-}
-
 $mat-warn: (
-  main: #0a041f,
-  lighter: #b6b4bc,
-  darker: #050212,
-  200: #0a041f, // For slide toggle,
+  main: #ff0000,
+  lighter: #0a041f,
+  darker: #0a041f,
+  200: #ff0000, // For slide toggle,
   contrast : (
     main: $light-primary-text,
-    lighter: $dark-primary-text,
+    lighter: $light-primary-text,
     darker: $light-primary-text,
   )
 );
@@ -230,90 +213,98 @@ $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
 .material-icons {
   font-size: 24px;
-  font-family: 'Material Icons', 'Material Icons';  
+  font-family: 'Material Icons Two Tone', 'Material Icons';  
   .mat-badge-content {
     font-family: 'Roboto';
   }
 }
 
+
 @import "custom-styles.scss";
 @import "~bootstrap/dist/css/bootstrap.css";
 
+.mar-progress-bar {
+  color: #ff0000;
+}
 
 body {
-    height: 100vh;
-    margin: 0px;
-    padding: 0px;
-    background-color: var(--primary-color);
+  height: 100vh;
+  margin: 0px;
+  padding: 0px;
+  background-color: var(--primary-color);
 }
 
 ::-webkit-scrollbar {
-    width: 0px;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+  width: 0px; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }
 
 h1 {
-    margin-bottom: 0px !important;
-    padding: 0px;
+  margin-bottom: 0px !important;
+  padding: 0px;
 }
 
 .divider-white {
-    border-bottom: 1px solid var(--white);
-    width: 75%;
-    margin:auto;
+  border-bottom: 1px solid var(--white);
+  width: 75%;
+  margin: auto;
 }
 
-p, ul, li, th, tr {
-    font-family: var(--font-secondary);
-    color: var(--white);
-    padding: 0px;
+p,
+ul,
+li,
+th,
+tr {
+  font-family: var(--font-secondary);
+  color: var(--white);
+  padding: 0px;
 }
 
-ul, li {
-    list-style: none;
-    text-decoration: none;
+ul,
+li {
+  list-style: none;
+  text-decoration: none;
 }
 
-.featured-text{
-    font-family: var(--font-secondary);
-    font-size: 17px;
-    color: var(--white);
+.featured-text {
+  font-family: var(--font-secondary);
+  font-size: 17px;
+  color: var(--white);
 }
 
 i {
-    color: white;
+  color: white;
 }
 
 .arrow-animated {
-    width: 100%;
-    text-align: center;
-    animation: bounce 1s infinite alternate;
-    -webkit-animation: bounce 0.4s infinite alternate;
+  width: 100%;
+  text-align: center;
+  animation: bounce 1s infinite alternate;
+  -webkit-animation: bounce 0.4s infinite alternate;
 }
 
 // ----arrow animation----
 
 @keyframes bounce {
-    from {
-        transform: translateY(0px);
-    }
-    to {
-        transform: translateY(-19px);
-    }
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-19px);
+  }
 }
 @-webkit-keyframes bounce {
-    from {
-        transform: translateY(0px);
-    }
-    to {
-        transform: translateY(-19px);
-    }
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-19px);
+  }
 }
 
 // ----arrow animation----
 
-.project-details:hover .action-button .git-hub-button{
-    background: var(--secondary-color) !important;
-    border: 1px solid var(--secondary-color) !important;
+.project-details:hover .action-button .git-hub-button {
+  background: var(--secondary-color) !important;
+  border: 1px solid var(--secondary-color) !important;
 }
-
