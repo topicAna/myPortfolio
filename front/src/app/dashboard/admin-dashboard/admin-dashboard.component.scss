@@ -44,6 +44,20 @@ ul li {
     margin-left: 60px!important;
 }
 
+tr.element-row:not(.expanded-row):hover {
+    background-color: #777 !important;
+    cursor: pointer;
+  }
+
+
+  tr.element-row:not(.expanded-row):active {
+    background-color: #efefef;
+    cursor: pointer;
+  }
+    
+  
+
+//for borders on table
 .mat-cell, .mat-header-cell {
     background-color:var(--primary-darkened);
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
@@ -59,6 +73,7 @@ ul li {
 
 .mat-header-cell:last-child {
     border-right: 1px solid rgba(255, 255, 255, 0.25);
+    text-align: right;
 }
 
 
@@ -69,6 +84,7 @@ ul li {
     .mat-cell:last-child {
         border-right: 1px solid rgba(255, 255, 255, 0.25);
     }
+// end borders on table
 
 th {
     color: var(--secondary-dashboard);
@@ -81,28 +97,26 @@ table {
     margin-top: 200px;
 }
 
-tr.example-detail-row {
+tr.detail-row {
     height: 0;
 }
 
-tr.example-element-row:not(.example-expanded-row):hover {
-    background: rgb(158, 150, 150);
-}
+table.mat-table tr:hover td {
+    color: var(--primary-darkened);
+    background-color: var(--secondary-dashboard);
+    font-weight: bold;
+    }
 
-tr.example-element-row:not(.example-expanded-row):active {
-    background: #efefef;
-}
-
-.example-element-row td {
+.element-row td {
     border-bottom-width: 0;
 }
 
-.example-element-detail {
+.element-detail {
     overflow: hidden;
     display: flex;
 }
 
-.example-element-diagram {
+.element-diagram {
     min-width: 80px;
     border: 2px solid black;
     padding: 8px;
@@ -111,16 +125,38 @@ tr.example-element-row:not(.example-expanded-row):active {
     height: 104px;
 }
 
-.example-element-symbol {
+.element-symbol {
     font-weight: bold;
     font-size: 40px;
     line-height: normal;
 }
 
-.example-element-description {
+.element-description {
     padding: 16px;
 }
 
-.example-element-description-attribution {
+.element-description-attribution {
     opacity: 0.5;
 }
+
+.fa-trash-alt {
+    color: white;
+
+}
+
+.fa-trash-alt {
+    display: none;
+}
+
+tr:hover .fa-trash-alt {
+    color: var(--secondary-color);
+}
+
+.last-child {
+    display: block;
+    text-align: right;
+    margin-right: 10px;
+}
+
+
+
