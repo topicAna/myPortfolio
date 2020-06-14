@@ -27,6 +27,17 @@
         //margin-bottom: 20px;
         float: right;
     }
+
+    .title-dashboard {
+        color: var(----primary-darkened);
+        font-family: var(--font-primary);
+        font-size: 25px;
+        line-height: normal;
+        text-transform: uppercase;
+        font-weight: 900;
+        //margin-bottom: 20px;
+        text-align: center;
+    }
     .subsubtitle {
         color: var(--white);
         font-family: var(--font-primary);

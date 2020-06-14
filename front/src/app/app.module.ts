@@ -19,6 +19,13 @@ import { ContactComponent } from './pages/contact/contact.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
+import { ProjectsDashboardComponent } from './dashboard/projects-dashboard/projects-dashboard.component';
+import { BioDashboardComponent } from './dashboard/bio-dashboard/bio-dashboard.component';
+import { MiscDashboardComponent } from './dashboard/misc-dashboard/misc-dashboard.component';
+import { MatTableModule } from '@angular/material/table';
+import {CdkTableModule} from '@angular/cdk/table';
+
 
 
 // Angular material imports
@@ -36,7 +43,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MainComponent,
     ProjectsComponent,
     ToolboxComponent,
-    ContactComponent
+    ContactComponent,
+    AdminDashboardComponent,
+    ProjectsDashboardComponent,
+    BioDashboardComponent,
+    MiscDashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +57,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    CdkTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

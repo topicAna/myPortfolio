@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class GitHubService {
 
-  private baseUrl = 'https://cors-anywhere.herokuapp.com/https://api.github.com/users/lattara';
+  private baseUrl = 'https://api.github.com/users/lattara';
 
   constructor(private http: HttpClient, private router: Router) { }
 
