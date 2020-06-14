@@ -33,12 +33,11 @@ export class AdminDashboardComponent implements OnInit {
     this.initializeForm();
     this.projectsService.getProjects().subscribe(result => {
       this.dataSource = result;
-
       this.projectForm.patchValue({
         name: this.dataSource[0].name,
-        description: this.dataSource[1].description,
-        youtube_link: this.dataSource[1].youtube_link,
-        github_link: this.dataSource[1].github_link,
+        description: this.dataSource[0].description,
+        youtube_link: this.dataSource[0].youtube_link,
+        github_link: this.dataSource[0].github_link,
       });
     });
   }
@@ -53,3 +52,7 @@ export class AdminDashboardComponent implements OnInit {
   }
 
 }
+
+// link to tutorial on how to patch value of each seperate form
+
+// https://ultimatecourses.com/blog/angular-2-form-controls-patch-value-set-value
