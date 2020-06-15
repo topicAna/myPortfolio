@@ -25,6 +25,7 @@ export class AdminDashboardComponent implements OnInit {
   columnsToDisplay = ['id', 'name', 'delete'];
   expandedElement: Project | null;
   dashboardMenuItems = dashboardMenuItems;
+  projectFormArr = [];
   projectForm: FormGroup;
 
   constructor(private projectsService: ProjectsService, private formBuilder: FormBuilder) { }
@@ -33,12 +34,16 @@ export class AdminDashboardComponent implements OnInit {
     this.initializeForm();
     this.projectsService.getProjects().subscribe(result => {
       this.dataSource = result;
+      // tslint:disable-next-line: prefer-for-of
+      for (let i = 0; i < this.dataSource.length; i++) {
       this.projectForm.patchValue({
-        name: this.dataSource[0].name,
-        description: this.dataSource[0].description,
-        youtube_link: this.dataSource[0].youtube_link,
-        github_link: this.dataSource[0].github_link,
+        name: this.dataSource[i].name,
+        description: this.dataSource[i].description,
+        youtube_link: this.dataSource[i].youtube_link,
+        github_link: this.dataSource[i].github_link,
       });
+      this.projectFormArr.push(this.projectForm);
+    }
     });
   }
 
