@@ -32,7 +32,10 @@
           <mat-label>Description</mat-label>
           <textarea matInput formControlName="description"></textarea>
         </mat-form-field>
+        <div class="form-buttons">
         <app-button class="send-form-button" [label]="'Save'" [icon]="'fab fa-galactic-senate'" (click)="createProject()"></app-button>
+        <app-button class="edit-form-button" [label]="'Edit existing'" [icon]="'fab fa-galactic-senate'" (click)="saveEditedProject()"></app-button>
+        </div>
       </form>
 
       
@@ -40,7 +43,7 @@
       <ng-container matColumnDef="{{col}}" *ngFor="let col of columnsToDisplay; let last = last">
         <th mat-header-cell *matHeaderCellDef> {{col}} </th>
         <td mat-cell *matCellDef="let element"> {{element[col]}} <i [ngClass]="{'last-child': last}"
-            class="far fa-edit"></i> <i [ngClass]="{'last-child': last}" class="far fa-trash-alt" (click)="deleteProject(element)"> </i></td>
+            class="far fa-edit" (click)="editProject(element)"></i> <i [ngClass]="{'last-child': last}" class="far fa-trash-alt" (click)="deleteProject(element)"> </i></td>
 
       </ng-container>
 

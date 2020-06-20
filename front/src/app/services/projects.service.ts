@@ -15,9 +15,7 @@ export class ProjectsService {
   }
 
   putProject(project: Project, id: number): Observable<any> {
-    console.log(project);
     const putProjectsURL = `${this.baseUrl}/projects/${id}`;
-    console.log(putProjectsURL);
     return this.http.put(putProjectsURL, project);
   }
 

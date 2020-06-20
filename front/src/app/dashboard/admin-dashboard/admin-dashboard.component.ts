@@ -26,6 +26,8 @@ export class AdminDashboardComponent implements OnInit {
   projects: Project [] = [];
   newProject: Project = new Project();
   columnsToDisplay = ['id', 'name', 'edit/delete'];
+  projectToEdit: Project;
+  idProjectToEdit: number;
   expandedElement: Project | null;
   dashboardMenuItems = dashboardMenuItems;
 
@@ -52,8 +54,8 @@ export class AdminDashboardComponent implements OnInit {
     this.newProject.github_link = this.formGroup.value.github_link;
     this.projectsService.postProject(this.newProject).subscribe(
       (error) => {
-       console.error(error);
-        this.getProjects();
+      console.error(error);
+      this.getProjects();
       }
     );
   }
@@ -66,5 +68,18 @@ export class AdminDashboardComponent implements OnInit {
       }
     );
   }
+
+  editProject(project: Project) {
+    this.idProjectToEdit = project.id;
+    this.projectToEdit = project;
+    this.formGroup.patchValue(project);
+    }
+
+    saveEditedProject() {
+      console.log('save edited project')
+      console.log(this.idProjectToEdit, 'id project to edit')
+      this.projectToEdit = this.formGroup.value;
+      this.projectsService.putProject(this.projectToEdit, 50).subscribe(result => {this.getProjects(); });
+    }
 }
 

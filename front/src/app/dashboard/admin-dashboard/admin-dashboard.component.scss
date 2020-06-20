@@ -189,6 +189,12 @@ tr:hover .fa-trash-alt{
     flex-direction: column;
 }
 
+.form-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .mat-form-field-appearance-outline{
     margin-right: 20px !important;
 }
