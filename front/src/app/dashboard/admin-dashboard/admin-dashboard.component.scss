@@ -1,12 +1,12 @@
 .container {
-    height: 100vh;
+    height: 120vh;
     width: 80vw;
     margin-left: 300px !important;
     margin-right: 100px !important;
 }
 
 .sidebar {
-    height: 100vh;
+    height: 120vh;
     width: 230px;
     position: absolute;
     top: 0px;
@@ -37,11 +37,12 @@ ul li {
 
 .table {
     width: 100%;
-    margin-top: 200px;
 }
 
 .mat-table {
     margin-left: 60px!important;
+    width: 100%;
+    margin-top: 50px;
 }
 
 tr.element-row:not(.expanded-row):hover {
@@ -92,11 +93,6 @@ th {
     font-weight: 900;
 }
 
-table {
-    width: 100%;
-    margin-top: 200px;
-}
-
 tr.detail-row {
     height: 0;
 }
@@ -114,6 +110,7 @@ table.mat-table tr:hover td {
 .element-detail {
     overflow: hidden;
     display: flex;
+    height: 200px;
 }
 
 .element-diagram {
@@ -131,6 +128,21 @@ table.mat-table tr:hover td {
     line-height: normal;
 }
 
+.project-details-description{
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.project-details-link {
+    padding-left: 50px;
+}
+
+.fab {
+    margin-right: 10px;
+}
+
 .element-description {
     padding: 16px;
 }
@@ -144,19 +156,68 @@ table.mat-table tr:hover td {
 
 }
 
-.fa-trash-alt {
+.fa-trash-alt, .fa-edit {
     display: none;
 }
 
-tr:hover .fa-trash-alt {
+tr:hover .fa-trash-alt{
     color: var(--secondary-color);
 }
 
+.fa-edit:hover{
+    color: blue;
+}
+
 .last-child {
-    display: block;
-    text-align: right;
+    display: inline-block;
+    
     margin-right: 10px;
 }
 
+.element-row td:last-child {
+    text-align: end !important;
+}
 
+
+//form
+
+.create-project-form {
+    width: 70%;
+    margin-left: 60px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-form-field-appearance-outline{
+    margin-right: 20px !important;
+}
+
+.project-form-link-fields {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.project-form-link-fields .mat-form-field-appearance-outline {
+    width: 100%;
+}
+
+textarea {
+    height: 150px;
+}
+
+.send-form-button {
+    display: flex;
+    align-self: flex-end;
+    margin-right: 20px;
+}
+
+textarea.mat-input-element {
+    color: var(--white);
+}
+
+input.mat-input-element {
+    color: var(--white);
+}
 

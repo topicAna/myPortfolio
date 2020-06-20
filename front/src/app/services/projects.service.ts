@@ -30,12 +30,12 @@ export class ProjectsService {
   }
 
   deleteProject(id: number): Observable<any> {
-    const url = `${this.baseUrl}/project/${id}`;
+    const url = `${this.baseUrl}/projects/${id}`;
     return this.http.delete(url);
   }
 
   getProjectById(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/project/${id}`);
+    return this.http.get(`${this.baseUrl}/projects/${id}`);
   }
 
 }

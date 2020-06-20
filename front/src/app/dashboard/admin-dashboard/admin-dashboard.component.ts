@@ -3,7 +3,7 @@ import { dashboardMenuItems } from './dashboard-menu-items';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { Project } from 'src/app/models/project.model';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 
 
 @Component({
@@ -21,43 +21,50 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 export class AdminDashboardComponent implements OnInit {
 
-  dataSource = [];
-  columnsToDisplay = ['id', 'name', 'delete'];
+  constructor(private projectsService: ProjectsService, private formBuilder: FormBuilder, privateProjectsService: ProjectsService) { }
+
+  projects: Project [] = [];
+  newProject: Project = new Project();
+  columnsToDisplay = ['id', 'name', 'edit/delete'];
   expandedElement: Project | null;
   dashboardMenuItems = dashboardMenuItems;
-  projectFormArr = [];
-  projectForm: FormGroup;
 
-  constructor(private projectsService: ProjectsService, private formBuilder: FormBuilder) { }
+  formGroup = new FormGroup ({
+    name: new FormControl ('', Validators.required),
+    description: new FormControl ('', Validators.required),
+    youtube_link: new FormControl ('', Validators.required),
+    github_link: new FormControl ('', Validators.required),
+  });
 
   ngOnInit(): void {
-    this.initializeForm();
+    this.getProjects();
+  }
+
+  getProjects() {
     this.projectsService.getProjects().subscribe(result => {
-      this.dataSource = result;
-      // tslint:disable-next-line: prefer-for-of
-      for (let i = 0; i < this.dataSource.length; i++) {
-      this.projectForm.patchValue({
-        name: this.dataSource[i].name,
-        description: this.dataSource[i].description,
-        youtube_link: this.dataSource[i].youtube_link,
-        github_link: this.dataSource[i].github_link,
-      });
-      this.projectFormArr.push(this.projectForm);
-    }
+      this.projects = result;
     });
   }
-
-  initializeForm() {
-    this.projectForm = new FormGroup ({
-      name: new FormControl(),
-      description: new FormControl(),
-      youtube_link: new FormControl(),
-      github_link: new FormControl(),
-    });
+  createProject() {
+    this.newProject.name = this.formGroup.value.name;
+    this.newProject.description = this.formGroup.value.description;
+    this.newProject.youtube_link = this.formGroup.value.youtube_link;
+    this.newProject.github_link = this.formGroup.value.github_link;
+    this.projectsService.postProject(this.newProject).subscribe(
+      (error) => {
+       console.error(error);
+        this.getProjects();
+      }
+    );
   }
 
+  deleteProject(project) {
+    this.projectsService.deleteProject(project.id).subscribe(
+      (error) => {
+        console.error(error);
+        this.getProjects();
+      }
+    );
+  }
 }
 
-// link to tutorial on how to patch value of each seperate form
-
-// https://ultimatecourses.com/blog/angular-2-form-controls-patch-value-set-value

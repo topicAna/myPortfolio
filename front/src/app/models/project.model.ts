@@ -2,10 +2,8 @@ export class Project {
     id!: number;
     name!: string;
     description!: string;
-    youtubeLink!: string;
-    githubLink!: string;
-
-    constructor(input: Project) {
-    Object.assign(this, input);
-}
+    // tslint:disable-next-line: variable-name
+    youtube_link!: string;
+    // tslint:disable-next-line: variable-name
+    github_link!: string;
 }
