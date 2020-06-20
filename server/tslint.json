@@ -14,7 +14,16 @@
       "member-ordering": [false],
       "interface-name": [false],
       "arrow-parens": false,
-      "object-literal-sort-keys": false
+      "object-literal-sort-keys": false,
+      "variable-name": {
+        "options": [
+          "ban-keywords",
+          "check-format",
+          "allow-leading-underscore",
+          "allow-pascal-case",
+          "allow-snake-case"
+        ]
     },
     "rulesDirectory": []
   }
+}

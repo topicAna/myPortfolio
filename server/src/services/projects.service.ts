@@ -1,7 +1,6 @@
 import { Project } from '../models/project';
 import { ProjectsRepository } from '../repository/projects.repository';
 
-
 export class ProjectsService {
 
     private static instance: ProjectsService;

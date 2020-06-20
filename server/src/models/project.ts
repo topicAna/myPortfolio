@@ -2,8 +2,8 @@ export class Project {
     id!: number;
     name!: string;
     description!: string;
-    youtubeLink!: string;
-    gitHubLink!: number;
+    youtube_link!: string;
+    github_link!: string;
 
     constructor(input: Project) {
       Object.assign(this, input);

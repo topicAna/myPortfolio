@@ -48,7 +48,7 @@ export const ProjectsController = (app: Application) => {
     })
       .catch(err => {
         console.error(err);
-      })
+      });
   });
 
   router.delete('/:id', (req: Request, res: Response) => {
