@@ -1,8 +1,8 @@
 .container {
     width: 100%;
-    height: 110vh;
-    margin-top: 12rem !important;
+    height: 100vh;
 }
+
 
 .number {
     color: var(--white);
@@ -14,11 +14,12 @@
 }
 
 .project-details {
-    height: 390px;
+    height: 350px;
     width: 90%;
     border-bottom: 1px solid var(--white);
     border-top: 1px solid var(--white);
-    margin: 40px;
+    margin-right: 35px;
+    margin-bottom: 35px;
 }
 
 .project-details:hover {
@@ -42,6 +43,7 @@
 
 .project-description {
     margin-left: 70px;
+    margin-right: 0px !important;
 }
 
 .technologies {
