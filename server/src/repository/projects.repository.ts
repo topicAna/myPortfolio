@@ -1,5 +1,6 @@
 import { Project } from '../models/project';
 import { MysqlConnection } from '../loaders/mysql';
+import { runInThisContext } from 'vm';
 
 export class ProjectsRepository {
 
@@ -36,7 +37,7 @@ export class ProjectsRepository {
     insert(project: Project) {
       return this.connection.query(
         `INSERT INTO ${this.table} (name, description, youtube_link, github_link) VALUES (?,?,?,?)`,
-        [project.name, project.description, project.youtube_link, project.github_link],
+        [project.name, project.description, project.youtube_link, project.github_link]
       ).then((result: any) => {
         // After an insert the insert id is directly passed in the promise
         return this.findById(result.insertId);
@@ -46,9 +47,9 @@ export class ProjectsRepository {
    // modify project
     update(project: Project) {
       return this.connection.query(
-        `UPDATE ${this.table} SET name = ?, description = ?, youtube_link = ?, github_link = ? WHERE id = ?`,
-        [project.name, project.description, project.youtube_link, project.github_link],
-      ).then(() => {
+        'UPDATE projects SET name = ?, description = ?,  youtube_link = ?, github_link = ? WHERE id = ?',
+        [project.name, project.description, project.youtube_link, project.github_link, project.id ],
+      ).then (() => {
         return this.findById(project.id);
       });
     }

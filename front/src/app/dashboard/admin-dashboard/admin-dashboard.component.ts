@@ -76,10 +76,11 @@ export class AdminDashboardComponent implements OnInit {
     }
 
     saveEditedProject() {
-      console.log('save edited project')
-      console.log(this.idProjectToEdit, 'id project to edit')
-      this.projectToEdit = this.formGroup.value;
-      this.projectsService.putProject(this.projectToEdit, 50).subscribe(result => {this.getProjects(); });
+      this.projectToEdit.name = this.formGroup.value.name;
+      this.projectToEdit.description = this.formGroup.value.description;
+      this.projectToEdit.youtube_link = this.formGroup.value.youtube_link;
+      this.projectToEdit.github_link = this.formGroup.value.github_link;
+      this.projectsService.putProject(this.projectToEdit, this.idProjectToEdit).subscribe(result => {this.getProjects(); });
     }
 }
 
