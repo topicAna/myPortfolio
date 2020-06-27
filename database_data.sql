@@ -17,6 +17,14 @@ INSERT INTO toolbox_item (id, name, sortcut, master_level) VALUES
 (16, 'Java', 'fab fa-java', 7);
 
 
+
+INSERT INTO toolbox (projects_id, toolbox_item_id) VALUES 
+(1,1),
+(1,5),
+(1,3),
+(1,2),
+(1,7);
+
 INSERT INTO projects (id, name, description, youtube_link, github_link) VALUES
 (1, 'Skyplanet', 'Skyplanet is final project finished during 6 month formation in Wild Code School Lyon.
 It’s a project done for the client, owner of the Free fall simulator in Lyon. For this project we had 

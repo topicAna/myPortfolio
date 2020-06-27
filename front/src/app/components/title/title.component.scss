@@ -29,15 +29,31 @@
     }
 
     .title-dashboard {
-        color: var(----primary-darkened);
+        color: var(--primary-color-darkened);
         font-family: var(--font-primary);
         font-size: 25px;
         line-height: normal;
         text-transform: uppercase;
         font-weight: 900;
-        //margin-bottom: 20px;
+        margin-top: 20px;
+        margin-bottom: 20px;
         text-align: center;
     }
+
+    .subtitle-dashboard {
+        color: var(--white);
+        font-family: var(--font-primary);
+        font-size: 25px;
+        line-height: normal;
+        text-transform: uppercase;
+        font-weight: 900;
+        text-align: left;
+        padding-top: 50px;
+        padding-left: 60px;
+        padding-bottom: 50px;
+    }
+
+
     .subsubtitle {
         color: var(--white);
         font-family: var(--font-primary);
