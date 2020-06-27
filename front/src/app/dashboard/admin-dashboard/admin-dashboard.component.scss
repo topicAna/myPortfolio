@@ -27,6 +27,11 @@ ul li {
     margin-left: 35px;
     font-weight: bolder;
     color:var(--primary-darkened);
+    cursor: pointer;
+}
+
+ul li:focus {
+    outline: none !important;
 }
 
 .logout-button {

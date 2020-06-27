@@ -1,3 +1,46 @@
-* {
-    color: white;
+.create-project-form {
+    width: 70%;
+    margin-left: 60px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
 }
+
+.form-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mat-form-field-appearance-outline{
+    margin-right: 20px !important;
+}
+
+.project-form-link-fields {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.project-form-link-fields .mat-form-field-appearance-outline {
+    width: 100%;
+}
+
+textarea {
+    height: 150px;
+}
+
+.send-form-button {
+    display: flex;
+    align-self: flex-end;
+    margin-right: 20px;
+}
+
+textarea.mat-input-element {
+    color: var(--white);
+}
+
+input.mat-input-element {
+    color: var(--white);
+}
+
