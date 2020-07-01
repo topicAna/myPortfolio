@@ -39,4 +39,8 @@ export class ToolboxService {
     return this.http.get(`${this.baseUrl}/toolboxItem/${id}`);
   }
 
+  getToolboxItemByProjectId(id: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/toolbox/${id}`);
+  }
+
 }

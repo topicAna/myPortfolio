@@ -4,6 +4,8 @@ import { ProjectsService } from 'src/app/services/projects.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Project } from 'src/app/models/project.model';
 import { dashboardMenuItems } from '../admin-dashboard/dashboard-menu-items';
+import { ToolboxService } from 'src/app/services/toolbox.service';
+import { ToolboxItem } from 'src/app/models/toolboxItem';
 
 @Component({
   selector: 'app-projects-dashboard',
@@ -19,32 +21,53 @@ import { dashboardMenuItems } from '../admin-dashboard/dashboard-menu-items';
 })
 export class ProjectsDashboardComponent implements OnInit {
 
-  constructor(private projectsService: ProjectsService, private formBuilder: FormBuilder, privateProjectsService: ProjectsService) { }
+  constructor(private projectsService: ProjectsService,
+    private toolboxService: ToolboxService,
+    private formBuilder: FormBuilder) { }
 
-  projects: Project [] = [];
+  projects: Project[] = [];
+  toolbox: ToolboxItem[] = [];
   newProject: Project = new Project();
   columnsToDisplay = ['id', 'name', 'edit/delete'];
   projectToEdit: Project;
   idProjectToEdit: number;
   expandedElement: Project | null;
   dashboardMenuItems = dashboardMenuItems;
+  projectId: number;
 
-  formGroup = new FormGroup ({
-    name: new FormControl ('', Validators.required),
-    description: new FormControl ('', Validators.required),
-    youtube_link: new FormControl ('', Validators.required),
-    github_link: new FormControl ('', Validators.required),
+  formGroup = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    youtube_link: new FormControl('', Validators.required),
+    github_link: new FormControl('', Validators.required),
   });
 
   ngOnInit(): void {
     this.getProjects();
-  }
+      }
+
+
 
   getProjects() {
     this.projectsService.getProjects().subscribe(result => {
       this.projects = result;
+      result.forEach(project => {
+      this.getProjectToolbox(project.id);
+      const projectObject = Object.assign(['toolbox'], ...this.toolbox);
+      console.log(projectObject);
+      }
+      );
     });
   }
+
+  getProjectToolbox(projectId) {
+      this.toolboxService.getToolboxItemByProjectId(projectId).subscribe(result => {
+        this.toolbox = result;
+        console.log(this.toolbox);
+      });
+  }
+
+
   createProject() {
     this.newProject.name = this.formGroup.value.name;
     this.newProject.description = this.formGroup.value.description;
@@ -52,8 +75,8 @@ export class ProjectsDashboardComponent implements OnInit {
     this.newProject.github_link = this.formGroup.value.github_link;
     this.projectsService.postProject(this.newProject).subscribe(
       (error) => {
-      console.error(error);
-      this.getProjects();
+        console.error(error);
+        this.getProjects();
       }
     );
   }
@@ -71,15 +94,15 @@ export class ProjectsDashboardComponent implements OnInit {
     this.idProjectToEdit = project.id;
     this.projectToEdit = project;
     this.formGroup.patchValue(project);
-    }
+  }
 
-    saveEditedProject() {
-      this.projectToEdit.name = this.formGroup.value.name;
-      this.projectToEdit.description = this.formGroup.value.description;
-      this.projectToEdit.youtube_link = this.formGroup.value.youtube_link;
-      this.projectToEdit.github_link = this.formGroup.value.github_link;
-      this.projectsService.putProject(this.projectToEdit, this.idProjectToEdit).subscribe(result => {this.getProjects(); });
-    }
+  saveEditedProject() {
+    this.projectToEdit.name = this.formGroup.value.name;
+    this.projectToEdit.description = this.formGroup.value.description;
+    this.projectToEdit.youtube_link = this.formGroup.value.youtube_link;
+    this.projectToEdit.github_link = this.formGroup.value.github_link;
+    this.projectsService.putProject(this.projectToEdit, this.idProjectToEdit).subscribe(result => { this.getProjects(); });
+  }
 
 
 }
