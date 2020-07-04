@@ -6,4 +6,5 @@ export class Project {
     youtube_link!: string;
     // tslint:disable-next-line: variable-name
     github_link!: string;
+    toolbox?: string [];
 }
