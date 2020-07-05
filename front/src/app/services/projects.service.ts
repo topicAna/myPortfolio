@@ -13,21 +13,14 @@ export class ProjectsService {
 
   private baseUrl = 'http://localhost:3000';
   private toolboxUrl = 'http://localhost:3000/toolbox/:id';
-  // project: Project;
-  // toolbox: ToolboxItem[];
 
 
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  getProjectWithToolbox() {
-    // let $project = this.http.get(`http://localhost:3000/projects/1`).pipe(map((res: Response) => res.json));
-    // let $toolbox = this.http.get(`http://localhost:3000/toolbox/1`).pipe(map((res: Response) => res.json));
-
-    // forkJoin([$project, $toolbox]).subscribe( results => {
-    //   console.log('results are', results[0], results[1]);
-    // });
-  }
+  getAllProjectsWLenght(): Promise<any> {
+    return this.http.get('http://localhost:3000/projects').toPromise();
+}
 
   putProject(project: Project, id: number): Observable<any> {
     const putProjectsURL = `${this.baseUrl}/projects/${id}`;
