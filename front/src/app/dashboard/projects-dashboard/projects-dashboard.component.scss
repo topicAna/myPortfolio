@@ -51,6 +51,23 @@ tr.element-row:not(.expanded-row):hover {
     }
 // end borders on table
 
+//checkbox
+
+.checkbox-all-toolbox-items{
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.checkbox-toolbox-item {
+    color: var(--white);
+    font-size: larger;
+    display: table-row;
+}
+
 th {
     color: var(--secondary-dashboard);
     text-transform: uppercase;

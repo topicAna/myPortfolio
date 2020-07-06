@@ -1,17 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ProjectsService } from 'src/app/services/projects.service';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Project } from 'src/app/models/project.model';
 import { dashboardMenuItems } from '../admin-dashboard/dashboard-menu-items';
-import { ToolboxService } from 'src/app/services/toolbox.service';
-import { ToolboxItem } from 'src/app/models/toolboxItem';
-import { map } from 'rxjs/internal/operators/map';
-import { zip } from 'rxjs/internal/operators/zip';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
-import { DataSource } from '@angular/cdk/table';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToolboxService } from 'src/app/services/toolbox.service';
+import { ToolboxItem } from 'src/app/models/toolboxItem';
 
 
 @Component({
@@ -28,11 +25,10 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class ProjectsDashboardComponent implements OnInit {
 
-  constructor(private projectsService: ProjectsService,
-    private http: HttpClient) { }
+  constructor(private projectsService: ProjectsService, private http: HttpClient, private toolboxService: ToolboxService) { }
 
   projects: Project[] = [];
-  projectsLenght: Project [] = [];
+  toolboxItems: ToolboxItem [] = [];
   newProject: Project = new Project();
   columnsToDisplay = ['id', 'name', 'edit/delete'];
   projectToEdit: Project;
@@ -42,7 +38,7 @@ export class ProjectsDashboardComponent implements OnInit {
   projectDetailsTable: Project[] = [];
   dataSource = new MatTableDataSource(this.projects);
   project: any;
-  projectArrayLenght: number;
+
 
   formGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -53,6 +49,7 @@ export class ProjectsDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProjectsWithToolbox();
+    this.getAllToolboxItems();
   }
 
   public getAllProjectsWithToolbox() {
@@ -67,6 +64,13 @@ export class ProjectsDashboardComponent implements OnInit {
       }
       );
     }
+  }
+
+  getAllToolboxItems() {
+    this.toolboxService.getToolboxItems().subscribe(items => {
+      this.toolboxItems = items;
+      console.log(this.toolboxItems)
+    })
   }
 
   createProject() {
