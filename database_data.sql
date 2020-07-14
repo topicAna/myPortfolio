@@ -31,7 +31,15 @@ INSERT INTO toolbox (projects_id, toolbox_item_id) VALUES
 (3,1),
 (3,15),
 (3,3),
-(3,12);
+(3,12),
+(4,1),
+(4,15),
+(4,3),
+(5,12),
+(5,1),
+(5,15),
+(5,3),
+(5,12);
 
 INSERT INTO projects (id, name, description, youtube_link, github_link) VALUES
 (1, 'Skyplanet', 'Skyplanet is final project finished during 6 month formation in Wild Code School Lyon.

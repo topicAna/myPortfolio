@@ -27,9 +27,15 @@ export class ProjectsRepository {
           });
     }
 
-   // Find resa by ID
+   // Find project by ID
     findById(id: number): Promise<Project> {
         return this.connection.query(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
+          .then((results: any) => new Project(results[0]));
+    }
+
+    // find last project
+    findLastProjectId(): Promise<Project> {
+        return this.connection.query(`SELECT MAX(id) FROM ${this.table}`)
           .then((results: any) => new Project(results[0]));
     }
 

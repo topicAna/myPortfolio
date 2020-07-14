@@ -17,6 +17,15 @@ export const ProjectsController = (app: Application) => {
         });
     });
 
+  router.get('/lastId', (req: Request, res: Response) => {
+      projectsService.getLastId().then(results => {
+        res.send(results);
+      })
+        .catch(err => {
+          console.log(err);
+        });
+    });
+
   router.get('/:id', (req: Request, res: Response) => {
     // tslint:disable-next-line: radix
     const id = parseInt(req.params.id);
