@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ProjectsService } from 'src/app/services/projects.service';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { Project } from 'src/app/models/project.model';
 import { dashboardMenuItems } from '../admin-dashboard/dashboard-menu-items';
 import { HttpClient } from '@angular/common/http';
@@ -27,9 +27,12 @@ export class ProjectsDashboardComponent implements OnInit {
 
   constructor(private projectsService: ProjectsService, private http: HttpClient, private toolboxService: ToolboxService) { }
 
+  @ViewChildren ('checkBox') checkBox: QueryList<any>;
+
   projects: Project[] = [];
-  toolboxItems: ToolboxItem [] = [];
+  toolboxItems: ToolboxItem[] = [];
   newProject: Project = new Project();
+  lastProjectId: number;
   columnsToDisplay = ['id', 'name', 'edit/delete'];
   projectToEdit: Project;
   idProjectToEdit: number;
@@ -38,18 +41,30 @@ export class ProjectsDashboardComponent implements OnInit {
   projectDetailsTable: Project[] = [];
   dataSource = new MatTableDataSource(this.projects);
   project: any;
-
+  checked = [];
 
   formGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     youtube_link: new FormControl('', Validators.required),
     github_link: new FormControl('', Validators.required),
+    toolbox: new FormArray([
+      new FormGroup({
+        id: new FormControl(),
+        name: new FormControl(),
+        master_level: new FormControl(),
+        sortcut: new FormControl(),
+      }),
+    ])
   });
 
   ngOnInit(): void {
     this.getAllProjectsWithToolbox();
     this.getAllToolboxItems();
+  }
+
+  get toolbox(): FormArray {
+    return this.formGroup.get('toolbox') as FormArray;
   }
 
   public getAllProjectsWithToolbox() {
@@ -61,6 +76,7 @@ export class ProjectsDashboardComponent implements OnInit {
         this.project.toolbox = Object.entries(results[1]).map(e => e[1]);
         this.projects.push(this.project);
         this.dataSource.data = this.projects;
+        console.log('datasource', this.dataSource.data);
       }
       );
     }
@@ -69,45 +85,58 @@ export class ProjectsDashboardComponent implements OnInit {
   getAllToolboxItems() {
     this.toolboxService.getToolboxItems().subscribe(items => {
       this.toolboxItems = items;
-      console.log(this.toolboxItems)
-    })
+    });
   }
 
-  createProject() {
-    this.newProject.name = this.formGroup.value.name;
-    this.newProject.description = this.formGroup.value.description;
-    this.newProject.youtube_link = this.formGroup.value.youtube_link;
-    this.newProject.github_link = this.formGroup.value.github_link;
-    this.projectsService.postProject(this.newProject).subscribe(
-      (error) => {
-        console.error(error);
-        this.getAllProjectsWithToolbox();
-      }
-    );
+  getCheckbox($event, object) {
+    console.log(object, $event.defaultChecked);
   }
 
-  deleteProject(project) {
-    this.projectsService.deleteProject(project.id).subscribe(
-      (error) => {
-        console.error(error);
-        this.getAllProjectsWithToolbox();
-      }
-    );
+    createProject() {
+      this.newProject.name = this.formGroup.value.name;
+      this.newProject.description = this.formGroup.value.description;
+      this.newProject.youtube_link = this.formGroup.value.youtube_link;
+      this.newProject.github_link = this.formGroup.value.github_link;
+      this.projectsService.postProject(this.newProject).subscribe(
+        (error) => {
+          console.error(error);
+          this.getAllProjectsWithToolbox();
+        }
+      );
+    }
+
+
+    deleteProject(project) {
+      this.projectsService.deleteProject(project.id).subscribe(
+        (error) => {
+          console.error(error);
+          this.getAllProjectsWithToolbox();
+        }
+      );
+    }
+
+    editProject(project: Project) {
+      this.idProjectToEdit = project.id;
+      this.projectToEdit = project;
+      this.formGroup.patchValue(project);
+    }
+
+    saveEditedProject() {
+      this.projectToEdit.name = this.formGroup.value.name;
+      this.projectToEdit.description = this.formGroup.value.description;
+      this.projectToEdit.youtube_link = this.formGroup.value.youtube_link;
+      this.projectToEdit.github_link = this.formGroup.value.github_link;
+      this.projectsService.putProject(this.projectToEdit, this.idProjectToEdit).subscribe(result => { this.getAllProjectsWithToolbox(); });
+    }
+
+    // toolbox items logic
+
+    removeToolboxItem(projectToEditId: number, toolboxItemName: string) {
+      this.toolboxService.getToolboxItemByProjectId(projectToEditId).subscribe(
+        data => console.log(data)
+      );
+      console.log(' click on delete with id', projectToEditId, toolboxItemName);
+    }
+
+
   }
-
-  editProject(project: Project) {
-    this.idProjectToEdit = project.id;
-    this.projectToEdit = project;
-    this.formGroup.patchValue(project);
-  }
-
-  saveEditedProject() {
-    this.projectToEdit.name = this.formGroup.value.name;
-    this.projectToEdit.description = this.formGroup.value.description;
-    this.projectToEdit.youtube_link = this.formGroup.value.youtube_link;
-    this.projectToEdit.github_link = this.formGroup.value.github_link;
-    this.projectsService.putProject(this.projectToEdit, this.idProjectToEdit).subscribe(result => { this.getAllProjectsWithToolbox(); });
-  }
-
-
-}

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, merge, concat, combineLatest } from 'rxjs';
+import { Observable, forkJoin, merge, concat, combineLatest, of, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Project } from '../models/project.model';
 import { Router } from '@angular/router';
@@ -12,14 +12,12 @@ import { ToolboxItem } from '../models/toolboxItem';
 export class ProjectsService {
 
   private baseUrl = 'http://localhost:3000';
-  private toolboxUrl = 'http://localhost:3000/toolbox/:id';
-
 
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  getAllProjectsWLenght(): Promise<any> {
-    return this.http.get('http://localhost:3000/projects').toPromise();
+  getlastId(): Observable<any> {
+    return from(this.http.get('http://localhost:3000/projects/lastId'));
 }
 
   putProject(project: Project, id: number): Observable<any> {

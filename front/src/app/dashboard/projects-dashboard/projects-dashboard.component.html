@@ -12,7 +12,6 @@
                 <mat-label>Youtube link</mat-label>
                 <input matInput placeholder="Placeholder" formControlName="youtube_link">
             </mat-form-field>
-
             <mat-form-field appearance="outline">
                 <mat-label>Github link</mat-label>
                 <input matInput placeholder="Placeholder" formControlName="github_link">
@@ -23,12 +22,18 @@
         <mat-label>Description</mat-label>
         <textarea matInput formControlName="description"></textarea>
     </mat-form-field>
+    <div *ngIf="projectToEdit">
+        <span>Current Toolbox items: </span>
+        <div *ngFor="let toolboxItem of projectToEdit.toolbox;">    
+    <span class="toolboxItems"><i class="fas fa-times" (click)= "removeToolboxItem(projectToEdit.id, toolboxItem.name)"></i>{{toolboxItem.name}}</span> 
+        </div>
+    Add Toolbox Item to project   
+    <div *ngFor="let toolboxItem of toolboxItems; let i=index">    
+        <span class="toolboxItems"><i class="fas fa-plus"></i>{{toolboxItem.id}}, {{toolboxItem.name}}</span> 
+    </div>
+    </div>
 </form>
 
-<!-- checkbox for technologies -->
-<div class="col-12 checkbox-all-toolbox-items">
-<mat-checkbox *ngFor = "let item of toolboxItems" class="checkbox-toolbox-item">{{item.name}}</mat-checkbox>
-</div>
 
 <div class="form-buttons">
     <app-button class="send-form-button" [label]="'Save as new'" [icon]="'fab fa-galactic-senate'"
