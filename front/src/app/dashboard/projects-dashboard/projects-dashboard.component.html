@@ -25,7 +25,7 @@
     <div *ngIf="projectToEdit">
         <span>Current Toolbox items: </span>
         <div *ngFor="let toolboxItem of projectToEdit.toolbox;">    
-    <span class="toolboxItems"><i class="fas fa-times" (click)= "removeToolboxItem(projectToEdit.id, toolboxItem.name)"></i>{{toolboxItem.name}}</span> 
+    <span class="toolboxItems"><i class="fas fa-times" (click)= "removeToolboxItem(projectToEdit.id, toolboxItem.id)"></i>{{toolboxItem.name}}</span> 
         </div>
     Add Toolbox Item to project   
     <div *ngFor="let toolboxItem of toolboxItems; let i=index">    

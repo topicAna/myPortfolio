@@ -7,9 +7,9 @@ import { dashboardMenuItems } from '../admin-dashboard/dashboard-menu-items';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { MatTableDataSource } from '@angular/material/table';
+import { ToolboxItemService } from 'src/app/services/toolboxItem.service';
 import { ToolboxService } from 'src/app/services/toolbox.service';
 import { ToolboxItem } from 'src/app/models/toolboxItem';
-
 
 @Component({
   selector: 'app-projects-dashboard',
@@ -25,46 +25,35 @@ import { ToolboxItem } from 'src/app/models/toolboxItem';
 })
 export class ProjectsDashboardComponent implements OnInit {
 
-  constructor(private projectsService: ProjectsService, private http: HttpClient, private toolboxService: ToolboxService) { }
+  constructor(
+    private projectsService: ProjectsService,
+    private http: HttpClient,
+    private toolboxItemService: ToolboxItemService,
+    private toolboxService: ToolboxService) { }
 
-  @ViewChildren ('checkBox') checkBox: QueryList<any>;
-
+  dashboardMenuItems = dashboardMenuItems;
   projects: Project[] = [];
   toolboxItems: ToolboxItem[] = [];
   newProject: Project = new Project();
-  lastProjectId: number;
   columnsToDisplay = ['id', 'name', 'edit/delete'];
   projectToEdit: Project;
   idProjectToEdit: number;
   expandedElement: Project | null;
-  dashboardMenuItems = dashboardMenuItems;
   projectDetailsTable: Project[] = [];
   dataSource = new MatTableDataSource(this.projects);
   project: any;
-  checked = [];
+  projectToEditToolbox: any;
 
   formGroup = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     youtube_link: new FormControl('', Validators.required),
     github_link: new FormControl('', Validators.required),
-    toolbox: new FormArray([
-      new FormGroup({
-        id: new FormControl(),
-        name: new FormControl(),
-        master_level: new FormControl(),
-        sortcut: new FormControl(),
-      }),
-    ])
   });
 
   ngOnInit(): void {
     this.getAllProjectsWithToolbox();
     this.getAllToolboxItems();
-  }
-
-  get toolbox(): FormArray {
-    return this.formGroup.get('toolbox') as FormArray;
   }
 
   public getAllProjectsWithToolbox() {
@@ -76,20 +65,15 @@ export class ProjectsDashboardComponent implements OnInit {
         this.project.toolbox = Object.entries(results[1]).map(e => e[1]);
         this.projects.push(this.project);
         this.dataSource.data = this.projects;
-        console.log('datasource', this.dataSource.data);
       }
       );
     }
   }
 
   getAllToolboxItems() {
-    this.toolboxService.getToolboxItems().subscribe(items => {
+    this.toolboxItemService.getToolboxItems().subscribe(items => {
       this.toolboxItems = items;
     });
-  }
-
-  getCheckbox($event, object) {
-    console.log(object, $event.defaultChecked);
   }
 
     createProject() {
@@ -105,8 +89,7 @@ export class ProjectsDashboardComponent implements OnInit {
       );
     }
 
-
-    deleteProject(project) {
+    deleteProject(project: Project) {
       this.projectsService.deleteProject(project.id).subscribe(
         (error) => {
           console.error(error);
@@ -130,13 +113,9 @@ export class ProjectsDashboardComponent implements OnInit {
     }
 
     // toolbox items logic
-
-    removeToolboxItem(projectToEditId: number, toolboxItemName: string) {
-      this.toolboxService.getToolboxItemByProjectId(projectToEditId).subscribe(
-        data => console.log(data)
-      );
-      console.log(' click on delete with id', projectToEditId, toolboxItemName);
-    }
-
-
-  }
+    removeToolboxItem(projectToEditId: number, toolboxItemId: number) {
+      this.toolboxService.deleteFromToolbox(projectToEditId, toolboxItemId);
+      console.log('removed');
+        // find toolbox item by name and remove it
+        }
+}

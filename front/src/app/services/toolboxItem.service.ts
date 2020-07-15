@@ -8,7 +8,7 @@ import { ToolboxItem } from '../models/toolboxItem';
 @Injectable({
     providedIn: 'root'
   })
-export class ToolboxService {
+export class ToolboxItemService {
 
   private baseUrl = 'http://localhost:3000';
 
@@ -30,8 +30,8 @@ export class ToolboxService {
     return this.http.get(`${this.baseUrl}/toolboxItem`);
   }
 
-  deleteFromToolbox(projectId: number, toolboxItemId: number): Observable<any> {
-    const url = `${this.baseUrl}/toolbox/${projectId}${toolboxItemId}`;
+  deleteToolboxItem(id: number): Observable<any> {
+    const url = `${this.baseUrl}/toolboxItem/${id}`;
     return this.http.delete(url);
   }
 
