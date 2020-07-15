@@ -24,9 +24,7 @@ export class ProjectsService {
         return this.repository.findById(id);
     }
 
-    getLastId(): Promise<Project> {
-      return this.repository.findLastProjectId();
-  }
+
 
     create(project: any): Promise<Project> {
       return this.repository.insert(project);

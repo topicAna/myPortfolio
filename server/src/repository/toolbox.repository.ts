@@ -21,32 +21,26 @@ export class ToolboxRepository {
     // Find Toolbox by projectId
 
     findByProjectsId(projectId: number): Promise<ToolboxItem> {
-        return this.connection.query(`select distinct p.id, ti.name, sortcut, master_level from projects p join toolbox t on p.id = t.projects_id join toolbox_item ti on ti.id = t.toolbox_item_id where t.projects_id=${projectId};`, [projectId])
+        return this.connection.query(`select distinct ti.id, ti.name, sortcut, master_level from projects p join toolbox t on p.id = t.projects_id join toolbox_item ti on ti.id = t.toolbox_item_id where t.projects_id=${projectId};`, [projectId])
         .then((results: any) => new ToolboxItem (results));
     }
 
-    // Insert new ToolboxItem
-    // insert(toolboxItem: ToolboxItem) {
-    // return this.connection.query(
-    //     `INSERT INTO ${this.table} (name, shortcut, master_level) VALUES (?,?,?)`,
-    //     [toolboxItem.name, toolboxItem.shortcut, toolboxItem.masterLevel],
-    // ).then((result: any) => {
-    //     return this.findById(result.insertId);
-    // });
-    // }
+    // remove ToolboxItem relative to project toolbox
+    removeToolboxItemFromProjectToolbox(projectId: number, toolboxItemId: number): Promise <any> {
+        return this.connection.query (`DELETE FROM ${this.table} where projects_id = ? AND toolbox_item_id = ?`, [projectId, toolboxItemId]);
+    }
 
-    // Modify ToolboxItem
-    // update(toolboxItem: ToolboxItem) {
-    // return this.connection.query(
-    //     `UPDATE ${this.table} SET name = ?, shortcut = ?, master_level = ? WHERE id = ?`,
-    //     [toolboxItem.name, toolboxItem.shortcut, toolboxItem.masterLevel],
-    // ).then(() => {
-    //     return this.findById(toolboxItem.id);
-    // });
-    // }
+    findByProjectAndToolboxId(projectId: number, toolboxItemId: number): Promise <any> {
+        return this.connection.query (`SELECT * FROM ${this.table} where projects_id = ? AND toolbox_item_id = ?`, [projectId, toolboxItemId]);
+    }
 
-    // Delete ToolboxItem
-    // delete(id: number): Promise<any> {
-    // return this.connection.query(`DELETE FROM ${this.table} WHERE id = ?`, [id]);
-    // }
+    // insert into corresponding toolbox of the object new toolboxItem
+    insertIntoProjectsToolbox(projectId: number, toolboxItemId: number) {
+        return this.connection.query(
+                `INSERT INTO ${this.table} (projects_id, toolbox_item_id) VALUES (?,?)`,
+                [projectId, toolboxItemId],
+            ).then((result: any) => {
+                return this.findByProjectsId(projectId);
+            });
+    }
 }

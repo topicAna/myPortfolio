@@ -1,6 +1,5 @@
 import { Project } from '../models/project';
 import { MysqlConnection } from '../loaders/mysql';
-import { runInThisContext } from 'vm';
 
 export class ProjectsRepository {
 

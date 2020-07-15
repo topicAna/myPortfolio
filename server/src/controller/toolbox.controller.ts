@@ -7,28 +7,10 @@ export const ToolboxController = (app: Application) => {
 const router: Router = express.Router();
 const toolboxService = ToolboxService.getInstance();
 
-// router.get('/', (req: Request, res: Response) => {
-//     toolboxService.getAll().then(results => {
-//     res.send(results);
-//     })
-//     .catch(err => {
-//         console.error(err);
-//     });
-// });
-
-// router.get('/toolboxItem', (req: Request, res: Response) => {
-//     const toolboxItem = req.params.promo;
-//     toolboxItemService.getAll().then(results => {
-//     res.send(results);
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     });
-// });
-
-router.get('/:id', (req: Request, res: Response) => {
-    const id = parseInt(req.params.id);
-    toolboxService.findById(id).then(result => {
+// get all toolboxItems by project id
+router.get('/:projectId', (req: Request, res: Response) => {
+    const projectId = parseInt(req.params.projectId);
+    toolboxService.findById (projectId).then(result => {
     res.send(result);
     })
     .catch(err => {
@@ -36,16 +18,28 @@ router.get('/:id', (req: Request, res: Response) => {
     });
 });
 
-// router.post('/', (req: Request, res: Response) => {
-//     const toolboxItem: ToolboxItem = req.body;
+// get toolbox item relative to projectId and toolboxItemId
+router.get('/:projectId&:toolboxItemId', (req: Request, res: Response) => {
+    const projectId = parseInt(req.params.projectId);
+    const toolboxItemId = parseInt(req.params.toolboxItemId);
+    toolboxService.findByProjectAndToolboxId(projectId, toolboxItemId ).then(result => {
+    res.send(result);
+    })
+    .catch(err => {
+        console.log(err);
+    });
+});
 
-//     toolboxItemService.create(toolboxItem).then(result => {
-//     res.send(result);
-//     })
-//     .catch(err => {
-//         console.error(err);
-//     });
-// });
+router.post('/', (req: Request, res: Response) => {
+    // const toolboxItem: ToolboxItem = req.body;
+
+    // toolboxItemService.create(toolboxItem).then(result => {
+    // res.send(result);
+    // })
+    // .catch(err => {
+    //     console.error(err);
+    // });
+});
 
 // router.put('/:id', (req: Request, res: Response) => {
 //     const toolboxItem: ToolboxItem = req.body;
@@ -58,16 +52,16 @@ router.get('/:id', (req: Request, res: Response) => {
 //     });
 // });
 
-// router.delete('/:id', (req: Request, res: Response) => {
-//     const id = parseInt(req.params.id);
-
-//     toolboxItemService.delete(id).then(result => {
-//     res.send();
-//     })
-//     .catch(err => {
-//         console.log(err);
-//     });
-// });
+router.delete('/:projectId&:toolboxItemId', (req: Request, res: Response) => {
+    const projectId = parseInt(req.params.projectId);
+    const toolboxItemId = parseInt(req.params.toolboxItemId);
+    toolboxService.removeFromToolbox(projectId, toolboxItemId).then(result => {
+    res.send();
+    })
+    .catch(err => {
+        console.log(err);
+    });
+});
 
 app.use('/toolbox', router);
 };

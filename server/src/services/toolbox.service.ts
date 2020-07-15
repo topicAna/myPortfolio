@@ -16,11 +16,20 @@ private constructor() {
     this.repository = ToolboxRepository.getInstance();
 }
 
-getRandomInt(max: number) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
-
 findById(id: number): Promise<ToolboxItem> {
     return this.repository.findByProjectsId(id);
 }
+
+findByProjectAndToolboxId(projectId: number, toolboxItemId: number): Promise <any> {
+    return this.repository.findByProjectAndToolboxId(projectId, toolboxItemId);
+}
+
+removeFromToolbox(projectId: number, toolboxItemId: number): Promise <any> {
+    return this.repository.removeToolboxItemFromProjectToolbox(projectId, toolboxItemId);
+}
+
+insertIntoToolbox(projectId: number, toolboxItemId: number): Promise <any> {
+    return this.repository.insertIntoProjectsToolbox(projectId, toolboxItemId);
+}
+
 }
