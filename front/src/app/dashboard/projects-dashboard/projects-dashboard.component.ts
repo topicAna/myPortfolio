@@ -121,11 +121,22 @@ export class ProjectsDashboardComponent implements OnInit {
 
   // toolbox items logic
   removeToolboxItem(projectToEditId: number, toolboxItemId: number) {
+
     this.toolboxService.deleteFromToolbox(projectToEditId, toolboxItemId).subscribe(
       () => {
-      this.projectToEdit.toolbox.splice(toolboxItemId, 1);
+        this.projectToEdit.toolbox.forEach(currentToolboxItem => {
+          // tslint:disable-next-line: radix
+          console.log(parseInt(Object.values(currentToolboxItem)[0]));
+          console.log(toolboxItemId)
+          console.log(this.projectToEdit.toolbox)
+          // tslint:disable-next-line: radix
+          if (parseInt(Object.values(currentToolboxItem)[0]) === toolboxItemId) {
+            // tslint:disable-next-line: radix
+            this.projectToEdit.toolbox.splice(parseInt(currentToolboxItem), 1);
+          }
         }
+        );
+      }
     );
-    // find toolbox item by name and remove it
   }
 }
