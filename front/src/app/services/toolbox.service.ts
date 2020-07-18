@@ -31,7 +31,7 @@ export class ToolboxService {
   }
 
   deleteFromToolbox(projectId: number, toolboxItemId: number): Observable<any> {
-    const url = `${this.baseUrl}/toolbox/${projectId}${toolboxItemId}`;
+    const url = `${this.baseUrl}/toolbox/${projectId}&${toolboxItemId}`;
     return this.http.delete(url);
   }
 

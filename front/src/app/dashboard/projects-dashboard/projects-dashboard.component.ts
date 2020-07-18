@@ -57,7 +57,7 @@ export class ProjectsDashboardComponent implements OnInit {
   }
 
   public getAllProjectsWithToolbox() {
-    for (let i = 1; i < 8; i++) {
+    for (let i = 1; i < 5; i++) {
       const $project = this.http.get(`http://localhost:3000/projects/${i}`);
       const $toolbox = this.http.get(`http://localhost:3000/toolbox/${i}`);
       forkJoin([$project, $toolbox]).subscribe(results => {
@@ -76,46 +76,56 @@ export class ProjectsDashboardComponent implements OnInit {
     });
   }
 
-    createProject() {
-      this.newProject.name = this.formGroup.value.name;
-      this.newProject.description = this.formGroup.value.description;
-      this.newProject.youtube_link = this.formGroup.value.youtube_link;
-      this.newProject.github_link = this.formGroup.value.github_link;
-      this.projectsService.postProject(this.newProject).subscribe(
-        (error) => {
-          console.error(error);
-          this.getAllProjectsWithToolbox();
+  createProject() {
+    this.newProject.name = this.formGroup.value.name;
+    this.newProject.description = this.formGroup.value.description;
+    this.newProject.youtube_link = this.formGroup.value.youtube_link;
+    this.newProject.github_link = this.formGroup.value.github_link;
+    this.projectsService.postProject(this.newProject).subscribe(
+      (error) => {
+        console.error(error);
+        this.getAllProjectsWithToolbox();
+      }
+    );
+  }
+
+  deleteProject(project: Project) {
+    console.log(project.id);
+    console.log(this.projects);
+    console.log(this.projects[1].id);
+    this.projectsService.deleteProject(project.id).subscribe(
+      () => {
+        for (let i = 0; i < this.projects.length; i++) {
+          if (this.projects[i].id === project.id) {
+            this.projects.splice(i, 1);
+            this.dataSource.data = this.projects;
+          }
         }
-      );
-    }
+      }
+    );
+  }
 
-    deleteProject(project: Project) {
-      this.projectsService.deleteProject(project.id).subscribe(
-        (error) => {
-          console.error(error);
-          this.getAllProjectsWithToolbox();
+  editProject(project: Project) {
+    this.idProjectToEdit = project.id;
+    this.projectToEdit = project;
+    this.formGroup.patchValue(project);
+  }
+
+  saveEditedProject() {
+    this.projectToEdit.name = this.formGroup.value.name;
+    this.projectToEdit.description = this.formGroup.value.description;
+    this.projectToEdit.youtube_link = this.formGroup.value.youtube_link;
+    this.projectToEdit.github_link = this.formGroup.value.github_link;
+    this.projectsService.putProject(this.projectToEdit, this.idProjectToEdit).subscribe(result => { this.getAllProjectsWithToolbox(); });
+  }
+
+  // toolbox items logic
+  removeToolboxItem(projectToEditId: number, toolboxItemId: number) {
+    this.toolboxService.deleteFromToolbox(projectToEditId, toolboxItemId).subscribe(
+      () => {
+      this.projectToEdit.toolbox.splice(toolboxItemId, 1);
         }
-      );
-    }
-
-    editProject(project: Project) {
-      this.idProjectToEdit = project.id;
-      this.projectToEdit = project;
-      this.formGroup.patchValue(project);
-    }
-
-    saveEditedProject() {
-      this.projectToEdit.name = this.formGroup.value.name;
-      this.projectToEdit.description = this.formGroup.value.description;
-      this.projectToEdit.youtube_link = this.formGroup.value.youtube_link;
-      this.projectToEdit.github_link = this.formGroup.value.github_link;
-      this.projectsService.putProject(this.projectToEdit, this.idProjectToEdit).subscribe(result => { this.getAllProjectsWithToolbox(); });
-    }
-
-    // toolbox items logic
-    removeToolboxItem(projectToEditId: number, toolboxItemId: number) {
-      this.toolboxService.deleteFromToolbox(projectToEditId, toolboxItemId);
-      console.log('removed');
-        // find toolbox item by name and remove it
-        }
+    );
+    // find toolbox item by name and remove it
+  }
 }
