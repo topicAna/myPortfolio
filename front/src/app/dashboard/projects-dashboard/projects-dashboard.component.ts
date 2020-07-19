@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ToolboxItemService } from 'src/app/services/toolboxItem.service';
 import { ToolboxService } from 'src/app/services/toolbox.service';
 import { ToolboxItem } from 'src/app/models/toolboxItem';
+import { Toolbox } from 'src/app/models/toolbox';
 
 @Component({
   selector: 'app-projects-dashboard',
@@ -37,12 +38,12 @@ export class ProjectsDashboardComponent implements OnInit {
   newProject: Project = new Project();
   columnsToDisplay = ['id', 'name', 'edit/delete'];
   projectToEdit: Project;
+  toolboxToEdit: any;
   idProjectToEdit: number;
   expandedElement: Project | null;
   projectDetailsTable: Project[] = [];
   dataSource = new MatTableDataSource(this.projects);
   project: any;
-  projectToEditToolbox: any;
 
   formGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -97,7 +98,7 @@ export class ProjectsDashboardComponent implements OnInit {
       () => {
         for (let i = 0; i < this.projects.length; i++) {
           if (this.projects[i].id === project.id) {
-            this.projects.splice(i, 1);
+            this.projects.slice(i, 1);
             this.dataSource.data = this.projects;
           }
         }
@@ -108,6 +109,7 @@ export class ProjectsDashboardComponent implements OnInit {
   editProject(project: Project) {
     this.idProjectToEdit = project.id;
     this.projectToEdit = project;
+    this.toolboxToEdit = project.toolbox;
     this.formGroup.patchValue(project);
   }
 
@@ -120,22 +122,18 @@ export class ProjectsDashboardComponent implements OnInit {
   }
 
   // toolbox items logic
-  removeToolboxItem(projectToEditId: number, toolboxItemId: number) {
-
+  removeToolboxItem(projectToEditId: number, toolboxItemId: number, i: number) {
     this.toolboxService.deleteFromToolbox(projectToEditId, toolboxItemId).subscribe(
       () => {
-        this.projectToEdit.toolbox.forEach(currentToolboxItem => {
-          // tslint:disable-next-line: radix
-          console.log(parseInt(Object.values(currentToolboxItem)[0]));
-          console.log(toolboxItemId)
-          console.log(this.projectToEdit.toolbox)
-          // tslint:disable-next-line: radix
-          if (parseInt(Object.values(currentToolboxItem)[0]) === toolboxItemId) {
-            // tslint:disable-next-line: radix
-            this.projectToEdit.toolbox.splice(parseInt(currentToolboxItem), 1);
-          }
-        }
-        );
+        this.projectToEdit.toolbox.splice(i, 1);
+      }
+    );
+  }
+
+  addToolboxItem(projectToEditId: number, toolboxItemId: number, toolboxItem: ToolboxItem) {
+    this.toolboxService.postToolboxItem(projectToEditId, toolboxItemId).subscribe(
+      () => {
+      this.toolboxToEdit.push(toolboxItem);
       }
     );
   }

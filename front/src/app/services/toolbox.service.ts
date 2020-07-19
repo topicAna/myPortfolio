@@ -15,17 +15,6 @@ export class ToolboxService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  putToolboxItem(toolboxItem: ToolboxItem, id: number): Observable<any> {
-    console.log(toolboxItem);
-    const putProjectsURL = `${this.baseUrl}/toolboxItem/${id}`;
-    console.log(putProjectsURL);
-    return this.http.put(putProjectsURL, toolboxItem);
-  }
-
-  postToolboxItem(toolboxItem: Project): Observable<any> {
-    return this.http.post(`${this.baseUrl}/toolboxItem`, toolboxItem);
-  }
-
   getToolboxItems(): Observable<any> {
     return this.http.get(`${this.baseUrl}/toolboxItem`);
   }
@@ -33,6 +22,12 @@ export class ToolboxService {
   deleteFromToolbox(projectId: number, toolboxItemId: number): Observable<any> {
     const url = `${this.baseUrl}/toolbox/${projectId}&${toolboxItemId}`;
     return this.http.delete(url);
+  }
+
+  postToolboxItem(projectId: number, toolboxItemId: number): Observable<any> {
+    const object = {projectId, toolboxItemId};
+    return this.http.post(`${this.baseUrl}/toolbox`, {projectId, toolboxItemId});
+
   }
 
   getToolboxItemById(id: number): Observable<any> {
