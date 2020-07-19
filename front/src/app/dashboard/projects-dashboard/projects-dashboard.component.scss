@@ -51,6 +51,20 @@ tr.element-row:not(.expanded-row):hover {
     }
 // end borders on table
 
+
+.toolboxItems {
+    color: var(--white);
+}
+
+.fa-times, .fa-plus {
+    margin-right: 15px;
+}
+
+.fa-times:hover, .fa-plus:hover {
+    color: var(--secondary-color);
+}
+
+
 th {
     color: var(--secondary-dashboard);
     text-transform: uppercase;

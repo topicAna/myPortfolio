@@ -24,6 +24,7 @@ import { BioDashboardComponent } from './dashboard/bio-dashboard/bio-dashboard.c
 import { MiscDashboardComponent } from './dashboard/misc-dashboard/misc-dashboard.component';
 import { MatTableModule } from '@angular/material/table';
 import {CdkTableModule} from '@angular/cdk/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -57,7 +58,8 @@ import {CdkTableModule} from '@angular/cdk/table';
     MatInputModule,
     ReactiveFormsModule,
     MatTableModule,
-    CdkTableModule
+    CdkTableModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

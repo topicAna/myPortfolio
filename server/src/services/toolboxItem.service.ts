@@ -16,10 +16,6 @@ private constructor() {
     this.repository = ToolboxItemRepository.getInstance();
 }
 
-getRandomInt(max: number) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
-
 getAll(): Promise<ToolboxItem[]> {
     return this.repository.findAll();
 }

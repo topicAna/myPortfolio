@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin, merge, concat, combineLatest, of, from } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Project } from '../models/project.model';
 import { Router } from '@angular/router';
+import { ToolboxItem } from '../models/toolboxItem';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,10 @@ export class ProjectsService {
 
   constructor(private http: HttpClient, private router: Router) {
   }
+
+  getlastId(): Observable<any> {
+    return from(this.http.get('http://localhost:3000/projects/lastId'));
+}
 
   putProject(project: Project, id: number): Observable<any> {
     const putProjectsURL = `${this.baseUrl}/projects/${id}`;

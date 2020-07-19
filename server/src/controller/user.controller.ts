@@ -2,7 +2,6 @@ import { User } from '../models/user';
 import { UserService } from '../services/users.service';
 import express, { Router, Request, Response, Application } from 'express';
 
-
 export const UsersController = (app: Application) => {
 
   const router: Router = express.Router();
@@ -17,7 +16,7 @@ export const UsersController = (app: Application) => {
     })
       .catch(err => {
         console.log(err);
-      })
+      });
   });
 
   /**

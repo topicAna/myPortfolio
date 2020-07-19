@@ -18,6 +18,6 @@ export class GitHubService {
   }
 
   getProfile() {
-    return this.http.get(`${this.baseUrl}`)
+    return this.http.get(`${this.baseUrl}`);
   }
 }

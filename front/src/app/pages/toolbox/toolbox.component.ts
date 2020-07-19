@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToolboxService } from '../../services/toolbox.service';
+import { ToolboxItemService } from '../../services/toolboxItem.service';
 import { ToolboxItem } from 'src/app/models/toolboxItem';
 import { GitHubService } from '../../services/git-hub.service';
 
@@ -10,7 +10,7 @@ import { GitHubService } from '../../services/git-hub.service';
 })
 export class ToolboxComponent implements OnInit {
 
-  constructor(private toolboxService: ToolboxService, private githubService: GitHubService) { }
+  constructor(private toolboxitemService: ToolboxItemService, private githubService: GitHubService) { }
 
   toolboxItems: ToolboxItem[] = [];
   githubEvents = [];
@@ -18,7 +18,7 @@ export class ToolboxComponent implements OnInit {
   gists: number;
 
   ngOnInit(): void {
-    this.toolboxService.getToolboxItems().subscribe(
+    this.toolboxitemService.getToolboxItems().subscribe(
       response => {
         this.toolboxItems = response;
       }
