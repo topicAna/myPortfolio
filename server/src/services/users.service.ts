@@ -24,8 +24,6 @@ export class UserService {
 
   // Business logic
 
-  
-     
     /**
     * Return a promise which contains the user with their date and day.
     */

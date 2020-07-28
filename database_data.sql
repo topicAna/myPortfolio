@@ -63,3 +63,26 @@ Game has two modes: for one or two players. One-player game is smaller and has a
 Two player mode had a 18 cards/ 9 pairs. We have added animated avatars, special sounds and different themes based on
 what game mode you choose. Game is entirely realised in Vanilla JavaScript', 
 'https://www.youtube.com/watch?v=5_4E7E5dmNA&feature=youtu.be', 'https://github.com/lattara/memory-project');
+
+
+INSERT INTO bio (id, intro, interests) VALUES (
+    1, 'Hello there! I am Ana. Here are few things about me. I love people, dogs, 
+    programing and all things creative. I love building and creating things, solving problems and learning. 
+    I speak three languages and dream of working in a team of open minded people who share my love and entushiasm 
+    for coding, discovering new tehnologies and easier ways to solve problems. I am curently finishing 
+    my internship and looking for alternance / junior front end position from end of sepetember.
+    Ideally I would love to work in international company where I can continue to improve my skills. 
+    My future interest/projects include learning Python and developing further my UI/UX design skills.',
+    'Board games, hiking, climbing, reading'
+);
+
+INSERT INTO experience (id, title, company, duration) VALUES 
+    (1, 'Front-end developer', 'Finalgo - Lyon', '6 months - Internship'),
+    (2, 'Developer full stack', 'Wild Code School - Lyon', '7 months - Formation'),
+    (3, 'Supervisor-manager', 'Coast stored - Dublin', '2 years - Professional Contract - CDI');
+
+
+INSERT INTO education (id, diploma_name, school) VALUES
+    (1, 'Formation - Developer Web and Mobile', 'Wild Code School'),
+    (2, 'Master diploma (bac +5)', 'Faculty of Humanities and Social Sciences, University of Zagreb'),
+    (3, 'bac + 4 diploma', 'Faculty of Humanities and Social Sciences, University of Zagreb');

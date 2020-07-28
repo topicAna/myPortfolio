@@ -16,13 +16,6 @@ const routes: Routes = [
     {path: 'home', component: ProjectsDashboardComponent},
     {path: 'bio', component: BioDashboardComponent},
     {path: 'misc', component: MiscDashboardComponent},
-    // {path: 'fonds-de-credit-multi-emprunteurs', component: FondsMultiEmprunteursComponent},
-    // {path: 'garantie-et-pret-ifcic', component: GarantieEtPretIfcicComponent},
-    // {path: 'panorama-des-marches-financiers', component: MarchesFinanciersComponent},
-    // {path: 'fonds-de-capital-investissement', component: CapitalInvestissementComponent},
-    // {path: 'fonds-ou-dispositifs-specifiques-au-secteur', component: FondsBoisComponent},
-    // {path: 'business-angels', component: BusinessAngelsComponent},
-    // {path: 'les-aides', component: AidesComponent},
   ],
   },
 ];

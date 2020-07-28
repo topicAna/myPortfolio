@@ -7,7 +7,7 @@
                 <div class="row image-container"><img class="img-fluid profile-image" src="./assets/profile -img-bw-long.JPG"
                         alt=""></div>
                 <div class="row button-container">
-                    <app-button [label]="'download CV'" [icon]="'fas fa-download'"></app-button>
+                    <app-button [label]="'download CV'" [icon]="'fas fa-download'"(click)="downloadCV()"></app-button>
                 </div>
             </div>
         </div>
@@ -21,14 +21,7 @@
                 <app-title class="row name" [mode]="'subtitle'" [text]="'Ana Topic'"></app-title>
                 <div class="divider-bio"></div>
                 <p class="text-colums">
-                Hello there! I am Ana. Here are few things about me. I love people, dogs, programing and 
-            all things creative. I love building and creating things, solving problems and learning. 
-            I speak three languages and dream of working in a team of open minded people who share my 
-            love and entushiasm for coding, discovering new tehnologies and easier ways to solve
-            problems. I am curently finishing my internship and looking for alternance / junior front end 
-            position from end of sepetember. Ideally I would love to work in international company where I can 
-            continue to improve my skills. My future interest/projects include learning Python and developing further my 
-            UI/UX design skills. 
+                {{intro}}
             <div class="row skillset-container">
                 <!-------container 4 sm boxes ------->
                 <div class="col-6 experience">
@@ -38,14 +31,6 @@
                         <li>front-end developer / Finalgo / 6 months / internship</li>
                         <li>front-end developer / Wild Code School / 6 months / formation</li>
                         <li>supervisor / Coast / 2 years</li>
-                    </ul>
-                </div>
-                <div class="col-6 education">
-                    <app-title class="education-title" [mode]="'subsubtitle'" [text]="'Education'"></app-title>
-                    <ul>
-                        <li>front-end developer / Wild Code School / 6 months / formation</li>
-                        <li>Master degree, Faculty of Humanities and Social Sciences, University of Zagreb</li>
-                        <li>bac +4 degree, Faculty of Humanities and Social Sciences, University of Zagreb</li>
                     </ul>
                 </div>
             </div>
