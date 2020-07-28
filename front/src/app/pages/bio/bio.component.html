@@ -25,11 +25,23 @@
             <div class="row skillset-container">
                 <!-------container 4 sm boxes ------->
                 <div class="col-6 experience">
-                    <app-title class="experience-title" [mode]="'subsubtitle'" [text]="'Experience'">
+                    <app-title class="experience-title" [mode]="'subsubtitle'" [text]="'Education'">
                     </app-title>
                     <ul *ngFor = "let edu of education">
-                        <li>{{edu.diploma_name}} / {{edu.school}}</li>
+                        <li>{{edu.diploma_name}} / {{edu.school}} </li>
                     </ul>
+                </div>
+
+                <div class="row skillset-container">
+                    <!-------container 4 sm boxes ------->
+                    <div class="col-6 experience">
+                        <app-title class="experience-title" [mode]="'subsubtitle'" [text]="'Experience'">
+                        </app-title>
+                        <ul *ngFor = "let exp of experience">
+                            <li>{{exp.title}} / {{exp.company}}</li>
+                            <li>{{exp.duration}}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

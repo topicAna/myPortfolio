@@ -3,6 +3,8 @@ import { BioService } from 'src/app/services/bio.service';
 import { Bio } from 'src/app/models/bio.model';
 import { EducationService } from 'src/app/services/education.service';
 import { Education } from 'src/app/models/education';
+import { ExperienceService } from 'src/app/services/experience.service';
+import { Experience } from 'src/app/models/experience';
 
 @Component({
   selector: 'app-bio',
@@ -13,12 +15,14 @@ export class BioComponent implements OnInit {
 
   bio: Bio[] = [];
   education: Education[] = [];
+  experience: Experience[] = [];
   intro = '';
-  constructor(private bioService: BioService, private educationService: EducationService) { }
+  constructor(private bioService: BioService, private educationService: EducationService, private experienceService: ExperienceService) { }
 
   ngOnInit(): void {
     this.getBio();
-    this.getEducation();
+    this.getEducations();
+    this.getExperiences();
   }
 
 
@@ -27,10 +31,17 @@ export class BioComponent implements OnInit {
       this.intro = (data[0].intro));
   }
 
-  getEducation() {
+  getEducations() {
     this.educationService.getEducations().subscribe(data => {
       console.log(data);
       this.education = data;
+    });
+  }
+
+  getExperiences() {
+    this.experienceService.getExperiences().subscribe(data => {
+      console.log(data);
+      this.experience = data;
     });
   }
 

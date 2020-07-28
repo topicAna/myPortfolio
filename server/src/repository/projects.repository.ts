@@ -59,10 +59,6 @@ export class ProjectsRepository {
       });
     }
 
-    /**
-     * Make a query to the database to delete an existing project and return an empry promise
-     * @param id reservation id to delete
-     */
     delete(id: number): Promise<any> {
       return this.connection.query(`DELETE FROM ${this.table} WHERE id = ?`, [id]);
     }
