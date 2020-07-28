@@ -98,9 +98,10 @@ export class ProjectsDashboardComponent implements OnInit {
       () => {
         for (let i = 0; i < this.projects.length; i++) {
           if (this.projects[i].id === project.id) {
-            this.projects.slice(i, 1);
+            this.projects.splice(i, 1);
             this.dataSource.data = this.projects;
           }
+          this.dataSource.data = this.projects;
         }
       }
     );
