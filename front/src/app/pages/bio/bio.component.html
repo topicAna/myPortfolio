@@ -27,14 +27,11 @@
                 <div class="col-6 experience">
                     <app-title class="experience-title" [mode]="'subsubtitle'" [text]="'Experience'">
                     </app-title>
-                    <ul>
-                        <li>front-end developer / Finalgo / 6 months / internship</li>
-                        <li>front-end developer / Wild Code School / 6 months / formation</li>
-                        <li>supervisor / Coast / 2 years</li>
+                    <ul *ngFor = "let edu of education">
+                        <li>{{edu.diploma_name}} / {{edu.school}}</li>
                     </ul>
                 </div>
             </div>
-
         </div>
     </div>
 

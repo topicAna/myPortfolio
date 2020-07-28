@@ -24,8 +24,6 @@ export class ProjectsService {
         return this.repository.findById(id);
     }
 
-
-
     create(project: any): Promise<Project> {
       return this.repository.insert(project);
     }
