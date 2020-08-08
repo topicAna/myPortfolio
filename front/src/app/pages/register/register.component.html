@@ -1,0 +1,31 @@
+<div class="container">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 register-form-container">
+            <mat-form [formGroup]="registerUserData">
+        <mat-form-field class="col-12" appearance="outline">
+                        <mat-label>Identifiant</mat-label>
+                        <input formControlName="identifiant" matInput>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="col-6" appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password">
+                    </mat-form-field>
+                    <mat-form-field class="col-6"  appearance="outline">
+                        <mat-label>Intro</mat-label>
+                        <input formControlName="intro" matInput>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-6"  appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input formControlName="email" matInput>
+                    </mat-form-field>
+
+                    <mat-form-field class="col-12" appearance="outline">
+                        <mat-label>Phone</mat-label>
+                        <input formControlName="phone" matInput/>
+        </mat-form-field>
+        </mat-form>
+        <app-button class="contact-button" [label]="'Register'" [icon]="'far fa-envelope'" (click)="registerUser()"></app-button>
+    </div>
+
+</div>

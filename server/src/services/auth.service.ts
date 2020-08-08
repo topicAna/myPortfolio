@@ -20,6 +20,14 @@ export class AuthService {
         return this.repository.findAdmin();
     }
 
+    getAdminByMail(email: string): Promise<Admin> {
+        return this.repository.findAdminByMail(email);
+    }
+
+    putAdmin(admin: Admin): Promise<Admin> {
+        return this.repository.insert(admin);
+    }
+
     // updateAdmin(admin: Admin): Promise<any> {
     //     return this.repository.updateAdmin(admin);
     // }

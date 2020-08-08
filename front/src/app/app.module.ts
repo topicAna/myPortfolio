@@ -17,7 +17,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ContactComponent } from './pages/contact/contact.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
 import { ProjectsDashboardComponent } from './dashboard/projects-dashboard/projects-dashboard.component';
 import { BioDashboardComponent } from './dashboard/bio-dashboard/bio-dashboard.component';
@@ -25,6 +25,8 @@ import { MiscDashboardComponent } from './dashboard/misc-dashboard/misc-dashboar
 import { MatTableModule } from '@angular/material/table';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 
@@ -46,7 +48,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AdminDashboardComponent,
     ProjectsDashboardComponent,
     BioDashboardComponent,
-    MiscDashboardComponent
+    MiscDashboardComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +64,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTableModule,
     CdkTableModule,
     MatCheckboxModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
