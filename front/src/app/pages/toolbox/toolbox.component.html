@@ -3,39 +3,47 @@
 
         <app-title class="toolbox-title justify-content-center" [mode]="'subtitle'"
             [text]="'Technologies I feel comfortable working with'"></app-title>
-        <ul *ngFor="let item of toolboxItems" class="toolboxItems justify-content-center col-6">
-            <li class="skill-grouped"><i class="{{item.sortcut}}"></i> {{item.name}}
+        <ul class="toolboxItems-container justify-content-center col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <li *ngFor="let item of toolboxItems" class="skill-grouped"><i class="{{item.sortcut}}"></i> {{item.name}}
                 <mat-progress-bar mode="determinate" value="{{item.master_level}}"></mat-progress-bar>
             </li>
         </ul>
 
         <div class="github-activity col-12">
-            <table class="table">
-                <thead>
-                    <th colspan="6">Recent Github activity</th>
-                    <tr>
-                        <th scope="col">INDEX</th>
-                        <th scope="col">EVENT TYPE</th>
-                        <th scope="col">REPOSITORY</th>
-                        <th scope="col">TIME</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <ng-container *ngFor="let event of githubEvents.slice(0,5), let i = index">
-                        <tr>
-                            <td scope="row">{{i+1}}</td>
-                            <td>{{event.type}} </td>
-                            <td>{{event.repo.name}}</td>
-                            <td>{{event.created_at}}</td>
-                        </tr>
-                    </ng-container>
-                </tbody>
-            </table>
 
-            <div class="repos-gists">
-                <div class="repository-nmb"> Total repositories: {{repos}}</div>
-                <div class="gitst-nmb"> Total Gists: {{gists}}</div>
+            <div class="table-container">
+                <mat-table #table [dataSource]="dataSource">
+                    <ng-container matColumnDef="EVENT TYPE">
+                        <mat-header-cell *matHeaderCellDef> EVENT TYPE </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <span class="mobile-label">EVENT TYPE: </span>
+                            <span class="table-content">{{element.type}}</span>
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="REPOSITORY">
+                        <mat-header-cell *matHeaderCellDef> REPOSITORY </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <span class="mobile-label">REPOSITORY: </span>
+                            {{element.repo.name}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="TIME">
+                        <mat-header-cell *matHeaderCellDef> TIME </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <span class="mobile-label">TIME: </span>
+                            {{element.created_at}}
+                        </mat-cell>
+                    </ng-container>
+
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+            <div class="col-12 repos-gists">
+                <span class="repository-nmb"> Total repositories: {{repos}}</span>
+                <span class="gitst-nmb"> Total Gists: {{gists}}</span>
             </div>
         </div>
     </div>
-</div>

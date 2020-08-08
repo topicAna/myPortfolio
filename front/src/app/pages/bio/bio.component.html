@@ -2,8 +2,8 @@
 
     <div class="row">
         <!-- big box -->
-        <div class="col-4 contact-details-container">
-            <div class="col bio-card">
+        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 contact-details-container">
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 bio-card">
                 <div class="row image-container"><img class="img-fluid profile-image" src="./assets/profile -img-bw-long.JPG"
                         alt=""></div>
                 <div class="row button-container">
@@ -13,7 +13,7 @@
         </div>
         <!-- --------big box---->
 
-        <div class="col-7 bio-short-text-container">
+        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-7  bio-short-text-container">
             <!-------container long box + 4 sm boxes ------->
             <div class="row bio-short-text">
                 <!-------container long box ------->
@@ -24,8 +24,8 @@
                 {{intro}}
             <div class="row skillset-container">
                 <!-------container 4 sm boxes ------->
-                <div class="col-6 experience">
-                    <app-title class="experience-title" [mode]="'subsubtitle'" [text]="'Education'">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 education">
+                    <app-title class="education-title" [mode]="'subsubtitle'" [text]="'Education'">
                     </app-title>
                     <ul *ngFor = "let edu of education">
                         <li>{{edu.diploma_name}} / {{edu.school}} </li>
@@ -34,7 +34,7 @@
 
                 <div class="row skillset-container">
                     <!-------container 4 sm boxes ------->
-                    <div class="col-6 experience">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 experience">
                         <app-title class="experience-title" [mode]="'subsubtitle'" [text]="'Experience'">
                         </app-title>
                         <ul *ngFor = "let exp of experience">

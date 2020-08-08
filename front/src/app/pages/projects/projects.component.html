@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-5 project-details" *ngFor="let project of projects">
+        <div class="col-sm-12 col-md-5 col-xl-5 project-details" *ngFor="let project of projects">
             <ul class="number col-2"> {{project.id}}. </ul>
             <li class="technologies">
                 <i class="fab fa-sass"></i>
@@ -23,7 +23,7 @@
             </div>
         </div>
     </div>
-    <div div class="arrow-animated row justify-content-center">
+    <div div class="arrow-animated col-12 justify-content-center">
         <i routerLink="bio" class="fas fa-chevron-down"></i>
     </div>
 </div>

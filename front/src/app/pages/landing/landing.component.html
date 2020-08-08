@@ -1,6 +1,6 @@
-<div class=" container-fluid row landing-title-group">
+<div class="row landing-title-group">
 
-    <div class="col-5 landing-icons">
+    <div class="col-4 landing-icons">
         <i class="fas fa-code"></i>
         <i class="fas fa-headphones-alt"></i>
         <i class="fab fa-angular fa-4x red"></i>
@@ -10,17 +10,23 @@
         <i class="fas fa-jedi red"></i>
     </div>
 
-    <div class="col-6 vertical-divider-red">
+    <div class="col-5 vertical-divider-red">
         <app-title [mode]="'title'" [text]="'Ana Topic'"></app-title>
         <div class="featured-text">web developer, aspiring JS padawan,
             angular entusiast, in life long relationship <br> with books,
-            board games and craft beer</div>
-        <a href="https://github.com/lattara" target="_blank">
-            <app-button class="git-hub-button" [label]="'Git hub profile'" [icon]="'fab fa-github'"></app-button>
-        </a>
-        <app-button [label]="'Contact'" [icon]="'fas fa-phone-alt'"></app-button>
+            board games and craft beer
+        </div>
+        <div class="container-buttons">
+            <a href="https://github.com/lattara" target="_blank">
+                <app-button class="git-hub-button" [label]="'Git hub profile'" [icon]="'fab fa-github'"></app-button>
+            </a>
+            <app-button [label]="'Contact'" [icon]="'fas fa-phone-alt'"></app-button>
+        </div>
     </div>
-<div div class="arrow-animated" >
-    <i class="fas fa-chevron-down" routerLink="bio"></i>
+
+    <div class="col-12 arrow-animated">
+        <i class="fas fa-chevron-down" routerLink="bio"></i>
+    </div>
 </div>
-</div>
+
+
