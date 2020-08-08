@@ -1,5 +1,4 @@
 .container {
-    height: 100vh;
     width: 100%;
 }
 
@@ -41,4 +40,17 @@ textarea {
 
 textarea, input {
     color: var(--white) !important;
+}
+
+// MOBILE
+@media (max-width: 770px) {
+    .contact-text-container {
+        height: unset;
+        margin-top: unset;
+    }
+
+    .contact-form-container {
+        margin-top: unset;
+        margin-bottom: 25px;
+    }
 }
