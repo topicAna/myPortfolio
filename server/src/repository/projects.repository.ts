@@ -42,7 +42,7 @@ export class ProjectsRepository {
     insert(project: Project) {
       return this.connection.query(
         `INSERT INTO ${this.table} (name, description, youtube_link, github_link) VALUES (?,?,?,?)`,
-        [project.name, project.description, project.youtube_link, project.github_link]
+        [project.name, project.description, project.youtube_link, project.github_link],
       ).then((result: any) => {
         // After an insert the insert id is directly passed in the promise
         return this.findById(result.insertId);

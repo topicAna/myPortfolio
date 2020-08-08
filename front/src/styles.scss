@@ -223,8 +223,10 @@ body {
   height: 100vh;
   margin: 0px;
   padding: 0px;
+  overflow-x: hidden;
   background-color: var(--primary-color);
 }
+
 
 ::-webkit-scrollbar {
   width: 0px; /* Remove scrollbar space */

@@ -1,7 +1,7 @@
 {
   "name": "p3-api",
   "version": "0.0.1",
-  "description": "Node template",
+  "description": "Portfolio project",
   "main": "index.ts",
   "scripts": {
     "start": "npm run build && nodemon build/index.js",
@@ -11,7 +11,7 @@
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "mrwhite",
+  "author": "Ana Topic",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.6",
