@@ -21,6 +21,7 @@
     app.enable('trust proxy');
 
     app.use('/uploads', express.static('uploads'));
+    // const api = require('./controller/auth.controller');
 
     app.use(fileUpload({
       createParentPath: true,
@@ -31,6 +32,10 @@
     app.use(cors());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
+
+    app.get('/', (req, resp) => {
+      resp.send('hello from server');
+    });
 
     // ...More middlewares
 
