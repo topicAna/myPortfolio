@@ -1,65 +1,40 @@
-import { User } from '../models/user';
-import { UserService } from '../services/users.service';
 import express, { Router, Request, Response, Application } from 'express';
+import { UserService } from '../services/user.service';
+import { User } from 'src/models/user';
 
-export const UsersController = (app: Application) => {
+export const UserController = (app: Application) => {
 
-  const router: Router = express.Router();
-  const usersService = UserService.getInstance();
-  /**
-   * Return all users 
-   */
-  router.get('/:id', (req: Request, res: Response) => {
-    const id = parseInt(req.params.id);
-    usersService.getById(id).then(result => {
-      res.send(result);
-    })
-      .catch(err => {
-        console.log(err);
-      });
-  });
+    const router: Router = express.Router();
+    const userService = UserService.getInstance();
 
-  /**
-   * Create a new user from a JSON body and return the created user in JSON.
-   */
-  router.post('/', (req: Request, res: Response) => {
-    const user: User = req.body; // Automatically transform in a user object
+    router.get('/', (req, res) => {
+        userService.getAdmin().then(results => {
+            res.send(results);
+        })
+            .catch(err => {
+                console.log(err);
+            });
+    });
 
-    usersService.create(user).then(result => {
-      res.send(result);
-    })
-      .catch(err => {
-        console.log(err);
-      })
-  });
+    router.post('/register', (req, res) => {
+        const userData: User = req.body;
+        userService.putAdmin(userData).then(result => {
+            res.send(result);
+        }).catch(err => {
+            console.error(err);
+        });
+    });
 
-  /**
-   * Update a user relative to its id and return the updated user in JSON.
-   */
-  router.put('/:id', (req: Request, res: Response) => {
-    const user: User = req.body; // req.params.id is automatically set into the body
+    router.post('/login', (req, res) => {
+        const userData: User = req.body;
 
-    usersService.update(user).then(result => {
-      res.send(result); 98
-    })
-      .catch(err => {
-        console.log(err);
-      })
-  });
+        // check if email exists in database:
+        userService.getAdminByMail(userData.email).then(registered => {
+            res.send(registered);
+        }).catch(err => {
+            console.error(err);
+        });
+    });
 
-  /**
-   * Delete a user relative its id.
-   */
-  router.delete('/:id', (req: Request, res: Response) => {
-    const id = parseInt(req.params.id);
-
-    usersService.delete(id).then(result => {
-      res.send();
-    })
-      .catch(err => {
-        console.log(err);
-      })
-  });
-
-  app.use('/users', router);
+    app.use('/auth', router);
 };

@@ -1,19 +1,13 @@
 export class User {
     id!: number;
-    firstname!: string;
-    lastname!: string;
+    identifiant!: string;
+    password!: string;
+    intro!: string;
     email!: string;
-    address!: string;
-    zip! : string;
-    city! : string;
-    phone! : string;
-    knownBy! : string;
+    phone!: string;
+    priviledge!: string;
 
-  
     constructor(input: User) {
-      Object.assign(this, input);
-  }
-  }
-
-  
-  
+        Object.assign(this, input);
+    }
+}
