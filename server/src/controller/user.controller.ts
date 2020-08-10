@@ -16,25 +16,25 @@ export const UserController = (app: Application) => {
             });
     });
 
-    router.post('/register', (req, res) => {
+    router.post('/register', async (req, res) => {
         const userData: User = req.body;
-        userService.putAdmin(userData).then(result => {
+        userService.register(userData).then(result => {
             res.send(result);
-        }).catch(err => {
-            console.error(err);
+        }).catch (err => {
+           res.status(300).send('credientals are already in database')
         });
     });
 
-    router.post('/login', (req, res) => {
-        const userData: User = req.body;
+    // router.post('/login', (req, res) => {
+    //     const userData: User = req.body;
 
-        // check if email exists in database:
-        userService.getAdminByMail(userData.email).then(registered => {
-            res.send(registered);
-        }).catch(err => {
-            console.error(err);
-        });
-    });
+    //     // check if email exists in database:
+    //     userService.getAdminByMail(userData.email).then(registered => {
+    //         res.send(registered);
+    //     }).catch(err => {
+    //         console.error(err);
+    //     });
+    // });
 
     app.use('/auth', router);
 };

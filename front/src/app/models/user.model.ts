@@ -1,4 +1,4 @@
-export class Admin {
+export class User {
     id!: number;
     identifiant!: string;
     password!: string;
@@ -6,7 +6,7 @@ export class Admin {
     email!: string;
     phone!: string;
 
-    constructor(input: Admin) {
+    constructor(input: User) {
         Object.assign(this, input);
     }
 }

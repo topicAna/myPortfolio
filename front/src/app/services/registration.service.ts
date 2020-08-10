@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, from } from 'rxjs';
-import { Admin } from '../models/admin.model';
+import { User } from '../models/user.model';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -14,27 +14,9 @@ export class RegisterService {
     constructor(private http: HttpClient, private router: Router) {
     }
 
-    registerAdmin(admin: Admin) {
+    registerUser(user: User) {
         const putAdminURL = `${this.baseUrl}/register`;
-        return this.http.post(putAdminURL, admin);
+        return this.http.post(putAdminURL, user);
     }
-
-    // getBio(): Observable<any> {
-    //     return from(this.http.get('http://localhost:3000/bio'));
-    // }
-
-    // putBio(bio: Bio): Observable<any> {
-    //     const putProjectsURL = `${this.baseUrl}/bio`;
-    //     return this.http.put(putProjectsURL, bio);
-    // }
-
-    // postBio(bio: Bio): Observable<any> {
-    //     return this.http.post(`${this.baseUrl}/bio`, bio);
-    // }
-
-    // deleteBio(id: number): Observable<any> {
-    //     const url = `${this.baseUrl}/bio`;
-    //     return this.http.delete(url);
-    // }
 
 }

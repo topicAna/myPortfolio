@@ -1,1 +1,15 @@
-<p>login works!</p>
+<div class="container">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 login-form-container">
+        <mat-form [formGroup]="formGroup">
+        <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Identifiant</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="identifiant">
+        </mat-form-field>
+        <mat-form-field class="col-6" appearance="outline">
+            <mat-label>password</mat-label>
+            <input matInput placeholder="Placeholder" formControlName="password">
+        </mat-form-field>
+        <app-button class="contact-button" (click)="login()" [label]="'Contact'" [icon]="'far fa-envelope'"></app-button>
+        </mat-form>
+    </div>
+</div>

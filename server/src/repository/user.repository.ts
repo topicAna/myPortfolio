@@ -24,7 +24,7 @@ export class UserRepository {
             .then((results: any) => new User(results[0]));
     }
 
-    // Find all ToolboxItems
+    // Find
     findAdmin(): Promise<User> {
         return this.connection.query(`SELECT * from ${this.table}`)
             .then((results: any) => {
@@ -32,12 +32,10 @@ export class UserRepository {
             });
     }
 
-    findAdminByMail(email: string) {
-        return this.connection.query(`SELECT * from ${this.table} WHERE email =?`, [email])
-            .then((results: any) => {
-                return results.map((user: any) => new User(user));
-            });
-    }
+    findByIdentifiant(identifiant: string) {
+        return this.connection.query(`SELECT * FROM ${this.table} WHERE identifiant = ?`, [identifiant])
+          .then((results: any) => new User(results[0]));
+      }
 
     // updateAdmin() {
     //     console.log('function to be implemented')

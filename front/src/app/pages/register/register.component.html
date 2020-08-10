@@ -1,4 +1,6 @@
 <div class="container">
+
+    <app-title class="col-12" [mode]="'subtitle-float-right'" [text]="'Register'"></app-title>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 register-form-container">
             <mat-form [formGroup]="registerUserData">
         <mat-form-field class="col-12" appearance="outline">
@@ -27,5 +29,5 @@
         </mat-form>
         <app-button class="contact-button" [label]="'Register'" [icon]="'far fa-envelope'" (click)="registerUser()"></app-button>
     </div>
-
+        <span routerLink = "/login" style="color: white">I already have an acc</span>
 </div>
