@@ -18,38 +18,16 @@ export class UserService {
         this.repository = UserRepository.getInstance();
     }
 
-    getAdmin(): Promise<User> {
-        return this.repository.findAdmin();
-    }
-
-    // getAdminByMail(email: string): Promise<User> {
-    //     return this.repository.findAdminByMail(email);
-    // }
-
-    putAdmin(user: User): Promise<User> {
-        return this.repository.insert(user);
-    }
-
     async register(user: User) {
         const isThereUserInDatabase = await this.repository.findByIdentifiant(user.identifiant);
         console.log(isThereUserInDatabase, 'user before if');
+        // check is there record in database
         if (Object.values(isThereUserInDatabase).length !== 0) {
             console.log('didi i go in if')
             throw new Error('error user already regestered');
-        }
-        else {
+        } else {
             this.repository.insert(user);
         }
-        // if (isThereUserInDatabase) {
-        //     console.log(isThereUserInDatabase);
-        //     throw new Error('Credientals invalid choose another name or email');
-        // } else {
-        //     return this.repository.insert(user);
-        // }
     }
-
-    // updateAdmin(admin: Admin): Promise<any> {
-    //     return this.repository.updateAdmin(admin);
-    // }
 
 }

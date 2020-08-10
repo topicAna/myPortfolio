@@ -21,7 +21,6 @@
     app.enable('trust proxy');
 
     app.use('/uploads', express.static('uploads'));
-    // const api = require('./controller/auth.controller');
 
     app.use(fileUpload({
       createParentPath: true,

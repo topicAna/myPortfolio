@@ -7,34 +7,17 @@ export const UserController = (app: Application) => {
     const router: Router = express.Router();
     const userService = UserService.getInstance();
 
-    router.get('/', (req, res) => {
-        userService.getAdmin().then(results => {
-            res.send(results);
-        })
-            .catch(err => {
-                console.log(err);
-            });
-    });
+    // router.get('/', (req, res) => {
+
+    // });
 
     router.post('/register', async (req, res) => {
         const userData: User = req.body;
         userService.register(userData).then(result => {
             res.send(result);
-        }).catch (err => {
-           res.status(300).send('credientals are already in database')
+        }).catch(err => {
+            res.status(300).send('Credentials are already in database, please choose another email and/or identifiant');
         });
     });
-
-    // router.post('/login', (req, res) => {
-    //     const userData: User = req.body;
-
-    //     // check if email exists in database:
-    //     userService.getAdminByMail(userData.email).then(registered => {
-    //         res.send(registered);
-    //     }).catch(err => {
-    //         console.error(err);
-    //     });
-    // });
-
     app.use('/auth', router);
 };

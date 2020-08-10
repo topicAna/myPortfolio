@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { RegisterService } from 'src/app/services/registration.service';
 import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { error } from 'protractor';
+
 
 @Component({
   selector: 'app-register',
@@ -26,10 +29,12 @@ export class RegisterComponent implements OnInit {
 
   registerUser() {
     const user = this.registerUserData.value;
-    this.registrationService.registerUser(user).subscribe(result => {
-      this.router.navigateByUrl('/dashboard');
-    }
-
-    );
+    this.registrationService.registerUser(user).subscribe(
+      result => {
+      this.router.navigateByUrl('/dashboard/home');
+    },
+    err => {
+        Swal.fire(err.error);
+    });
   }
 }

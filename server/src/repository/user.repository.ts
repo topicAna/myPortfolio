@@ -18,28 +18,16 @@ export class UserRepository {
     private constructor() {
     }
 
-    // Find admin by ID
+    // Find user by ID
     findById(id: number): Promise<User> {
         return this.connection.query(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
             .then((results: any) => new User(results[0]));
     }
-
-    // Find
-    findAdmin(): Promise<User> {
-        return this.connection.query(`SELECT * from ${this.table}`)
-            .then((results: any) => {
-                return results.map((user: any) => new User(user));
-            });
-    }
-
+    // find by username and email
     findByIdentifiant(identifiant: string) {
         return this.connection.query(`SELECT * FROM ${this.table} WHERE identifiant = ?`, [identifiant])
-          .then((results: any) => new User(results[0]));
-      }
-
-    // updateAdmin() {
-    //     console.log('function to be implemented')
-    // }
+        .then((results: any) => new User(results[0]));
+    }
 
     insert(user: User) {
         return this.connection.query(

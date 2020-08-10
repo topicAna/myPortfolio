@@ -1,7 +1,7 @@
 <div class="container">
-
-    <app-title class="col-12" [mode]="'subtitle-float-right'" [text]="'Register'"></app-title>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 register-form-container">
+    <app-title class="row title-register" [mode]="'subtitle'" [text]="'Register'"></app-title>
+        <div class="row register-form-container">
+            <div class="form-frame">
             <mat-form [formGroup]="registerUserData">
         <mat-form-field class="col-12" appearance="outline">
                         <mat-label>Identifiant</mat-label>
@@ -13,21 +13,20 @@
                         <input matInput formControlName="password">
                     </mat-form-field>
                     <mat-form-field class="col-6"  appearance="outline">
-                        <mat-label>Intro</mat-label>
-                        <input formControlName="intro" matInput>
-                    </mat-form-field>
-
-                    <mat-form-field class="col-6"  appearance="outline">
                         <mat-label>Email</mat-label>
                         <input formControlName="email" matInput>
                     </mat-form-field>
-
                     <mat-form-field class="col-12" appearance="outline">
                         <mat-label>Phone</mat-label>
                         <input formControlName="phone" matInput/>
-        </mat-form-field>
+                    </mat-form-field>
+                    <mat-form-field class="col-12"  appearance="outline">
+                        <mat-label>Intro</mat-label>
+                        <textarea formControlName="intro" matInput></textarea>
+                    </mat-form-field>
         </mat-form>
-        <app-button class="contact-button" [label]="'Register'" [icon]="'far fa-envelope'" (click)="registerUser()"></app-button>
+        <app-button class="register-button" [label]="'Register'" [icon]="'far fa-envelope'" (click)="registerUser()"></app-button>
+        </div>
     </div>
-        <span routerLink = "/login" style="color: white">I already have an acc</span>
+        <span routerLink = "/login" class="already-acc">I already have an acc</span>
 </div>
