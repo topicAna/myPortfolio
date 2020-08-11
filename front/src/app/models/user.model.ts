@@ -5,6 +5,7 @@ export class User {
     intro!: string;
     email!: string;
     phone!: string;
+    priviledge!: string;
 
     constructor(input: User) {
         Object.assign(this, input);

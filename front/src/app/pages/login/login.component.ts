@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
 
   loginUser() {
     const user = this.loginUserData.value;
-    console.log(user)
     this.loginService.login(user).subscribe(
       result => {
         const token = result['token'];

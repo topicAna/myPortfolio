@@ -1,11 +1,12 @@
 import { ToolboxService } from '../services/toolbox.service';
 import express, { Router, Request, Response, Application } from 'express';
-import { ToolboxItem } from 'src/models/toolboxItem';
+import { UserService } from '../services/user.service';
 
 export const ToolboxController = (app: Application) => {
 
     const router: Router = express.Router();
     const toolboxService = ToolboxService.getInstance();
+    const userService = UserService.getInstance();
 
     // get all toolboxItems by project id
     router.get('/:projectId', (req: Request, res: Response) => {
@@ -31,7 +32,7 @@ export const ToolboxController = (app: Application) => {
     });
 
     // post toolboxItem into toolbox of the project
-    router.post('/', (req: Request, res: Response) => {
+    router.post('/', userService.verifyToken, (req: Request, res: Response) => {
         const data: number[] = req.body;
         const projectIdAndToolboxIdArr = Object.values(data);
         const projectId = projectIdAndToolboxIdArr[0];
@@ -44,7 +45,7 @@ export const ToolboxController = (app: Application) => {
             });
     });
 
-    router.delete('/:projectId&:toolboxItemId', (req: Request, res: Response) => {
+    router.delete('/:projectId&:toolboxItemId', userService.verifyToken, (req: Request, res: Response) => {
         const projectId = parseInt(req.params.projectId);
         const toolboxItemId = parseInt(req.params.toolboxItemId);
         toolboxService.removeFromToolbox(projectId, toolboxItemId).then(result => {

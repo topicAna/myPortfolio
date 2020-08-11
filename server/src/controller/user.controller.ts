@@ -35,5 +35,12 @@ export const UserController = (app: Application) => {
         });
     });
 
+    router.post ('/currentUser', async (req, res) => {
+        const userData: User = req.body;
+        userService.getCurrentUser(userData).then( result => {
+            res.send(result);
+        });
+    });
+
     app.use('/auth', router);
 };

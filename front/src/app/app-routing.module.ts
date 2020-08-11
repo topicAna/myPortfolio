@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
 
-  {path: 'dashboard', 
+  {path: 'dashboard',
   component: AdminDashboardComponent, // can only be accessed if logedin
   canActivate: [AuthGuardGuard],
   children: [

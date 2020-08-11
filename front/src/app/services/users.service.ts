@@ -21,6 +21,12 @@ export class UsersService {
 
     login(user: User) {
         const loginURL = `${this.baseUrl}/login`;
+        this.getCurrentUser(user).subscribe(result => {
+            localStorage.setItem('user', JSON.stringify(result));
+            const userStoraged: User =  JSON.parse(localStorage.getItem('user'));
+            console.log('from local storedge', userStoraged.priviledge);
+        })
+        localStorage.setItem('user', JSON.stringify(user.priviledge));
         return this.http.post(loginURL, user);
     }
 
@@ -28,8 +34,13 @@ export class UsersService {
         return !!localStorage.getItem('token');
     }
 
-    getToken(){
+    getToken() {
         return localStorage.getItem('token');
+    }
+
+    getCurrentUser(user: User) {
+        const registerURL = `${this.baseUrl}/currentUser`;
+        return this.http.post(registerURL, user);
     }
 
 }
