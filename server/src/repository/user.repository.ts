@@ -23,9 +23,16 @@ export class UserRepository {
         return this.connection.query(`SELECT * FROM ${this.table} WHERE id = ?`, [id])
             .then((results: any) => new User(results[0]));
     }
-    // find by username and email
-    findByIdentifiant(identifiant: string) {
-        return this.connection.query(`SELECT * FROM ${this.table} WHERE identifiant = ?`, [identifiant])
+    // find by username or email
+    findByIdentifiant(identifiant: string, email: string) {
+        return this.connection.query(`SELECT * FROM ${this.table} WHERE identifiant = ? OR email = ?`, [identifiant, email])
+        .then((results: any) => new User(results[0]));
+    }
+
+    checkUsersCredts(user: User) {
+        const pass = user.password;
+        const identifiant = user.identifiant;
+        return this.connection.query(`SELECT * FROM ${this.table} where identifiant = ? AND password = ?`, [identifiant, pass])
         .then((results: any) => new User(results[0]));
     }
 

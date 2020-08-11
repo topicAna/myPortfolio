@@ -20,4 +20,15 @@ export const UserController = (app: Application) => {
         });
     });
     app.use('/auth', router);
+
+
+    router.post('/login', async (req, res) => {
+        const userData: User = req.body;
+        userService.login(userData).then(result => {
+            res.send(result);
+        }).catch(err => {
+            res.status(300).send('Wrong email and/or password');
+        });
+    });
+    app.use('/auth', router);
 };

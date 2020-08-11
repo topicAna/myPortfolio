@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { RegisterService } from 'src/app/services/registration.service';
+import { UsersService } from 'src/app/services/users.service';
 import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
     phone: new FormControl()
   });
 
-  constructor(private registrationService: RegisterService, private router: Router) { }
+  constructor(private registrationService: UsersService, private router: Router) { }
 
   ngOnInit(): void {
   }

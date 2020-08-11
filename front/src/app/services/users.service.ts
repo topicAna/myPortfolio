@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 @Injectable({
     providedIn: 'root'
 })
-export class RegisterService {
+export class UsersService {
 
     private baseUrl = 'http://localhost:3000/auth';
 
@@ -15,8 +15,13 @@ export class RegisterService {
     }
 
     registerUser(user: User) {
-        const putAdminURL = `${this.baseUrl}/register`;
-        return this.http.post(putAdminURL, user);
+        const registerURL = `${this.baseUrl}/register`;
+        return this.http.post(registerURL, user);
+    }
+
+    login(user: User) {
+        const loginURL = `${this.baseUrl}/login`;
+        return this.http.post(loginURL, user);
     }
 
 }
