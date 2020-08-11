@@ -2,6 +2,8 @@ import { UserRepository } from '../repository/user.repository';
 import { User } from 'src/models/user';
 import { send } from 'process';
 import { STATUS_CODES } from 'http';
+import { Request, Response } from 'express';
+import * as jwt from 'jsonwebtoken';
 
 export class UserService {
 
@@ -36,5 +38,16 @@ export class UserService {
         } else {
             this.repository.insert(user);
         }
+    }
+
+    async verifyToken(req: Request, res: Response, next: any) {
+        if (!req.headers.authorization) {
+            return res.status(401).send('Unauthorized request');
+        }
+        const token = req.headers.authorization.split(' ')[1];
+        if (token === 'null') {
+            return res.status(401).send('Unauthorized request');
+        }
+        const payload = jwt.verify(token, 'someSecret');
     }
 }

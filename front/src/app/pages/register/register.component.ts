@@ -30,7 +30,9 @@ export class RegisterComponent implements OnInit {
     const user = this.registerUserData.value;
     this.registrationService.registerUser(user).subscribe(
       result => {
-      this.router.navigateByUrl('/dashboard/home');
+        const token = result['token'];
+        localStorage.setItem('token', token);
+        this.router.navigateByUrl('/dashboard/home');
     },
     err => {
         Swal.fire(err.error);

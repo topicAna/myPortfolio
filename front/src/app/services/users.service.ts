@@ -24,4 +24,12 @@ export class UsersService {
         return this.http.post(loginURL, user);
     }
 
+    loggedIn() {
+        return !!localStorage.getItem('token');
+    }
+
+    getToken(){
+        return localStorage.getItem('token');
+    }
+
 }

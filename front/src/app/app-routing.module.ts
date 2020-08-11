@@ -9,6 +9,7 @@ import { ProjectsDashboardComponent } from './dashboard/projects-dashboard/proje
 import { MiscDashboardComponent } from './dashboard/misc-dashboard/misc-dashboard.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 
 const routes: Routes = [
@@ -16,7 +17,9 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
 
-  {path: 'dashboard', component: AdminDashboardComponent, // can only be accessed if logedin
+  {path: 'dashboard', 
+  component: AdminDashboardComponent, // can only be accessed if logedin
+  canActivate: [AuthGuardGuard],
   children: [
     {path: 'home', component: ProjectsDashboardComponent},
     {path: 'bio', component: BioDashboardComponent},

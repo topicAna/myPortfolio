@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +27,9 @@ import {CdkTableModule} from '@angular/cdk/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
-
+import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { UsersService } from './services/users.service';
+import { TokenInterceptorService} from './services/token-interceptor.service';
 
 
 // Angular material imports
@@ -66,7 +68,11 @@ import { LoginComponent } from './pages/login/login.component';
     MatCheckboxModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuardGuard, UsersService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
