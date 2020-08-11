@@ -19,8 +19,6 @@ export const UserController = (app: Application) => {
             res.status(300).send('Credentials are already in database, please choose another email and/or identifiant');
         });
     });
-    app.use('/auth', router);
-
 
     router.post('/login', async (req, res) => {
         const userData: User = req.body;
@@ -30,5 +28,7 @@ export const UserController = (app: Application) => {
             res.status(300).send('Wrong email and/or password');
         });
     });
+
+
     app.use('/auth', router);
 };

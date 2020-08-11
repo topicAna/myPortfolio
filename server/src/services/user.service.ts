@@ -30,7 +30,6 @@ export class UserService {
 
     async login(user: User) {
         const checkUsersCredts = await this.repository.checkUsersCredts(user);
-        console.log(checkUsersCredts, 'user before if');
         // check if username and pass match those in database
         if (Object.values(checkUsersCredts).length === 0) {
             throw new Error('error user already regestered');

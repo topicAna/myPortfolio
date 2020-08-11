@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/user.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,11 @@ export class LoginComponent implements OnInit {
     const user = this.loginUserData.value;
     console.log(user)
     this.loginService.login(user).subscribe(
-      result => console.log(result)
-    );
-  }
+      result => {
+        this.router.navigateByUrl('/dashboard/home');
+      },
+      err => {
+          Swal.fire(err.error);
+      });
+    }
 }
