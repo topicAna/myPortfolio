@@ -43,4 +43,9 @@ export class UsersService {
         return this.http.post(registerURL, user);
     }
 
+    logout() {
+        localStorage.removeItem('token');
+        this.router.navigateByUrl('/login')
+    }
+
 }

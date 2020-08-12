@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { dashboardMenuItems } from './dashboard-menu-items';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -11,9 +12,13 @@ export class AdminDashboardComponent implements OnInit {
 
   dashboardMenuItems = dashboardMenuItems;
 
-  constructor() { }
+  constructor( private usersService: UsersService) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.usersService.logout();
   }
 
 
