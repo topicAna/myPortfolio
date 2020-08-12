@@ -1,11 +1,13 @@
 import { Project } from '../models/project';
 import express, { Router, Request, Response, Application } from 'express';
 import { ProjectsService } from '../services/projects.service';
+import { UserService } from '../services/user.service';
 
 export const ProjectsController = (app: Application) => {
 
   const router: Router = express.Router();
   const projectsService = ProjectsService.getInstance();
+  const userService = UserService.getInstance();
 
   router.get('/', (req: Request, res: Response) => {
       projectsService.getAll().then(results => {
@@ -28,7 +30,7 @@ export const ProjectsController = (app: Application) => {
       });
   });
 
-  router.post('/', (req: Request, res: Response) => {
+  router.post('/', userService.verifyToken, (req: Request, res: Response) => {
     const project: Project = req.body; // Automatically transform in a project object
 
     projectsService.create(project).then(result => {
@@ -39,7 +41,7 @@ export const ProjectsController = (app: Application) => {
       });
   });
 
-  router.put('/:id', (req: Request, res: Response) => {
+  router.put('/:id', userService.verifyToken, (req: Request, res: Response) => {
     const project: Project = req.body; // req.params.id is automatically set into the body
 
     projectsService.update(project).then(result => {
@@ -50,7 +52,7 @@ export const ProjectsController = (app: Application) => {
       });
   });
 
-  router.delete('/:id', (req: Request, res: Response) => {
+  router.delete('/:id', userService.verifyToken, (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
 
     projectsService.delete(id).then(result => {

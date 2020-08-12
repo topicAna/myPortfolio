@@ -3,7 +3,7 @@ import loaders from './loaders';
 import bodyParser from 'body-parser';
 
 import { ProjectsController } from './controller/projects.controller';
-import { UsersController } from './controller/user.controller';
+import { UserController } from './controller/user.controller';
 import { ToolboxItemController } from './controller/toolboxItem.controller';
 import { ToolboxController } from './controller/toolbox.controller';
 import { BioController } from './controller/bio.controller';
@@ -24,8 +24,8 @@ async function startServer() {
     BioController(app);
     EducationController(app);
     ExperienceController(app);
-
-    UsersController(app);
+    UserController(app);
+    UserController(app);
     app.listen(3000, () => console.log('Express server is running on port 3000'));
   }
 startServer();

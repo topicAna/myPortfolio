@@ -1,11 +1,13 @@
 import { ToolboxItemService } from '../services/toolboxItem.service';
 import express, { Router, Request, Response, Application } from 'express';
 import { ToolboxItem } from 'src/models/toolboxItem';
+import { UserService } from '../services/user.service';
 
 export const ToolboxItemController = (app: Application) => {
 
 const router: Router = express.Router();
 const toolboxItemService = ToolboxItemService.getInstance();
+const userService = UserService.getInstance();
 
 router.get('/', (req: Request, res: Response) => {
   toolboxItemService.getAll().then(results => {
@@ -36,7 +38,7 @@ router.get('/:id', (req: Request, res: Response) => {
     });
 });
 
-router.post('/', (req: Request, res: Response) => {
+router.post('/', userService.verifyToken, (req: Request, res: Response) => {
     const toolboxItem: ToolboxItem = req.body;
 
     toolboxItemService.create(toolboxItem).then(result => {
@@ -47,7 +49,7 @@ router.post('/', (req: Request, res: Response) => {
     });
 });
 
-router.put('/:id', (req: Request, res: Response) => {
+router.put('/:id', userService.verifyToken, (req: Request, res: Response) => {
     const toolboxItem: ToolboxItem = req.body;
 
     toolboxItemService.update(toolboxItem).then(result => {
@@ -58,7 +60,7 @@ router.put('/:id', (req: Request, res: Response) => {
     });
 });
 
-router.delete('/:id', (req: Request, res: Response) => {
+router.delete('/:id', userService.verifyToken, (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
 
     toolboxItemService.delete(id).then(result => {

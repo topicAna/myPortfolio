@@ -1,11 +1,13 @@
 import { EducationService } from '../services/education.service';
 import express, { Router, Request, Response, Application } from 'express';
 import { Education } from 'src/models/education';
+import { UserService } from '../services/user.service';
 
 export const EducationController = (app: Application) => {
 
     const router: Router = express.Router();
     const educationService = EducationService.getInstance();
+    const userService = UserService.getInstance();
 
     // get all education
     router.get('/', (req: Request, res: Response) => {
@@ -30,7 +32,7 @@ export const EducationController = (app: Application) => {
     });
 
     // post an education
-    router.post('/', (req: Request, res: Response) => {
+    router.post('/', userService.verifyToken, (req: Request, res: Response) => {
         const education: Education = req.body; // Automatically transform in a edu object
         educationService.create(education).then(result => {
             res.send(result);

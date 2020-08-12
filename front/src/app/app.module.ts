@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,7 +17,7 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ContactComponent } from './pages/contact/contact.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashboard.component';
 import { ProjectsDashboardComponent } from './dashboard/projects-dashboard/projects-dashboard.component';
 import { BioDashboardComponent } from './dashboard/bio-dashboard/bio-dashboard.component';
@@ -25,7 +25,11 @@ import { MiscDashboardComponent } from './dashboard/misc-dashboard/misc-dashboar
 import { MatTableModule } from '@angular/material/table';
 import {CdkTableModule} from '@angular/cdk/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
-
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { UsersService } from './services/users.service';
+import { TokenInterceptorService} from './services/token-interceptor.service';
 
 
 // Angular material imports
@@ -46,7 +50,9 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     AdminDashboardComponent,
     ProjectsDashboardComponent,
     BioDashboardComponent,
-    MiscDashboardComponent
+    MiscDashboardComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -60,8 +66,13 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatTableModule,
     CdkTableModule,
     MatCheckboxModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [AuthGuardGuard, UsersService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

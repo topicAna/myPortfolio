@@ -7,11 +7,19 @@ import { AdminDashboardComponent } from './dashboard/admin-dashboard/admin-dashb
 import { BioDashboardComponent } from './dashboard/bio-dashboard/bio-dashboard.component';
 import { ProjectsDashboardComponent } from './dashboard/projects-dashboard/projects-dashboard.component';
 import { MiscDashboardComponent } from './dashboard/misc-dashboard/misc-dashboard.component';
+import { RegisterComponent } from './pages/register/register.component';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 
 const routes: Routes = [
-  {path: '', component: MainComponent},
-  {path: 'dashboard', component: AdminDashboardComponent,
+  {path: '', component: MainComponent}, // can be accessed by everyone
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent},
+
+  {path: 'dashboard',
+  component: AdminDashboardComponent, // can only be accessed if logedin
+  canActivate: [AuthGuardGuard],
   children: [
     {path: 'home', component: ProjectsDashboardComponent},
     {path: 'bio', component: BioDashboardComponent},

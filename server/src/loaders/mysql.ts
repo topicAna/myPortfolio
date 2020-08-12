@@ -2,7 +2,7 @@ import { createConnection, Connection } from 'mysql';
 
 export class MysqlConnection {
 
-  // Make service => singletonTransformation de notre service en singleton
+  // service => service to singleton
   private static instance: MysqlConnection;
   private cnx: Connection;
 
@@ -29,7 +29,6 @@ export class MysqlConnection {
             console.log(err)
             return reject(err);
           }
-
           resolve(results);
       });
     });

@@ -1,11 +1,13 @@
 import { Bio } from '../models/bio';
 import express, { Router, Request, Response, Application } from 'express';
 import { BioService } from '../services/bio.service';
+import {UserService} from '../services/user.service';
 
 export const BioController = (app: Application) => {
 
     const router: Router = express.Router();
     const bioService = BioService.getInstance();
+    const userService = UserService.getInstance();
 
     router.get('/', (req: Request, res: Response) => {
         bioService.getBio().then(results => {
@@ -16,7 +18,7 @@ export const BioController = (app: Application) => {
             });
     });
 
-    router.put('/1', (req: Request, res: Response) => {
+    router.put('/1', userService.verifyToken, (req: Request, res: Response) => {
         const bio: Bio = req.body; // req.params.id is automatically set into the body
 
         bioService.update(bio).then(result => {

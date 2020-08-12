@@ -32,6 +32,10 @@
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
 
+    app.get('/', (req, resp) => {
+      resp.send('hello from server');
+    });
+
     // ...More middlewares
 
     // Return the express app

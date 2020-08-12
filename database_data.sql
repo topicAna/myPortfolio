@@ -86,3 +86,7 @@ INSERT INTO education (id, diploma_name, school) VALUES
     (1, 'Formation - Developer Web and Mobile', 'Wild Code School'),
     (2, 'Master diploma (bac +5)', 'Faculty of Humanities and Social Sciences, University of Zagreb'),
     (3, 'bac + 4 diploma', 'Faculty of Humanities and Social Sciences, University of Zagreb');
+
+INSERT INTO user (id, identifiant, password, intro, email, phone, priviledge) VALUES
+    (1, 'Lattara', 'test', 'test', 'email@email.com', '34 34 34 34', 'FULL'),
+    (2, 'Lattara2', 'test2', 'test2', 'email@email.com2', '34 34 34 34', 'NULL');
