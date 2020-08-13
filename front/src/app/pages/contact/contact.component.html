@@ -13,25 +13,27 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 contact-form-container">
+            <mat-form [formGroup]="formGroup" >
         <mat-form-field class="col-12" appearance="outline">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
+                        <mat-label>First name</mat-label>
+                        <input matInput formControlName="firstname">
                     </mat-form-field>
                     <br>
                     <mat-form-field class="col-6" appearance="outline">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
+                        <mat-label>Last name</mat-label>
+                        <input matInput formControlName="lastname">
                     </mat-form-field>
                     <mat-form-field class="col-6"  appearance="outline">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
+                        <mat-label>Contact details</mat-label>
+                        <input matInput formControlName="contact">
                     </mat-form-field>
                     <br>
                     <mat-form-field class="col-12" appearance="outline">
-                        <mat-label>Textarea</mat-label>
-                        <textarea matInput></textarea>
+                        <mat-label>Message</mat-label>
+                        <textarea matInput formControlName="message"></textarea>
         </mat-form-field>
-        <app-button class="contact-button" [label]="'Contact'" [icon]="'far fa-envelope'"></app-button>
+        <app-button class="contact-button" [label]="'Contact'" [icon]="'far fa-envelope'" (click)="sendMail()"></app-button>
+    </mat-form>
         </div>
     </div>
 
