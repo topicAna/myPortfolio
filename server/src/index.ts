@@ -12,9 +12,9 @@ import { EducationController } from './controller/education.controller';
 import { ExperienceController } from './controller/experience.controller';
 import fileUpload from 'express-fileupload';
 import multer from 'multer';
+import { MailerController } from './controller/mailer.controller';
 
 async function startServer() {
-    // Récupération de l'application initiale
     const app = express();
     app.use((req: any, res: any, next: any) => {
       next();
@@ -32,6 +32,7 @@ async function startServer() {
     BioController(app);
     EducationController(app);
     ExperienceController(app);
+    MailerController(app);
 
     app.use(fileUpload());
     app.listen(3000, () => console.log('Express server is running on port 3000'));

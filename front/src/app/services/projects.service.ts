@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin, merge, concat, combineLatest, of, from } from 'rxjs';
-import { map } from 'rxjs/operators';
+
 import { Project } from '../models/project.model';
 import { Router } from '@angular/router';
 import { ToolboxItem } from '../models/toolboxItem';

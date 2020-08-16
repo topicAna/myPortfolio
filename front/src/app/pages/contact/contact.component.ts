@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { ContactService } from '../../services/contact.service';
+import { Email } from '../../models/email.model';
 
 @Component({
   selector: 'app-contact',
@@ -10,14 +12,45 @@ export class ContactComponent implements OnInit {
 
 
 
-  constructor() { }
+  constructor( private fb: FormBuilder, private contactService: ContactService) { }
 
-  firstName = new FormControl ('');
-  lastName = new FormControl ('');
-  contact = new FormControl ('');
-  message = new FormControl ('');
+  contactForm: FormGroup = this.fb.group({
+    name: [''],
+    email: [''],
+    phone: [''],
+    message: [''],
+  });
+
 
   ngOnInit(): void {
+  }
+
+// getters
+  get name() {
+    return this.contactForm.get('name');
+  }
+
+  get email() {
+    return this.contactForm.get('email');
+  }
+
+  get phone() {
+    return this.contactForm.get('phone');
+  }
+  get message() {
+    return this.contactForm.get('message');
+  }
+
+  sendMail(){
+    const newMail: Email = this.contactForm.value;
+    const name = this.name.value;
+    const email = this.email.value;
+    const phone = this.phone.value;
+    const message = this.message.value;
+    this.contactService.sendMail(name, email, phone, message).subscribe(
+      res =>
+      console.log('response')
+    )
   }
 
 

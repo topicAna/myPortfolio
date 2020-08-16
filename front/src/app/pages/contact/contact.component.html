@@ -13,25 +13,27 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 col-xl-5 contact-form-container">
+            <mat-form [formGroup]="contactForm" (ngSubmit)="sendMail()" method="POST" action="/send-email">
         <mat-form-field class="col-12" appearance="outline">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name">
                     </mat-form-field>
                     <br>
                     <mat-form-field class="col-6" appearance="outline">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email">
                     </mat-form-field>
                     <mat-form-field class="col-6"  appearance="outline">
-                        <mat-label>Input</mat-label>
-                        <input matInput>
+                        <mat-label>Phone</mat-label>
+                        <input matInput formControlName="phone">
                     </mat-form-field>
                     <br>
                     <mat-form-field class="col-12" appearance="outline">
-                        <mat-label>Textarea</mat-label>
-                        <textarea matInput></textarea>
+                        <mat-label>Message</mat-label>
+                        <textarea matInput formControlName="message"></textarea>
         </mat-form-field>
-        <app-button class="contact-button" [label]="'Contact'" [icon]="'far fa-envelope'"></app-button>
+        </mat-form> 
+        <app-button (click)="sendMail()" class="contact-button" [label]="'Contact'" [icon]="'far fa-envelope'"></app-button>
         </div>
     </div>
 
