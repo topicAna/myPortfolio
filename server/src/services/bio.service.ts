@@ -11,6 +11,10 @@ export class BioService {
         return this.instance;
     }
 
+    getRandomInt(max: number) {
+        return Math.floor(Math.random() * Math.floor(max));
+    }
+
     private repository: BioRepository;
     private constructor() {
         this.repository = BioRepository.getInstance();

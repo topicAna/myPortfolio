@@ -1,8 +1,8 @@
 export class Bio {
-    id!: number;
+    id: number;
     intro!: string;
-    interests!: string;
-    constructor(input: Bio) {
+    cvLink!: string;
+    constructor(input?: Bio) {
         Object.assign(this, input);
     }
 }

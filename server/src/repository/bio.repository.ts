@@ -18,7 +18,7 @@ export class BioRepository {
     private constructor() {
     }
 
-    // Find all ToolboxItems
+    // Find all bio
     findBio(): Promise<Bio> {
         return this.connection.query(`SELECT * from ${this.table}`)
         .then((results: any) => {
@@ -29,8 +29,8 @@ export class BioRepository {
     // Modify ToolboxItem
     updateBio(bio: Bio) {
     return this.connection.query(
-        `UPDATE ${this.table} SET intro = ?, interests = ? WHERE id = 1`,
-        [bio.intro, bio.interests]);
+        `UPDATE ${this.table} SET intro = ?, cv_link = ? WHERE id = 1`,
+        [bio.intro, bio.cvLink]);
     }
 
 }

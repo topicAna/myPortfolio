@@ -1,13 +1,20 @@
 import { Bio } from '../models/bio';
 import express, { Router, Request, Response, Application } from 'express';
 import { BioService } from '../services/bio.service';
-import {UserService} from '../services/user.service';
+import { UserService } from '../services/user.service';
+import multer from 'multer';
+
 
 export const BioController = (app: Application) => {
+
+    interface MulterRequest extends Request {
+        file: any;
+    }
 
     const router: Router = express.Router();
     const bioService = BioService.getInstance();
     const userService = UserService.getInstance();
+    const upload = multer({ dest: 'uploads/' });
 
     router.get('/', (req: Request, res: Response) => {
         bioService.getBio().then(results => {
@@ -18,7 +25,7 @@ export const BioController = (app: Application) => {
             });
     });
 
-    router.put('/1', userService.verifyToken, (req: Request, res: Response) => {
+    router.put('/', userService.verifyToken, (req: Request, res: Response) => {
         const bio: Bio = req.body; // req.params.id is automatically set into the body
 
         bioService.update(bio).then(result => {
@@ -27,6 +34,36 @@ export const BioController = (app: Application) => {
             .catch(err => {
                 console.error(err);
             });
+    });
+
+    router.post('/upload', async (req, res, next) => {
+       // console.log(req.files);
+        try {
+            if (!req.files) {
+                res.send({
+                    status: false,
+                    message: 'No file uploaded',
+                });
+            } else {
+                const file: any = req.files;
+                const key = 'cvLink';
+                const cvObject = file[key];
+                console.log(cvObject);
+                const id = bioService.getRandomInt(1000);
+                cvObject.mv('./uploads/' + id + cvObject.name);
+                res.send({
+                    status: true,
+                    message: 'File is uploaded',
+                    data: {
+                        name: id + cvObject.name,
+                        mimetype: cvObject.mimetype,
+                        size: cvObject.size,
+                    },
+                });
+            }
+        } catch (err) {
+            res.status(500).send(err);
+        }
     });
 
     app.use('/bio', router);

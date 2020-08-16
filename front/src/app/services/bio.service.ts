@@ -18,9 +18,10 @@ export class BioService {
         return from(this.http.get('http://localhost:3000/bio'));
     }
 
-    putBio(bio: Bio): Observable<any> {
-        const putProjectsURL = `${this.baseUrl}/bio`;
-        return this.http.put(putProjectsURL, bio);
+    putBio(bio: Bio, id: number): Observable<any> {
+        const putBioURL = `${this.baseUrl}/bio/`;
+        console.log(putBioURL);
+        return this.http.put(putBioURL, bio);
     }
 
     postBio(bio: Bio): Observable<any> {

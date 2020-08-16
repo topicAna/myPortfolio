@@ -22,12 +22,8 @@
 
     app.use('/uploads', express.static('uploads'));
 
-    app.use(fileUpload({
-      createParentPath: true,
-      // limits: {
-        //  fileSize: 2 * 1024 * 1024 * 1024 //2MB max file(s) size
-      // },
-  }));
+    app.use(fileUpload());
+
     app.use(cors());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));

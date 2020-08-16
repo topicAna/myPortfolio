@@ -7,7 +7,9 @@
                 <div class="row image-container"><img class="img-fluid profile-image" src="./assets/profile -img-bw-long.JPG"
                         alt=""></div>
                 <div class="row button-container">
-                    <app-button [label]="'download CV'" [icon]="'fas fa-download'"(click)="downloadCV()"></app-button>
+                    <a href="http://localhost:3000/uploads/{{cvLink}}" target="_blank">
+                        <app-button [label]="'download CV'" [icon]="'fas fa-download'"(click)="downloadCV()"></app-button>
+                        </a>
                 </div>
             </div>
         </div>

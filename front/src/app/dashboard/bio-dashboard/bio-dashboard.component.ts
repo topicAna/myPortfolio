@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl, Validators, ControlContainer } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Bio } from 'src/app/models/bio.model';
+import { BioService } from '../../services/bio.service';
 
 @Component({
   selector: 'app-bio-dashboard',
@@ -8,24 +11,52 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 })
 export class BioDashboardComponent implements OnInit {
 
-  constructor() { }
-
-  formGroup = new FormGroup ({
-    name: new FormControl ('', Validators.required),
-    description: new FormControl ('', Validators.required),
-    youtube_link: new FormControl ('', Validators.required),
-    github_link: new FormControl ('', Validators.required),
+  bioToModify: Bio;
+  modifyBioForm = this.fb.group({
+    intro: [''],
+    cvLink: this.fb.control(''),
   });
 
+  constructor(private fb: FormBuilder, private http: HttpClient, private bioService: BioService) {
+
+  }
+
   ngOnInit(): void {
+
   }
 
   createBio() {
     console.log('bio created');
   }
 
-  saveEditedBio() {
-    console.log('bio edited');
+  onFileModify(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.modifyBioForm.get('cvLink').setValue(file);
+      console.log(file);
+      console.log(this.modifyBioForm.get('cvLink'));
+    }
   }
 
+  submitModifyBio() {
+    const formDataSubmit = new FormData();
+    this.bioToModify = new Bio();
+    formDataSubmit.append('cvLink', this.modifyBioForm.get('cvLink').value);
+    this.http.post<any>('http://localhost:3000/bio/upload', formDataSubmit).subscribe(
+      res => {
+
+        this.bioToModify.intro = this.modifyBioForm.value.intro;
+        this.bioToModify.cvLink = res.data.name;
+
+        this.bioService.putBio(this.bioToModify, 1).subscribe(bio => {
+          console.log('bio updated');
+        });
+      }
+    );
+  }
+
+
+
 }
+
+
