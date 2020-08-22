@@ -27,7 +27,6 @@ export class ToolboxService {
   postToolboxItem(projectId: number, toolboxItemId: number): Observable<any> {
     const object = {projectId, toolboxItemId};
     return this.http.post(`${this.baseUrl}/toolbox`, {projectId, toolboxItemId});
-
   }
 
   getToolboxItemById(id: number): Observable<any> {

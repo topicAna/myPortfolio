@@ -14,7 +14,7 @@ export const ProjectsController = (app: Application) => {
         res.send(results);
       })
         .catch(err => {
-          console.log(err);
+          res.send(err);
         });
     });
 
@@ -43,7 +43,6 @@ export const ProjectsController = (app: Application) => {
 
   router.put('/:id', userService.verifyToken, (req: Request, res: Response) => {
     const project: Project = req.body; // req.params.id is automatically set into the body
-
     projectsService.update(project).then(result => {
       res.send(result);
     })

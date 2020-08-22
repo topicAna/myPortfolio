@@ -50,7 +50,7 @@ export class ContactComponent implements OnInit {
     this.contactService.sendMail(name, email, phone, message).subscribe(
       res =>
       console.log('response')
-    )
+    );
   }
 
 
