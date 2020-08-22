@@ -37,7 +37,7 @@ export const BioController = (app: Application) => {
     });
 
     router.post('/upload', async (req, res, next) => {
-       // console.log(req.files);
+        console.log('headers are:', req.headers)
         try {
             if (!req.files) {
                 res.send({

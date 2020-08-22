@@ -82,24 +82,22 @@ export class ProjectsDashboardComponent implements OnInit {
     this.newProject.description = this.formGroup.value.description;
     this.newProject.youtube_link = this.formGroup.value.youtube_link;
     this.newProject.github_link = this.formGroup.value.github_link;
+    this.getAllProjectsWithToolbox();
     this.projectsService.postProject(this.newProject).subscribe(
       (error) => {
         console.error(error);
-        this.getAllProjectsWithToolbox();
       }
     );
   }
 
   deleteProject(project: Project) {
-    console.log(project.id);
-    console.log(this.projects);
-    console.log(this.projects[1].id);
     this.projectsService.deleteProject(project.id).subscribe(
       () => {
         for (let i = 0; i < this.projects.length; i++) {
           if (this.projects[i].id === project.id) {
             this.projects.slice(i, 1);
             this.dataSource.data = this.projects;
+
           }
         }
       }

@@ -30,6 +30,7 @@ export class Mailer {
         return this.instance;
     }
 
+    // define method to send the email
     sendEmail(subject: string, text: string, to: string, from: string) {
         const mailOpts = {
             from,
@@ -38,6 +39,7 @@ export class Mailer {
             text,
         };
 
+        // use smtp to send the email
         this.smtpTrans.sendMail(mailOpts, (error, info) => {
             if (error) {
                 return console.log(`error sending email: ${error}`);

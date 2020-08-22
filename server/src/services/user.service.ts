@@ -41,28 +41,29 @@ export class UserService {
     async getCurrentUser(user: User) {
         const userIdentif = user.identifiant;
         const userEmail = user.email;
-        return await this.repository.findByIdentifiant( userIdentif, userEmail);
+        return await this.repository.findByIdentifiant(userIdentif, userEmail);
     }
 
     async verifyToken(req: Request, res: Response, next: any) {
-        if (!req.headers.authorization) {
-            return res.status(401).send('Unauthorized');
-        }
-        const token = req.headers.authorization.split(' ')[1];
-        if (token === 'null') {
+        if (req.headers.authorization === undefined) {
             return res.status(401).send('Unauthorized');
         } else {
-            try {
-                const payload = jwt.verify(token, 'someSecret');
-                const results: any = await jwt.verify(token, 'someSecret');
-                const user = await UserRepository.getInstance().findByIdentifiant(results.identifiant, results.email);
-                req.user = {
-                    ...user,
-                    password: undefined,
-                };
-                next();
-            } catch (err) {
-                res.sendStatus(401);
+            const token = req.headers.authorization.split(' ')[1];
+            if (token === 'null') {
+                return res.status(401).send('Unauthorized');
+            } else {
+                try {
+                    const secret: string = process.env.SECRET ? process.env.SECRET : '';
+                    const payload: any = await jwt.verify(token, secret);
+                    const user = await UserRepository.getInstance().findByIdentifiant(payload.identifiant, payload.email);
+                    req.user = {
+                        ...user,
+                        password: undefined,
+                    };
+                    next();
+                } catch (err) {
+                    console.log(err);
+                }
             }
         }
     }

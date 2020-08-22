@@ -8,13 +8,14 @@ export const UserController = (app: Application) => {
 
     const router: Router = express.Router();
     const userService = UserService.getInstance();
+    const secret: string  = process.env.SECRET ? process.env.SECRET : '';
 
     router.post('/register', async (req, res) => {
         const userData: User = req.body;
         userService.register(userData).then(result => {
             // token generation
             const payload = {subject: userData.id};
-            const token = jwt.sign(payload, 'someSecret');
+            const token = jwt.sign(payload, secret);
             // send token as an object
             res.status(200).send({token});
         }).catch(err => {
@@ -27,7 +28,7 @@ export const UserController = (app: Application) => {
         userService.login(userData).then(result => {
             // token generation
             const payload = {subject: userData.id};
-            const token = jwt.sign(payload, 'someSecret');
+            const token = jwt.sign(payload, secret);
             // send token as an object
             res.status(200).send({token});
         }).catch(err => {
