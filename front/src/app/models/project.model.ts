@@ -1,3 +1,5 @@
+import { ToolboxItem } from './toolboxItem';
+
 export class Project {
     id!: number;
     name!: string;
@@ -6,5 +8,5 @@ export class Project {
     youtube_link!: string;
     // tslint:disable-next-line: variable-name
     github_link!: string;
-    toolbox?: string [];
+    toolbox?: ToolboxItem[] = [];
 }
