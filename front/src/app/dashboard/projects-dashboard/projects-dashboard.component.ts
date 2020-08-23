@@ -1,16 +1,14 @@
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ProjectsService } from 'src/app/services/projects.service';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Project } from 'src/app/models/project.model';
 import { dashboardMenuItems } from '../admin-dashboard/dashboard-menu-items';
 import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
 import { ToolboxItemService } from 'src/app/services/toolboxItem.service';
 import { ToolboxService } from 'src/app/services/toolbox.service';
 import { ToolboxItem } from 'src/app/models/toolboxItem';
-import { Toolbox } from 'src/app/models/toolbox';
+import { ProjectsDataSource } from '../../models/projectDataSource';
 
 @Component({
   selector: 'app-projects-dashboard',
@@ -33,7 +31,7 @@ export class ProjectsDashboardComponent implements OnInit {
     private toolboxService: ToolboxService) { }
 
   dashboardMenuItems = dashboardMenuItems;
-  projects: Project[] = [];
+  projects: any;
   toolboxItems: ToolboxItem[] = [];
   newProject: Project = new Project();
   columnsToDisplay = ['id', 'name', 'edit/delete'];
@@ -42,8 +40,9 @@ export class ProjectsDashboardComponent implements OnInit {
   idProjectToEdit: number;
   expandedElement: Project | null;
   projectDetailsTable: Project[] = [];
-  dataSource = new MatTableDataSource(this.projects);
-  project: any;
+  dataSource: ProjectsDataSource | null;
+  project: Project;
+  toolbox: ToolboxItem[];
 
   formGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -54,22 +53,25 @@ export class ProjectsDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProjectsWithToolbox();
-    this.getAllToolboxItems();
   }
 
-  public getAllProjectsWithToolbox() {
-    for (let i = 1; i < 5; i++) {
-      const $project = this.http.get(`http://localhost:3000/projects/${i}`);
-      const $toolbox = this.http.get(`http://localhost:3000/toolbox/${i}`);
-      forkJoin([$project, $toolbox]).subscribe(results => {
-        this.project = results[0];
-        this.project.toolbox = Object.entries(results[1]).map(e => e[1]);
-        this.projects.push(this.project);
-        this.dataSource.data = this.projects;
-      }
-      );
-    }
+  getAllProjectsWithToolbox() {
+    let projectArr;
+    let toolboxArr;
+    this.projectsService.getProjects().subscribe((projects: Project[]) => {
+      projectArr = projects;
+      this.projects = projects;
+      projects.forEach(project => {
+        this.toolboxService.getToolboxItemByProjectId(project.id).subscribe((toolbox: ToolboxItem []) => {
+          toolboxArr = toolbox;
+          project.toolbox = toolboxArr;
+        }
+        );
+        this.dataSource = new ProjectsDataSource(this.projects);
+      });
+    });
   }
+
 
   getAllToolboxItems() {
     this.toolboxItemService.getToolboxItems().subscribe(items => {
@@ -131,7 +133,7 @@ export class ProjectsDashboardComponent implements OnInit {
   addToolboxItem(projectToEditId: number, toolboxItemId: number, toolboxItem: ToolboxItem) {
     this.toolboxService.postToolboxItem(projectToEditId, toolboxItemId).subscribe(
       () => {
-      this.toolboxToEdit.push(toolboxItem);
+        this.toolboxToEdit.push(toolboxItem);
       }
     );
   }

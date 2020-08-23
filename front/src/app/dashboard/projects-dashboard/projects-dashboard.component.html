@@ -42,6 +42,8 @@
         (click)="saveEditedProject()"></app-button>
 </div>
 
+
+
 <table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8 col-12">
     <ng-container matColumnDef="{{col}}" *ngFor="let col of columnsToDisplay; let last = last">
         <th mat-header-cell *matHeaderCellDef> {{col}} </th>
@@ -62,7 +64,6 @@
                     <div class="col-12 project-details-link"><i class="fab fa-youtube"></i>{{element.youtube_link}}
                     </div>
                     <div class="col-12 project-details-link"><i class="fab fa-github"></i>{{element.github_link}}</div>
-
                     <div class="col-12 project-details-link" *ngFor = "let toolboxItem of element.toolbox"><i class="{{toolboxItem.sortcut}}"></i>{{toolboxItem.name}}</div>
 
                 </div>
