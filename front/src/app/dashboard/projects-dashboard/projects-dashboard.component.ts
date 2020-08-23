@@ -26,12 +26,11 @@ export class ProjectsDashboardComponent implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
-    private http: HttpClient,
     private toolboxItemService: ToolboxItemService,
     private toolboxService: ToolboxService) { }
 
   dashboardMenuItems = dashboardMenuItems;
-  projects: Project [];
+  projects: Project[];
   toolboxItems: ToolboxItem[] = [];
   newProject: Project = new Project();
   columnsToDisplay = ['id', 'name', 'edit/delete'];
@@ -43,6 +42,7 @@ export class ProjectsDashboardComponent implements OnInit {
   dataSource: ProjectsDataSource | null;
   project: Project;
   toolbox: ToolboxItem[];
+  newToolBoxArr = [];
 
   formGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -53,27 +53,24 @@ export class ProjectsDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllProjectsWithToolbox();
+    this.getAllToolboxItems();
   }
 
   getAllProjectsWithToolbox() {
-    let projectArr;
-    let toolboxArr;
+    let projectArr: Project [];
+    let toolboxArr: ToolboxItem [];
     this.projectsService.getProjects().subscribe((projects: Project[]) => {
       projectArr = projects;
       this.projects = projects;
       projects.forEach(project => {
-        this.toolboxService.getToolboxItemByProjectId(project.id).subscribe((toolbox: ToolboxItem []) => {
-          toolboxArr = toolbox;
+        this.toolboxService.getToolboxItemByProjectId(project.id).subscribe((toolbox: ToolboxItem[]) => {
+          toolboxArr = Object.values(toolbox);
           project.toolbox = toolboxArr;
         }
         );
         this.dataSource = new ProjectsDataSource(this.projects);
       });
     });
-  }
-
-  test(){
-    // console.log(this.projectArr)
   }
 
   getAllToolboxItems() {
@@ -88,8 +85,14 @@ export class ProjectsDashboardComponent implements OnInit {
     this.newProject.youtube_link = this.formGroup.value.youtube_link;
     this.newProject.github_link = this.formGroup.value.github_link;
     this.projects.push(this.newProject);
-    this.projectsService.postProject(this.newProject).subscribe( () =>
-     this.getAllProjectsWithToolbox()
+    this.projectsService.postProject(this.newProject).subscribe((resp) => {
+      this.newProject.id = resp.id;
+      this.getAllProjectsWithToolbox();
+      this.newToolBoxArr.forEach(toolboxItem => {
+        console.log(toolboxItem.id);
+        this.toolboxService.postToolboxItem(this.newProject.id, toolboxItem.id).subscribe(() => console.log('success!'));
+      });
+    }
     );
   }
 
@@ -137,4 +140,14 @@ export class ProjectsDashboardComponent implements OnInit {
       }
     );
   }
+
+  addToolboxItemToNewProject(toolItem: ToolboxItem) {
+    this.newToolBoxArr.push(toolItem);
+    console.log(this.newToolBoxArr);
+  }
+
+  removeToolboxItemFromNewProject(toolboxItem: ToolboxItem, i: number) {
+    this.newToolBoxArr.splice(i, 1);
+  }
+
 }

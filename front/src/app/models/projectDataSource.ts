@@ -14,8 +14,6 @@ export class ProjectsDataSource extends DataSource<Project> {
     connect(): Observable<Project[]> {
         const rows = [];
         this.projects.forEach(project => rows.push(project));
-        console.log('dataset rows:');
-        console.log(rows);
         return of(rows);
     }
 
