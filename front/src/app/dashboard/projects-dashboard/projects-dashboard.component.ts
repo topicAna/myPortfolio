@@ -31,7 +31,7 @@ export class ProjectsDashboardComponent implements OnInit {
     private toolboxService: ToolboxService) { }
 
   dashboardMenuItems = dashboardMenuItems;
-  projects: any;
+  projects: Project [];
   toolboxItems: ToolboxItem[] = [];
   newProject: Project = new Project();
   columnsToDisplay = ['id', 'name', 'edit/delete'];
@@ -72,6 +72,9 @@ export class ProjectsDashboardComponent implements OnInit {
     });
   }
 
+  test(){
+    // console.log(this.projectArr)
+  }
 
   getAllToolboxItems() {
     this.toolboxItemService.getToolboxItems().subscribe(items => {
@@ -84,11 +87,9 @@ export class ProjectsDashboardComponent implements OnInit {
     this.newProject.description = this.formGroup.value.description;
     this.newProject.youtube_link = this.formGroup.value.youtube_link;
     this.newProject.github_link = this.formGroup.value.github_link;
-    this.getAllProjectsWithToolbox();
-    this.projectsService.postProject(this.newProject).subscribe(
-      (error) => {
-        console.error(error);
-      }
+    this.projects.push(this.newProject);
+    this.projectsService.postProject(this.newProject).subscribe( () =>
+     this.getAllProjectsWithToolbox()
     );
   }
 
@@ -98,8 +99,7 @@ export class ProjectsDashboardComponent implements OnInit {
         for (let i = 0; i < this.projects.length; i++) {
           if (this.projects[i].id === project.id) {
             this.projects.slice(i, 1);
-            this.dataSource.data = this.projects;
-
+            this.getAllProjectsWithToolbox();
           }
         }
       }
