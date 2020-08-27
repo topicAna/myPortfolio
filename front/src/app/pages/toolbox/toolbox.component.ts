@@ -3,6 +3,7 @@ import { ToolboxItemService } from '../../services/toolboxItem.service';
 import { ToolboxItem } from 'src/app/models/toolboxItem';
 import { GitHubService } from '../../services/git-hub.service';
 import {MatTableDataSource} from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-toolbox',
@@ -11,7 +12,7 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class ToolboxComponent implements OnInit {
 
-  constructor(private toolboxitemService: ToolboxItemService, private githubService: GitHubService) { }
+  constructor(private toolboxitemService: ToolboxItemService, private githubService: GitHubService, private router: Router) { }
   toolboxItems: ToolboxItem[] = [];
   githubEvents = [];
   repos: number;
@@ -42,6 +43,12 @@ export class ToolboxComponent implements OnInit {
         this.gists = profile['public_gists'];
       }
     );
+
+    this.githubService.getAccess().subscribe(resp => {
+      const extractTKN: any = Object.values(resp)[0];
+      localStorage.setItem('token', extractTKN);
+      this.router.navigateByUrl('/home');
+    });
   }
 }
 
