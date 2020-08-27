@@ -11,7 +11,6 @@ import { BioController } from './controller/bio.controller';
 import { EducationController } from './controller/education.controller';
 import { ExperienceController } from './controller/experience.controller';
 import fileUpload from 'express-fileupload';
-import multer from 'multer';
 import { MailerController } from './controller/mailer.controller';
 
 async function startServer() {
@@ -19,7 +18,6 @@ async function startServer() {
     app.use((req: any, res: any, next: any) => {
       next();
   });
-    const upload = multer({ dest: 'uploads/' });
     app.use(bodyParser.urlencoded({extended: true}));
     app.use(bodyParser.json());
 

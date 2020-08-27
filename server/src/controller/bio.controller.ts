@@ -2,19 +2,12 @@ import { Bio } from '../models/bio';
 import express, { Router, Request, Response, Application } from 'express';
 import { BioService } from '../services/bio.service';
 import { UserService } from '../services/user.service';
-import multer from 'multer';
-
 
 export const BioController = (app: Application) => {
-
-    interface MulterRequest extends Request {
-        file: any;
-    }
 
     const router: Router = express.Router();
     const bioService = BioService.getInstance();
     const userService = UserService.getInstance();
-    const upload = multer({ dest: 'uploads/' });
 
     router.get('/', (req: Request, res: Response) => {
         bioService.getBio().then(results => {
