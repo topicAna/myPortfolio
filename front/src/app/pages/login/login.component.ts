@@ -4,6 +4,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   loginUserData = new FormGroup({
     identifiant: new FormControl(),
-    password: new FormControl(),
+    password: new FormControl('', Validators.required),
   });
 
   constructor(private loginService: UsersService, private router: Router) { }
@@ -33,4 +34,6 @@ export class LoginComponent implements OnInit {
           Swal.fire(err.error);
       });
     }
+
+
 }

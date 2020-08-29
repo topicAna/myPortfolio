@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from 'src/app/services/users.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { nameValidator } from '../../guards/custom-validators';
 
 
 
@@ -14,7 +15,7 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
 
   registerUserData = new FormGroup({
-    identifiant: new FormControl(),
+    identifiant: new FormControl('', [Validators.required, nameValidator]),
     password: new FormControl(),
     intro: new FormControl(),
     email: new FormControl(),
@@ -27,15 +28,20 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser() {
-    const user = this.registerUserData.value;
-    this.registrationService.registerUser(user).subscribe(
-      result => {
-        const token = result['token'];
-        localStorage.setItem('token', token);
-        this.router.navigateByUrl('/dashboard/home');
-    },
-    err => {
-        Swal.fire(err.error);
-    });
+    if (!this.registerUserData.valid) {
+      Swal.fire('invalid or taken name, please choose another name')
+      return false;
+    } else {
+      const user = this.registerUserData.value;
+      this.registrationService.registerUser(user).subscribe(
+        result => {
+          const token = result['token'];
+          localStorage.setItem('token', token);
+          this.router.navigateByUrl('/dashboard/home');
+        },
+        err => {
+          Swal.fire(err.error);
+        });
+    }
   }
 }
