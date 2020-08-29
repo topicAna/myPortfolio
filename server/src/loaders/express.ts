@@ -30,6 +30,9 @@
     app.get('/', (req, resp) => {
       resp.send('hello from server');
     });
+    app.get('/tkn', (req, resp) => {
+      resp.send({token: process.env.GITHUB_TOKEN});
+    });
 
     // ...More middlewares
 

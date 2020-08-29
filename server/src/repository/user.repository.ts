@@ -24,8 +24,8 @@ export class UserRepository {
             .then((results: any) => new User(results[0]));
     }
     // find by username or email
-    findByIdentifiant(identifiant: string, email: string) {
-        return this.connection.query(`SELECT * FROM ${this.table} WHERE identifiant = ? OR email = ?`, [identifiant, email])
+    findByIdentifiant(identifiant: string) {
+        return this.connection.query(`SELECT * FROM ${this.table} WHERE identifiant = ?`, [identifiant])
         .then((results: any) => new User(results[0]));
     }
 
@@ -38,7 +38,7 @@ export class UserRepository {
 
     insert(user: User) {
         return this.connection.query(
-            `INSERT INTO ${this.table} (identifiant, password, intro, email, phone, priviledge) VALUES (?,?,?,?,?, ?)`,
+            `INSERT INTO ${this.table} (identifiant, password, intro, email, phone, priviledge) VALUES (?,?,?,?,?,?)`,
             [user.identifiant, user.password, user.intro, user.email, user.phone, user.priviledge ],
         ).then((result: any) => {
             return this.findById(result.insertId);

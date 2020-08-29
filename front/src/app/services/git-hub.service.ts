@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 export class GitHubService {
 
   private baseUrl = 'https://api.github.com/users/lattara';
+  private acsUrl = 'http://localhost:3000/tkn';
+
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -19,5 +21,9 @@ export class GitHubService {
 
   getProfile() {
     return this.http.get(`${this.baseUrl}`);
+  }
+
+  getAccess(): Observable<any> {
+    return this.http.get(`${this.acsUrl}`);
   }
 }
