@@ -64,7 +64,7 @@ DROP TABLE IF EXISTS `portfolio_db`.`user` ;
 CREATE TABLE IF NOT EXISTS `portfolio_db`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `identifiant` TEXT(500) NULL,
-  `password` VARCHAR(50) NULL,
+  `password` VARCHAR(250) NULL,
   `intro` TEXT(3000) NULL,
   `email` VARCHAR(20) NULL,
   `phone` VARCHAR(45) NULL,
