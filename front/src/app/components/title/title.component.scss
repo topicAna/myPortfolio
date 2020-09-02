@@ -27,6 +27,12 @@
         float: right;
     }
 
+    .subtitle-bio {
+        font-size: 45px;
+        color: var(--white);
+        font-weight: 500;
+    }
+
     .title-dashboard {
         color: var(--primary-color-darkened);
         font-family: var(--font-primary);
@@ -102,6 +108,13 @@
     }
     .subtitle, .subtitle-float-right  {
         font-size: 26px;
+        color: var(--white);
+        margin: 20px 0px 20px 0px;;
+        font-weight: 900;
+    }
+
+    .subtitle-bio {
+        font-size: 30px;
         color: var(--white);
         margin: 20px 0px 20px 0px;;
         font-weight: 900;

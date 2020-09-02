@@ -1,5 +1,10 @@
 .container {
     width: 100%;
+    padding-bottom: 100px;
+}
+
+.row {
+    height: 100%;
 }
 
 .number {
@@ -34,7 +39,7 @@
 .project-description {
     margin-left: 70px;
     margin-right: 0px !important;
-    padding: 10px;
+    padding: 15px;
 }
 
 .technologies {

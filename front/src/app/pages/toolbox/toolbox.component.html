@@ -1,9 +1,9 @@
 <div class="container justify-content-center">
-    <div class="row">
+    <div class="row toolbox-container">
 
         <app-title class="toolbox-title justify-content-center" [mode]="'subtitle'"
             [text]="'Technologies I feel comfortable working with'"></app-title>
-        <ul class="toolboxItems-container justify-content-center col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+        <ul class="toolboxItems-container justify-content-center col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <li *ngFor="let item of toolboxItems" class="skill-grouped"><i class="{{item.sortcut}}"></i> {{item.name}}
                 <mat-progress-bar mode="determinate" value="{{item.master_level}}"></mat-progress-bar>
             </li>
@@ -40,10 +40,11 @@
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
                 </mat-table>
-            </div>
-            <div class="col-12 repos-gists">
-                <span class="repository-nmb"> Total repositories: {{repos}}</span>
-                <span class="gitst-nmb"> Total Gists: {{gists}}</span>
-            </div>
+            </div> 
+             <div class="col-12 repos-gists">
+            <span> Total repositories: {{repos}}</span><br>
+            <span> Total Gists: {{gists}}</span>
+        </div>   
         </div>
+       
     </div>
