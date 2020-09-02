@@ -1,7 +1,8 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-5 col-xl-5 project-details" *ngFor="let project of projects">
-            <ul class="number col-2"> {{project.id}}. </ul>
+        <div class="col-sm-12 col-md-12 col-xl-5 project-details" *ngFor="let project of projects">
+            <div class="content-container">
+            <ul class="number col-auto"> {{project.id}}. </ul>
             <li class="technologies">
                 <i class="fab fa-sass"></i>
                 <i class="fab fa-angular"></i>
@@ -20,6 +21,7 @@
                 <a href="{{project.youtube_link}}" target="_blank">
                     <app-button class="button" [label]="'Demo'" [icon]="'fab fa-youtube'"></app-button>
                 </a>
+            </div>
             </div>
         </div>
     </div>

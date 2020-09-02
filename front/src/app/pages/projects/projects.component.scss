@@ -13,22 +13,13 @@
 
 .project-details {
     min-height: fit-content;
-    height: 450px;
-    width: 90%;
+    padding: 30px 0px 30px 0px;
+}
+
+.content-container {
     border-bottom: 1px solid var(--white);
     border-top: 1px solid var(--white);
-    margin-right: 35px;
-    margin-bottom: 35px;
-}
-
-.project-details:hover {
-    border-bottom: 2px solid var(--secondary-color);
-    border-top: 2px solid var(--secondary-color);
-    padding: 1px;
-}
-
-.project-details:hover .number {
-    color: var(--secondary-color);
+    margin: 0px 50px 0px 50px;
 }
 
 .project-details:hover .button {
@@ -56,8 +47,8 @@
 .buttons {
     display: flex;
     margin-left: 85px;
-    margin-right: 10px;
     width: 100%;
+    padding:20px 0px 30px 0px;
 }
 
 .buttons a {
@@ -71,22 +62,24 @@
 }
 
 @media (max-width: 700px) {
-    .project-details {
-        margin: 0px;
-        height: fit-content;
-    }
+        .project-details {
+            min-height: fit-content;
+            padding: 30px 0px 30px 0px;
+        }
+
+        .content-container {
+            margin: 0px 50px 0px 50px;
+        }
 
     .project-description {
-        margin-bottom: 50px;
         text-align: justify;
         text-justify: inter-word;
-        padding-right: 15px;
     }
 
     .buttons {
         margin: 0px;
         justify-content: center;
-        padding-bottom: 20px;
+        padding: 0px 0px 20px 0px;
     }
 
     .arrow-animated {

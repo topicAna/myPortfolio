@@ -4,11 +4,11 @@
         <!-- big box -->
         <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 contact-details-container">
             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 bio-card">
-                <div class="row image-container"><img class="img-fluid profile-image" src="./assets/profile -img-bw-long.JPG"
+                <div class="row image-container"><img class="profile-image" src="./assets/profile -img-bw-long.JPG"
                         alt=""></div>
                 <div class="row button-container">
                     <a href="http://localhost:3000/uploads/{{cvLink}}" target="_blank">
-                        <app-button [label]="'download CV'" [icon]="'fas fa-download'"(click)="downloadCV()"></app-button>
+                        <app-button class="download-button" [label]="'download CV'" [icon]="'fas fa-download'"(click)="downloadCV()"></app-button>
                         </a>
                 </div>
             </div>

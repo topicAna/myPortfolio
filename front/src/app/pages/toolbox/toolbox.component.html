@@ -25,7 +25,7 @@
                         <mat-header-cell *matHeaderCellDef> REPOSITORY </mat-header-cell>
                         <mat-cell *matCellDef="let element">
                             <span class="mobile-label">REPOSITORY: </span>
-                            {{element.repo.name}}
+                            <span class="table-content"> {{element.repo.name}}</span>
                         </mat-cell>
                     </ng-container>
 
@@ -33,7 +33,7 @@
                         <mat-header-cell *matHeaderCellDef> TIME </mat-header-cell>
                         <mat-cell *matCellDef="let element">
                             <span class="mobile-label">TIME: </span>
-                            {{element.created_at}}
+                            <span class="table-content">{{element.created_at}}</span>
                         </mat-cell>
                     </ng-container>
 
