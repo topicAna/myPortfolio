@@ -1,12 +1,10 @@
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-5 col-xl-5 project-details" *ngFor="let project of projects">
-            <ul class="number col-2"> {{project.id}}. </ul>
+        <div class="col-sm-12 col-md-12 col-xl-6 project-details" *ngFor="let project of projects; let index=i">
+            <div class="content-container">
+            <ul class="number col-auto"> {{project.id}}. </ul>
             <li class="technologies">
-                <i class="fab fa-sass"></i>
-                <i class="fab fa-angular"></i>
-                <i class="fab fa-node-js"></i>
-                <i class="fab fa-js"></i>
+                <i *ngFor="let toolboxItem of project.toolbox" class="fab {{toolboxItem.sortcut}}"></i>
             </li>
             <li class="project-title">
                 <app-title class="row name" [mode]="'subsubtitle'" [text]="project.name"></app-title>
@@ -21,9 +19,10 @@
                     <app-button class="button" [label]="'Demo'" [icon]="'fab fa-youtube'"></app-button>
                 </a>
             </div>
+            </div>
         </div>
     </div>
-    <div div class="arrow-animated col-12 justify-content-center">
-        <i routerLink="bio" class="fas fa-chevron-down"></i>
-    </div>
+</div>
+<div div class="arrow-animated col-12 justify-content-center">
+    <i routerLink="bio" class="fas fa-chevron-down"></i>
 </div>

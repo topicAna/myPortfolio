@@ -1,5 +1,6 @@
 .container {
     width: 100%;
+    padding-bottom: 50px;
 }
 
 app-title {
@@ -44,9 +45,17 @@ textarea, input {
 
 // MOBILE
 @media (max-width: 770px) {
+
+    .row {
+        padding-left: 40px;
+    padding-right: 40px;
+    }
+
     .contact-text-container {
         height: unset;
         margin-top: unset;
+        border-right: none;
+        
     }
 
     .contact-form-container {

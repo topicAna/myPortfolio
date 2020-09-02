@@ -1,6 +1,7 @@
 .row {
     margin:0px;
-    padding: 0px
+    padding: 0px;
+    height: 100vh;
 }
 
 .container-fluid {
@@ -9,7 +10,8 @@
 }
 
 .landing-title-group {
-    margin-top: 25vh;
+    padding-top: 150px;
+    align-items: center;
 }
 
 .vertical-divider-red {
@@ -72,10 +74,6 @@ i {
 p {
     color: white;
     font-size: 12px;
-}
-
-.arrow-animated {
-    margin-top: 100px;
 }
 
 @media (max-width: 700px) {

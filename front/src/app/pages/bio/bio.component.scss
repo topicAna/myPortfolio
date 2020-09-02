@@ -1,6 +1,12 @@
 .container {
     width: 100%;
     overflow: hidden;
+    height: 70vh;
+    margin-top: 150px;
+}
+
+.col-4 {
+    padding: 0px;
 }
 
 .image-container {
@@ -9,48 +15,35 @@
 }
 
 .button-container {
-    margin-top: 30px;
-    margin-left: 20px;
+    justify-content: center;
+    padding-top: 30px;
 }
 
 .bio-card {
-    height: 500px;
-    //   border: 1px solid rgb(255, 253, 253);
-    //     border-radius: 20px;
-    //     background: var(--primary-color);
-    //     background: var--primary-gradient;
-    //     box-shadow: var(--box-shaddow)
+    padding: 0px;
+    margin-top: 20px;
 }
 
 .bio-short-text {
     height: 39%;
-    //padding: 33px;
-    // border: 1px solid rgb(15, 14, 14);
-    // border-radius: 20px;
-    // background: var(--primary-color);
-    // background: var(--primary-gradient);
-    // box-shadow: var(--box-shaddow)
 }
 
 .toolbox,
 .experience,
 .education {
-    padding: 10px;
+    padding: 10px 0px 20px 10px;
     min-width: 210px;
     justify-content: center;
-    height: 85%;
-    // border: 1px solid rgb(15, 14, 14);
-    // border-radius: 20px;
-    // background: var(--primary-color);
-    // background: var--primary-gradient;
-    // box-shadow: var(--box-shaddow)
+    margin-left: 20px;
 }
+
+
 
 .profile-image {
     display: flex;
-    width: 100%;
-    margin-top: 28px;
+    width: 230px;
     border-radius: 20px;
+    margin: auto;
 }
 
 .profile-image img {
@@ -64,26 +57,38 @@
     margin: 0;
     font-size: 10px;
     opacity: 0.6;
+    padding-left: 20px;
 }
 
 .name {
     margin-left: 0px;
-    height: 15%;
+    height: 25%;
+    padding-left: 20px;
+    align-items: center;
 }
 
 .text-colums {
     font-family: var(--font-secondary);
-    columns: 3 auto;
+    columns: 2 auto;
     margin: 0px;
-    padding: 0px;
+    padding: 0px 20px 0px 20px;
     margin-top: 15px;
 }
 
 .divider-bio {
     border-bottom: 2px solid var(--secondary-color);
-    width: 73%;
-    height: 15px;
-    margin-left: 33px;
+    width: 100%;
+    height: 5px;
+    margin-left: 20px;
+}
+
+.skillset-container {
+    align-items: center;
+    padding-top: 20px;
+}
+
+ul {
+    margin:0px
 }
 
 .skillset-container ul li {
@@ -95,35 +100,39 @@
     columns: 2 auto;
 }
 
-.toolbox-title,
-.experience-title {
-    margin-left: 10px;
-    margin-top: 10px;
+.title {
+    margin: 0px 20px 0px 20px;
 }
 
-@media (max-width: 700px)  {
+
+@media (max-width: 700px) {
+
+    .container {
+        height: 90vh;
+    }
     .col {
         margin: 0px;
-        padding:0px
+        padding: 0px;
     }
     .text-intro {
         justify-content: center;
-        margin-top: 10px;
+        margin: 30px 0px 0px 0px;
+        padding-left: 0px;
     }
 
     .name {
         width: 100%;
         justify-content: center;
     }
+
     .button-container {
-        margin: auto;
         justify-content: center;
+        padding-top: 30px;
     }
-    .bio-card {
-        height: 390px;
-    }
+
     .divider-bio {
         margin: auto;
+        width: 80%;
     }
 
     .text-colums {
@@ -135,15 +144,16 @@
     .image-container {
         justify-content: center;
         align-items: flex-end;
+        padding: 0px 0px 20px 0px;
     }
     .profile-image {
-        width: 60%;
+        width: 250px;
     }
     .education-title {
-        margin:auto;
+        margin: auto;
         text-align: center;
     }
-    .education{
+    .education {
         padding-left: 50px;
         padding-right: 50px;
         padding-top: 0px;
@@ -151,7 +161,7 @@
         height: unset;
     }
     .experience {
-        padding-left: 70px;
+        padding-left: 50px;
         padding-right: 50px;
         padding-top: 0px;
         padding-bottom: 0px;
@@ -159,7 +169,35 @@
     }
 
     .experience-title {
-        margin:auto;
+        margin: auto;
         text-align: center;
     }
+
+    app-button {
+        margin: 50px, 0px, 0px, 50px;
+    }
+    .bio-card {
+        padding: 0px;
+    }
+}
+
+@media (min-width: 1045px) {
+    .text-colums {
+        columns: 3 auto;
+        text-align: justify;
+    }
+
+    .profile-image {
+        display: flex;
+        width: 300px;
+        border-radius: 20px;
+        margin: auto;
+    }
+
+    .bio-card {
+        padding: 0px;
+        margin-top: 20px;
+    }
+
+    
 }
