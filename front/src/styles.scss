@@ -205,6 +205,11 @@ $altTheme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
   line-height: 36.4px;
 }
 
+.container {
+  width: 100vw;
+  overflow: hidden;
+}
+
 .mat-standard-chip {
   padding: 0.5em 0.85em;
   min-height: 2.5em;
@@ -284,7 +289,7 @@ i {
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 50px;
+  height: 150px;
 }
 
 // ----arrow animation----

@@ -1,8 +1,6 @@
 .container {
     width: 100%;
     overflow: hidden;
-    height: 70vh;
-    margin-top: 150px;
 }
 
 .col-4 {
@@ -108,7 +106,6 @@ ul {
 @media (max-width: 700px) {
 
     .container {
-        height: 90vh;
     }
     .col {
         margin: 0px;
