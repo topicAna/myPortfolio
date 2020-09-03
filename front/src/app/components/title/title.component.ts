@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./title.component.scss']
 })
 export class TitleComponent implements OnInit {
-  @Input() mode: 'title' | 'title-white' | 'subtitle' | 'text' = 'title';
+  @Input() mode: 'title' | 'title-white' | 'subtitle' | 'section-subtitle' | 'text' = 'title' ;
   @Input() text = '';
 
   constructor() { }
