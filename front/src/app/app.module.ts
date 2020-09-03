@@ -52,7 +52,7 @@ import { TokenInterceptorService} from './services/token-interceptor.service';
     BioDashboardComponent,
     MiscDashboardComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
