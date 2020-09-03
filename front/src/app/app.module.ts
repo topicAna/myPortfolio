@@ -30,7 +30,6 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { UsersService } from './services/users.service';
 import { TokenInterceptorService} from './services/token-interceptor.service';
-import { DividerComponent } from './components/divider/divider.component';
 
 
 // Angular material imports
@@ -54,7 +53,6 @@ import { DividerComponent } from './components/divider/divider.component';
     MiscDashboardComponent,
     RegisterComponent,
     LoginComponent,
-    DividerComponent
   ],
   imports: [
     BrowserModule,
