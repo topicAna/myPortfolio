@@ -1,10 +1,15 @@
+.container {
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+}
 
 .table {
     width: 100%;
 }
 
 .mat-table {
-    margin-left: 60px!important;
+    margin-left: 60px !important;
     width: 100%;
     margin-top: 50px;
 }
@@ -12,25 +17,23 @@
 tr.element-row:not(.expanded-row):hover {
     background-color: #777 !important;
     cursor: pointer;
-  }
+}
 
-
-  tr.element-row:not(.expanded-row):active {
+tr.element-row:not(.expanded-row):active {
     background-color: #efefef;
     cursor: pointer;
-  }
-    
-  
+}
 
 //for borders on table
-.mat-cell, .mat-header-cell {
-    background-color:var(--primary-darkened);
+.mat-cell,
+.mat-header-cell {
+    background-color: var(--primary-darkened);
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
-    }
+}
 
 .mat-header-cell {
     border-top: 1px solid rgba(255, 255, 255, 0.25);
-}  
+}
 
 .mat-header-cell:first-child {
     border-left: 1px solid rgba(255, 255, 255, 0.25);
@@ -41,29 +44,28 @@ tr.element-row:not(.expanded-row):hover {
     text-align: right;
 }
 
+.mat-cell:first-child {
+    border-left: 1px solid rgba(255, 255, 255, 0.25);
+}
 
-    .mat-cell:first-child {
-        border-left: 1px solid rgba(255, 255, 255, 0.25);
-    }
-
-    .mat-cell:last-child {
-        border-right: 1px solid rgba(255, 255, 255, 0.25);
-    }
+.mat-cell:last-child {
+    border-right: 1px solid rgba(255, 255, 255, 0.25);
+}
 // end borders on table
-
 
 .toolboxItems {
     color: var(--white);
 }
 
-.fa-times, .fa-plus {
+.fa-times,
+.fa-plus {
     margin-right: 15px;
 }
 
-.fa-times:hover, .fa-plus:hover {
+.fa-times:hover,
+.fa-plus:hover {
     color: var(--secondary-color);
 }
-
 
 th {
     color: var(--secondary-dashboard);
@@ -79,7 +81,7 @@ table.mat-table tr:hover td {
     color: var(--primary-darkened);
     background-color: var(--secondary-dashboard);
     font-weight: bold;
-    }
+}
 
 .element-row td {
     border-bottom-width: 0;
@@ -106,7 +108,7 @@ table.mat-table tr:hover td {
     line-height: normal;
 }
 
-.project-details-description{
+.project-details-description {
     padding-left: 50px;
     padding-right: 50px;
     padding-top: 20px;
@@ -131,31 +133,30 @@ table.mat-table tr:hover td {
 
 .fa-trash-alt {
     color: white;
-
 }
 
-.fa-trash-alt, .fa-edit {
+.fa-trash-alt,
+.fa-edit {
     display: none;
 }
 
-tr:hover .fa-trash-alt{
+tr:hover .fa-trash-alt {
     color: var(--secondary-color);
 }
 
-.fa-edit:hover{
+.fa-edit:hover {
     color: blue;
 }
 
 .last-child {
     display: inline-block;
-    
+
     margin-right: 10px;
 }
 
 .element-row td:last-child {
     text-align: end !important;
 }
-
 
 //form
 
@@ -173,7 +174,7 @@ tr:hover .fa-trash-alt{
     justify-content: flex-end;
 }
 
-.mat-form-field-appearance-outline{
+.mat-form-field-appearance-outline {
     margin-right: 20px !important;
 }
 
@@ -204,4 +205,3 @@ textarea.mat-input-element {
 input.mat-input-element {
     color: var(--white);
 }
-
