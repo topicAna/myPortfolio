@@ -29,8 +29,8 @@ export class BioRepository {
     // Modify ToolboxItem
     updateBio(bio: Bio) {
     return this.connection.query(
-        `UPDATE ${this.table} SET intro = ?, cv_link = ? WHERE id = 1`,
-        [bio.intro, bio.cvLink]);
+        `UPDATE ${this.table} SET intro = ?, cv_link = ?, image_link = ?  WHERE id = 1`,
+        [bio.intro, bio.cvLink, bio.profileImgLink]);
     }
 
 }

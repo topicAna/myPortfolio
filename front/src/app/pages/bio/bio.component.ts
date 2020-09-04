@@ -18,6 +18,7 @@ export class BioComponent implements OnInit {
   experience: Experience[] = [];
   intro = '';
   cvLink = '';
+  imageLink = '';
   constructor(private bioService: BioService, private educationService: EducationService, private experienceService: ExperienceService) { }
 
   ngOnInit(): void {
@@ -28,8 +29,10 @@ export class BioComponent implements OnInit {
 
   getBio() {
     this.bioService.getBio().subscribe(data => {
+      console.log('getbio', data);
       this.intro = (data[0].intro);
       this.cvLink = (data[0].cv_link);
+      this.imageLink = (data[0].image_link);
     }
     );
   }

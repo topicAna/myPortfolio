@@ -95,9 +95,8 @@ CREATE TABLE IF NOT EXISTS `portfolio_db`.`bio` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `intro` TEXT NULL,
   `cv_link` TINYTEXT NULL,
+  `image_link` TINYTEXT NULL,
   PRIMARY KEY (`id`));
-
-
 -- -----------------------------------------------------
 -- Table `portfolio_db`.`toolbox_item`
 -- -----------------------------------------------------
