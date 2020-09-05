@@ -1,5 +1,8 @@
 <div class="container">
-    <div class="row justify-content-center">
+    <div *ngIf="projects.length === 0">
+        <span>There is no projects to display for the moment</span>
+    </div>
+    <div *ngIf="projects.length !== 0" class="row justify-content-center">
         <div class="col-sm-12 col-md-12 col-xl-6 project-details" *ngFor="let project of projects; let index=i">
             <div class="content-container">
             <ul class="number col-auto"> {{project.id}}. </ul>

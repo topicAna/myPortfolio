@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
   registerUser() {
     if (!this.registerUserData.valid) {
-      Swal.fire('invalid or taken name, please choose another name')
+      Swal.fire('invalid or taken name, please choose another name');
       return false;
     } else {
       const user = this.registerUserData.value;
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
         result => {
           const token = result['token'];
           localStorage.setItem('token', token);
-          this.router.navigateByUrl('/dashboard/home');
+          this.router.navigateByUrl('/dashboard');
         },
         err => {
           Swal.fire(err.error);

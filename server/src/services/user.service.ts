@@ -57,16 +57,23 @@ export class UserService {
     }
 
     async verifyToken(req: Request, res: Response, next: any) {
+        // we check are the auth headers present. If not return error 401
         if (req.headers.authorization === undefined) {
             return res.status(401).send('Unauthorized');
         } else {
-            const token = req.headers.authorization.split(' ')[1];
+            // then we split token on space and get word Bearer on index 0 and actual token on index 1
+            const token = req.headers.authorization.split(' ')[1]; // we store our token to variable
             if (token === 'null') {
+                // if no token again return 401
                 return res.status(401).send('Unauthorized');
             } else {
                 try {
+                    // if there is token first verify it using JWT package. verify() method reutrn de coded token only if it's valid
                     const secret: string = process.env.SECRET ? process.env.SECRET : '';
                     const payload: any = await jwt.verify(token, secret);
+
+                    // we are passing decoded token that has user data inside to our repository
+                    // to chahk existance of user in database
                     const user = await UserRepository.getInstance().findByIdentifiant(payload.identifiant);
                     req.user = {
                         ...user,

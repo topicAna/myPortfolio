@@ -21,7 +21,7 @@ const routes: Routes = [
   component: AdminDashboardComponent, // can only be accessed if logedin
   canActivate: [AuthGuardGuard],
   children: [
-    {path: 'home', component: ProjectsDashboardComponent},
+    {path: '', component: ProjectsDashboardComponent},
     {path: 'bio', component: BioDashboardComponent},
     {path: 'misc', component: MiscDashboardComponent},
   ],
