@@ -51,13 +51,13 @@ export class BioDashboardComponent implements OnInit {
     }
     this.http.post<any>('http://localhost:3000/bio/upload', formDataSubmit).subscribe(
       res => {
-        console.log('response', res)
+        console.log('response', res);
         this.bioToModify.intro = this.modifyBioForm.value.intro;
         this.bioToModify.cvLink = res.data.CVname;
         this.bioToModify.profileImgLink = res.data.imgName;
         this.bioService.putBio(this.bioToModify, 1).subscribe(bio => {
-          Swal.fire('bio is updated');
         });
+        Swal.fire('Bio is updated');
       }
     );
   }

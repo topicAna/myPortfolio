@@ -11,6 +11,7 @@ import { ToolboxItemService } from 'src/app/services/toolboxItem.service';
 import { ToolboxService } from 'src/app/services/toolbox.service';
 import { ToolboxItem } from 'src/app/models/toolboxItem';
 import { Toolbox } from 'src/app/models/toolbox';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-projects-dashboard',
@@ -44,6 +45,7 @@ export class ProjectsDashboardComponent implements OnInit {
   projectDetailsTable: Project[] = [];
   dataSource = new MatTableDataSource(this.projects);
   project: any;
+  newToolboxArr = [];
 
   formGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -82,12 +84,23 @@ export class ProjectsDashboardComponent implements OnInit {
     this.newProject.description = this.formGroup.value.description;
     this.newProject.youtube_link = this.formGroup.value.youtube_link;
     this.newProject.github_link = this.formGroup.value.github_link;
+    this.projects.push(this.newProject)
     this.projectsService.postProject(this.newProject).subscribe(
-      (error) => {
-        console.error(error);
+      resp => {
+        this.newProject.id = resp.id;
+        this.newToolboxArr.forEach(toolboxItem => {
+          this.toolboxService.postToolboxItem(this.newProject.id, toolboxItem.id).subscribe(
+            () => Swal.fire('Project created!')
+          );
+        });
         this.getAllProjectsWithToolbox();
       }
     );
+  }
+
+  addToolboxItemToNewProject(toolboxItem) {
+    this.newToolboxArr.push(toolboxItem);
+    console.log(this.newToolboxArr)
   }
 
   deleteProject(project: Project) {
@@ -133,7 +146,7 @@ export class ProjectsDashboardComponent implements OnInit {
   addToolboxItem(projectToEditId: number, toolboxItemId: number, toolboxItem: ToolboxItem) {
     this.toolboxService.postToolboxItem(projectToEditId, toolboxItemId).subscribe(
       () => {
-      this.toolboxToEdit.push(toolboxItem);
+        this.toolboxToEdit.push(toolboxItem);
       }
     );
   }

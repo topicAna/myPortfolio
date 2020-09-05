@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
     this.githubService.getAccess().subscribe(resp => {
       const extractTKN: any = Object.values(resp)[0];
       localStorage.setItem('token', extractTKN);
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('');
     });
   }
 
