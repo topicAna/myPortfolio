@@ -1,17 +1,13 @@
-import { Component, OnInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ProjectsService } from 'src/app/services/projects.service';
-import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Project } from 'src/app/models/project.model';
 import { dashboardMenuItems } from '../admin-dashboard/dashboard-menu-items';
-import { HttpClient } from '@angular/common/http';
-import { forkJoin } from 'rxjs';
-import { MatTableDataSource } from '@angular/material/table';
 import { ToolboxItemService } from 'src/app/services/toolboxItem.service';
 import { ToolboxService } from 'src/app/services/toolbox.service';
 import { ToolboxItem } from 'src/app/models/toolboxItem';
-import { Toolbox } from 'src/app/models/toolbox';
-import Swal from 'sweetalert2';
+import { ProjectsDataSource } from '../../models/projectDataSource';
 
 @Component({
   selector: 'app-projects-dashboard',
@@ -29,12 +25,11 @@ export class ProjectsDashboardComponent implements OnInit {
 
   constructor(
     private projectsService: ProjectsService,
-    private http: HttpClient,
     private toolboxItemService: ToolboxItemService,
     private toolboxService: ToolboxService) { }
 
   dashboardMenuItems = dashboardMenuItems;
-  projects: Project[] = [];
+  projects: Project[];
   toolboxItems: ToolboxItem[] = [];
   newProject: Project = new Project();
   columnsToDisplay = ['id', 'name', 'edit/delete'];
@@ -43,9 +38,10 @@ export class ProjectsDashboardComponent implements OnInit {
   idProjectToEdit: number;
   expandedElement: Project | null;
   projectDetailsTable: Project[] = [];
-  dataSource = new MatTableDataSource(this.projects);
-  project: any;
-  newToolboxArr = [];
+  dataSource: ProjectsDataSource | null;
+  project: Project;
+  toolbox: ToolboxItem[];
+  newToolBoxArr = [];
 
   formGroup = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -59,18 +55,21 @@ export class ProjectsDashboardComponent implements OnInit {
     this.getAllToolboxItems();
   }
 
-  public getAllProjectsWithToolbox() {
-    for (let i = 1; i < 5; i++) {
-      const $project = this.http.get(`http://localhost:3000/projects/${i}`);
-      const $toolbox = this.http.get(`http://localhost:3000/toolbox/${i}`);
-      forkJoin([$project, $toolbox]).subscribe(results => {
-        this.project = results[0];
-        this.project.toolbox = Object.entries(results[1]).map(e => e[1]);
-        this.projects.push(this.project);
-        this.dataSource.data = this.projects;
-      }
-      );
-    }
+  getAllProjectsWithToolbox() {
+    let projectArr: Project [];
+    let toolboxArr: ToolboxItem [];
+    this.projectsService.getProjects().subscribe((projects: Project[]) => {
+      projectArr = projects;
+      this.projects = projects;
+      projects.forEach(project => {
+        this.toolboxService.getToolboxItemByProjectId(project.id).subscribe((toolbox: ToolboxItem[]) => {
+          toolboxArr = Object.values(toolbox);
+          project.toolbox = toolboxArr;
+        }
+        );
+        this.dataSource = new ProjectsDataSource(this.projects);
+      });
+    });
   }
 
   getAllToolboxItems() {
@@ -84,35 +83,25 @@ export class ProjectsDashboardComponent implements OnInit {
     this.newProject.description = this.formGroup.value.description;
     this.newProject.youtube_link = this.formGroup.value.youtube_link;
     this.newProject.github_link = this.formGroup.value.github_link;
-    this.projects.push(this.newProject)
-    this.projectsService.postProject(this.newProject).subscribe(
-      resp => {
-        this.newProject.id = resp.id;
-        this.newToolboxArr.forEach(toolboxItem => {
-          this.toolboxService.postToolboxItem(this.newProject.id, toolboxItem.id).subscribe(
-            () => Swal.fire('Project created!')
-          );
-        });
-        this.getAllProjectsWithToolbox();
-      }
+    this.projects.push(this.newProject);
+    this.projectsService.postProject(this.newProject).subscribe((resp) => {
+      this.newProject.id = resp.id;
+      this.getAllProjectsWithToolbox();
+      this.newToolBoxArr.forEach(toolboxItem => {
+        console.log(toolboxItem.id);
+        this.toolboxService.postToolboxItem(this.newProject.id, toolboxItem.id).subscribe(() => console.log('success!'));
+      });
+    }
     );
   }
 
-  addToolboxItemToNewProject(toolboxItem) {
-    this.newToolboxArr.push(toolboxItem);
-    console.log(this.newToolboxArr)
-  }
-
   deleteProject(project: Project) {
-    console.log(project.id);
-    console.log(this.projects);
-    console.log(this.projects[1].id);
     this.projectsService.deleteProject(project.id).subscribe(
       () => {
         for (let i = 0; i < this.projects.length; i++) {
           if (this.projects[i].id === project.id) {
             this.projects.slice(i, 1);
-            this.dataSource.data = this.projects;
+            this.getAllProjectsWithToolbox();
           }
         }
       }
@@ -150,4 +139,21 @@ export class ProjectsDashboardComponent implements OnInit {
       }
     );
   }
+
+  addToolboxItemToNewProject(toolItem: ToolboxItem) {
+    this.newToolBoxArr.push(toolItem);
+    const index = this.toolboxItems.indexOf(toolItem);
+    this.toolboxItems.splice(index, 1);
+  }
+
+  removeToolboxItemFromNewProject(toolboxItem: ToolboxItem, i: number) {
+    this.newToolBoxArr.splice(i, 1);
+    this.toolboxItems.push(toolboxItem);
+  }
+
+  clearForm() {
+    this.projectToEdit.toolbox = [];
+    this.formGroup.reset();
+  }
+
 }

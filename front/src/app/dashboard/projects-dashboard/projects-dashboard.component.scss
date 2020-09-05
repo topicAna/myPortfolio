@@ -3,6 +3,22 @@
     padding: 0px;
     width: 100vw;
 }
+.toolbox-title {
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 3;
+}
+
+.toolbox-items-before {
+    opacity: 0.5;
+}
+
+.input-first-row {
+    display: flex;
+    justify-content: space-between;
+
+}
 
 .table {
     width: 100%;
