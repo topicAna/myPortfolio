@@ -10,7 +10,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-5 col-xl-5 contact-form-container">
-            <mat-form [formGroup]="contactForm" (ngSubmit)="sendMail()" method="POST" action="/send-email">
+            <mat-form [formGroup]="contactForm" (ngSubmit)="sendMail()" method="POST" action="/send-email"  color="accent">
         <mat-form-field class="col-12" appearance="outline">
                         <mat-label>Name</mat-label>
                         <input matInput formControlName="name">

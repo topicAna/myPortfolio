@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { ContactService } from '../../services/contact.service';
 import { Email } from '../../models/email.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-contact',
@@ -48,9 +49,9 @@ export class ContactComponent implements OnInit {
     const phone = this.phone.value;
     const message = this.message.value;
     this.contactService.sendMail(name, email, phone, message).subscribe(
-      res =>
-      console.log('response')
+      (error) => console.log(error)
     );
+    Swal.fire('Your message is sent. Thanks :)');
   }
 
 

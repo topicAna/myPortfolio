@@ -4,26 +4,26 @@
     <form [formGroup]="formGroup" class="create-project-form col-12">
         <div>
             <div class="input-first-row">
-            <mat-form-field appearance="outline">
+            <mat-form-field appearance="outline" color="accent">
                 <mat-label>Project name</mat-label>
-                <input matInput placeholder="Placeholder" formControlName="name">
+                <input matInput placeholder="Placeholder" formControlName="name" color="accent">
             </mat-form-field>
             <i class="fas fa-broom" matTooltip="Clear the form" (click)="clearForm()" [matTooltipPosition]= "'above'"></i>
             </div>
             <div class="project-form-link-fields">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" color="accent">
                     <mat-label>Youtube link</mat-label>
                     <input matInput placeholder="Placeholder" formControlName="youtube_link">
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" color="accent">
                     <mat-label>Github link</mat-label>
                     <input matInput placeholder="Placeholder" formControlName="github_link">
                 </mat-form-field>
             </div>
         </div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" color="accent">
             <mat-label>Description</mat-label>
-            <textarea matInput formControlName="description"></textarea>
+            <textarea matInput formControlName="description" color="accent"></textarea>
         </mat-form-field>
     
         <!-- edit existing project toolbox -->
