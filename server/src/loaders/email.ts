@@ -34,7 +34,7 @@ export class Mailer {
     sendEmail(subject: string, text: string, to: string, from: string) {
         const mailOpts = {
             from,
-            to: 'atopic.ie@gmail.com',
+            to: process.env.EMAIL_USER,
             subject,
             text,
         };
@@ -44,7 +44,6 @@ export class Mailer {
             if (error) {
                 return console.log(`error sending email: ${error}`);
             }
-            // console.log(`Message Sent ${info.response}`);
         });
     }
 

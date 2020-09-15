@@ -43,7 +43,6 @@ export class BioDashboardComponent implements OnInit {
   }
 
   submitModifyBio() {
-    console.log(this.filesToUpload)
     const formDataSubmit = new FormData();
     this.bioToModify = new Bio();
     for (const file of this.filesToUpload) {
@@ -51,7 +50,6 @@ export class BioDashboardComponent implements OnInit {
     }
     this.http.post<any>('http://localhost:3000/bio/upload', formDataSubmit).subscribe(
       res => {
-        console.log('response', res);
         this.bioToModify.intro = this.modifyBioForm.value.intro;
         this.bioToModify.cvLink = res.data.CVname;
         this.bioToModify.profileImgLink = res.data.imgName;

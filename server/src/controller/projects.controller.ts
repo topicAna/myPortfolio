@@ -40,17 +40,7 @@ export const ProjectsController = (app: Application) => {
         console.error(err);
       });
   });
-
-  router.put('/:id', userService.verifyToken, (req: Request, res: Response) => {
-    const project: Project = req.body; // req.params.id is automatically set into the body
-    projectsService.update(project).then(result => {
-      res.send(result);
-    })
-      .catch(err => {
-        console.error(err);
-      });
-  });
-
+  
   router.delete('/:id', userService.verifyToken, (req: Request, res: Response) => {
     const id = parseInt(req.params.id);
 
