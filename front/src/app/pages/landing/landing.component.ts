@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate } from '@angular/animations';
-import { interval, BehaviorSubject } from 'rxjs';
+import { Component, OnInit, Output, EventEmitter, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-landing',
@@ -10,6 +8,9 @@ import { interval, BehaviorSubject } from 'rxjs';
 
 export class LandingComponent implements OnInit {
 
+  // tslint:disable-next-line: no-output-native
+  @Output() scrollToContact: EventEmitter<any> = new EventEmitter();
+
 
   constructor() { }
 
@@ -17,5 +18,8 @@ export class LandingComponent implements OnInit {
 
   }
 
+  scrollTocontact() {
+      this.scrollToContact.emit(null);
+  }
 
 }
