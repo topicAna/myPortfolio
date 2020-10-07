@@ -15,11 +15,9 @@ import { nameValidator } from '../../guards/custom-validators';
 export class RegisterComponent implements OnInit {
 
   registerUserData = new FormGroup({
-    identifiant: new FormControl('', [Validators.required, nameValidator]),
+    identifiant: new FormControl('', [Validators.required]),
     password: new FormControl(),
-    intro: new FormControl(),
     email: new FormControl(),
-    phone: new FormControl()
   });
 
   constructor(private registrationService: UsersService, private router: Router) { }
