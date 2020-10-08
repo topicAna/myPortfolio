@@ -19,7 +19,7 @@
 
 .bio-card {
     padding: 0px;
-    margin-top: 20px;
+    margin-top: 70px;
 }
 
 .bio-short-text {
@@ -53,34 +53,33 @@
     margin: 0;
     font-size: 10px;
     opacity: 0.6;
-    padding-left: 20px;
 }
 
 .name {
     margin-left: 0px;
     height: 25%;
-    padding-left: 20px;
     align-items: center;
 }
 
 .text-colums {
     font-family: var(--font-secondary);
-    columns: 2 auto;
-    margin: 0px;
-    padding: 0px 20px 0px 20px;
     margin-top: 15px;
+    columns: 1 auto;
+    padding: 50px;
+    text-align: justify;
 }
 
 .divider-bio {
     border-bottom: 2px solid var(--secondary-color);
     width: 100%;
     height: 5px;
-    margin-left: 20px;
+    margin-left: 0px;
 }
 
 .skillset-container {
     align-items: center;
-    padding-top: 20px;
+    padding-top: 15px;
+    margin-left: 0px;
 }
 
 ul {
@@ -103,13 +102,17 @@ ul {
 .fa-chevron-down {
     font-size: 3em;
     margin-top: 20px;
-    margin-right: 10px;
 }
 
 
 @media (max-width: 700px) {
 
-    .container {
+    .text-colums {
+        padding: 10px 50px 0px 50px;
+    }
+
+    .bio-short-text-container {
+        height: 100%;
     }
     .col {
         margin: 0px;
@@ -136,12 +139,6 @@ ul {
         width: 80%;
     }
 
-    .text-colums {
-        columns: 1 auto;
-        padding: 50px;
-        text-align: justify;
-    }
-
     .image-container {
         justify-content: center;
         align-items: flex-end;
@@ -155,18 +152,20 @@ ul {
         text-align: center;
     }
     .education {
-        padding-left: 50px;
-        padding-right: 50px;
+        padding-left: 55px;
+        padding-right: 55px;
         padding-top: 0px;
         padding-bottom: 0px;
         height: unset;
+        margin:0px
     }
     .experience {
-        padding-left: 50px;
-        padding-right: 50px;
+        padding-left: 55px;
+        padding-right: 55px;
         padding-top: 0px;
         padding-bottom: 0px;
         height: unset;
+        margin:0px
     }
 
     .experience-title {
@@ -179,13 +178,25 @@ ul {
     }
     .bio-card {
         padding: 0px;
+        margin-top: 0px;
     }
+
+    .skillset-container {
+        padding-top: 0px;
+    }
+
+    .bio-container{
+        .padding-top: 0px;
+    }
+    
 }
 
 @media (min-width: 1045px) {
     .text-colums {
         columns: 3 auto;
         text-align: justify;
+        padding: 0px;
+        margin-bottom: 0px;
     }
 
     .profile-image {
@@ -197,8 +208,18 @@ ul {
 
     .bio-card {
         padding: 0px;
-        margin-top: 20px;
+        margin-top: 70px;
     }
 
+    .bio-container {
+        padding-top: 100px;
+    }
+
+    .toolbox,
+.experience,
+.education {
+    padding: 0px 0px 0px 0px;
+    margin-left: 0px;
+}
     
 }

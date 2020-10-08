@@ -109,6 +109,17 @@
         font-weight: 900;
     }
 
+    .section-subtitle {
+        font-family: var(--font-primary);
+        color: var(--white);
+        font-size: 25px;
+        line-height: normal;
+        width: 100%;
+        text-align: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
     .title-dashboard {
         color: var(--white);
         font-size: 20px;
@@ -117,10 +128,17 @@
         text-transform: uppercase;
         font-weight: 900;
     }
-    .subtitle, .subtitle-float-right  {
-        font-size: 26px;
+    .subtitle {
+        font-size: 20px;
         color: var(--white);
-        margin: 20px 0px 20px 0px;;
+        margin: 20px 20px 20px 20px;;
+        font-weight: 900;
+    }
+
+    .subtitle-float-right  {
+        font-size: 20px;
+        color: var(--white);
+        margin: 0px 0px 0px 0px;;
         font-weight: 900;
     }
 

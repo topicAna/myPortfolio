@@ -285,11 +285,11 @@ i {
   text-align: center;
   animation: bounce 1s infinite alternate;
   -webkit-animation: bounce 0.4s infinite alternate;
-  margin: 20px 0px 20px 0px;
+  margin: 100px 0px 20px 0px;
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 150px;
+  height: 10px;
 }
 
 // ----arrow animation----
@@ -316,4 +316,14 @@ i {
 .project-details:hover .action-button .git-hub-button {
   background: var(--secondary-color) !important;
   border: 1px solid var(--secondary-color) !important;
+}
+
+
+@media (max-width: 700px)  {
+  .arrow-animated {
+    height: 0px;
+    margin-right: 20px;
+    margin: 20px 0px 20px 0px;
+    
+  }
 }
