@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       result => {
         const token = result['token'];
         localStorage.setItem('token', token);
-        this.router.navigateByUrl('/dashboard/home');
+        this.router.navigateByUrl('/dashboard');
       },
       err => {
           Swal.fire(err.error);

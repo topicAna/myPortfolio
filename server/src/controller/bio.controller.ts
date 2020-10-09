@@ -30,7 +30,6 @@ export const BioController = (app: Application) => {
     });
 
     router.post('/upload', async (req, res, next) => {
-        console.log('headers are:', req.headers)
         try {
             if (!req.files) {
                 res.send({
@@ -38,19 +37,23 @@ export const BioController = (app: Application) => {
                     message: 'No file uploaded',
                 });
             } else {
-                const file: any = req.files;
-                const key = 'cvLink';
-                const cvObject = file[key];
-                console.log(cvObject);
+                const files: any = req.files;
+                const cvObject = files.uploadedFiles[0];
                 const id = bioService.getRandomInt(1000);
                 cvObject.mv('./uploads/' + id + cvObject.name);
+                const imageObject = files.uploadedFiles[1];
+                const idImage = bioService.getRandomInt(1000);
+                imageObject.mv('./uploads/' + idImage + imageObject.name);
                 res.send({
                     status: true,
                     message: 'File is uploaded',
                     data: {
-                        name: id + cvObject.name,
-                        mimetype: cvObject.mimetype,
-                        size: cvObject.size,
+                        CVname: id + cvObject.name,
+                        CVmimetype: cvObject.mimetype,
+                        CVsize: cvObject.size,
+                        imgName: idImage + imageObject.name,
+                        imgMimetype: imageObject.mimetype,
+                        imgSize: imageObject.size,
                     },
                 });
             }

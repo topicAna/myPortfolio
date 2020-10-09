@@ -65,7 +65,7 @@ what game mode you choose. Game is entirely realised in Vanilla JavaScript',
 'https://www.youtube.com/watch?v=5_4E7E5dmNA&feature=youtu.be', 'https://github.com/lattara/memory-project');
 
 
-INSERT INTO bio (id, intro, interests) VALUES (
+INSERT INTO bio (id, intro, image_link) VALUES (
     1, 'Hello there! I am Ana. Here are few things about me. I love people, dogs, 
     programing and all things creative. I love building and creating things, solving problems and learning. 
     I speak three languages and dream of working in a team of open minded people who share my love and entushiasm 
@@ -73,7 +73,7 @@ INSERT INTO bio (id, intro, interests) VALUES (
     my internship and looking for alternance / junior front end position from end of sepetember.
     Ideally I would love to work in international company where I can continue to improve my skills. 
     My future interest/projects include learning Python and developing further my UI/UX design skills.',
-    'Board games, hiking, climbing, reading'
+    'some name of image'
 );
 
 INSERT INTO experience (id, title, company, duration) VALUES 

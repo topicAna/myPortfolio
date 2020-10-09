@@ -8,7 +8,7 @@ export const UserController = (app: Application) => {
 
     const router: Router = express.Router();
     const userService = UserService.getInstance();
-    const secret: string  = process.env.SECRET ? process.env.SECRET : '';
+    const secret: string  = process.env.SECRET!;
 
     router.post('/register', async (req, res) => {
         const userData: User = req.body;

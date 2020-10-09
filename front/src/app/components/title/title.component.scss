@@ -7,6 +7,17 @@
         font-size: 95px;
         line-height: normal;
     }
+
+    .section-subtitle {
+        font-family: var(--font-primary);
+        color: var(--white);
+        font-size: 60px;
+        line-height: normal;
+        width: 100%;
+        text-align: center;
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
     .subtitle {
         color: var(--white);
         font-family: var(--font-primary);
@@ -98,6 +109,17 @@
         font-weight: 900;
     }
 
+    .section-subtitle {
+        font-family: var(--font-primary);
+        color: var(--white);
+        font-size: 30px;
+        line-height: normal;
+        width: 100%;
+        text-align: center;
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+
     .title-dashboard {
         color: var(--white);
         font-size: 20px;
@@ -109,7 +131,7 @@
     .subtitle, .subtitle-float-right  {
         font-size: 26px;
         color: var(--white);
-        margin: 20px 0px 20px 0px;;
+        margin: 20px 20px 20px 20px;
         font-weight: 900;
     }
 

@@ -30,6 +30,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { UsersService } from './services/users.service';
 import { TokenInterceptorService} from './services/token-interceptor.service';
+import {MatTooltipModule} from '@angular/material/tooltip';
+
 
 
 // Angular material imports
@@ -52,7 +54,7 @@ import { TokenInterceptorService} from './services/token-interceptor.service';
     BioDashboardComponent,
     MiscDashboardComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,7 +68,8 @@ import { TokenInterceptorService} from './services/token-interceptor.service';
     MatTableModule,
     CdkTableModule,
     MatCheckboxModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   providers: [AuthGuardGuard, UsersService, {
     provide: HTTP_INTERCEPTORS,

@@ -43,6 +43,14 @@ textarea, input {
     color: var(--white) !important;
 }
 
+.envelope-mobile {
+    display: none;
+}
+
+span {
+    display: none;
+}
+
 // MOBILE
 @media (max-width: 770px) {
 
@@ -52,9 +60,22 @@ textarea, input {
     }
 
     .contact-text-container {
-        height: unset;
-        margin-top: unset;
-        border-right: none;
+        display: none;
+    }
+
+    .envelope-mobile {
+        display: block;
+        text-align: center;
+        width: 100%;
+        font-size: 3rem;
+        color:var(--secondary-color);
+    }
+
+    span {
+        display:block;
+        color: var(--white);
+        text-align: center;
+        width: 100%;
         
     }
 

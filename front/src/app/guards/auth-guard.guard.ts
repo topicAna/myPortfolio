@@ -12,7 +12,7 @@ export class AuthGuardGuard implements CanActivate {
 
   canActivate() {
     const userInLocalSt: User =  JSON.parse(localStorage.getItem('user'));
-    if (this.usersService.loggedIn() && userInLocalSt.priviledge === 'FULL') {
+    if (this.usersService.loggedIn()) {
       return true;
     } else {
       this.router.navigateByUrl('/login');
