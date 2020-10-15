@@ -11,13 +11,13 @@ import { ToolboxItem } from '../models/toolboxItem';
 })
 export class ProjectsService {
 
-  private baseUrl = 'http://165.227.135.176:3000';
+  private baseUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient, private router: Router) {
   }
 
   getlastId(): Observable<any> {
-    return from(this.http.get('http://localhost:3000/projects/lastId'));
+    return from(this.http.get('http://localhost:3000/api/projects/lastId'));
   }
 
   getProjects(): Observable<any> {

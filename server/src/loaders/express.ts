@@ -19,7 +19,7 @@
     app.get('/status', (req, res) => { res.status(200).end(); });
     app.head('/status', (req, res) => { res.status(200).end(); });
     app.enable('trust proxy');
-    app.use('/uploads', express.static('uploads'));
+    app.use('/api/uploads', express.static('uploads'));
 
     app.use(fileUpload());
 
@@ -30,7 +30,7 @@
     app.get('/', (req, resp) => {
       resp.send('hello from server');
     });
-    app.get('/tkn', (req, resp) => {
+    app.get('/api/tkn', (req, resp) => {
       resp.send({token: process.env.GITHUB_TOKEN});
     });
 

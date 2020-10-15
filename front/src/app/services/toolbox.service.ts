@@ -10,7 +10,7 @@ import { ToolboxItem } from '../models/toolboxItem';
   })
 export class ToolboxService {
 
-  private baseUrl = 'http://localhost:3000';
+  private baseUrl = 'http://localhost:3000/api';
 
   constructor(private http: HttpClient, private router: Router) {
   }

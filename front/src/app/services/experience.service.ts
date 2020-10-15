@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class ExperienceService {
 
-    private baseUrl = 'http://localhost:3000/experience';
+    private baseUrl = 'http://localhost:3000/api/experience';
 
     constructor(private http: HttpClient, private router: Router) {
     }
