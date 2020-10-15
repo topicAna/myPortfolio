@@ -62,5 +62,5 @@ export const BioController = (app: Application) => {
         }
     });
 
-    app.use('/bio', router);
+    app.use('/api/bio', router);
 };

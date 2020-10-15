@@ -52,5 +52,5 @@ export const ProjectsController = (app: Application) => {
       });
   });
 
-  app.use('/projects', router);
+  app.use('/api/projects', router);
 };

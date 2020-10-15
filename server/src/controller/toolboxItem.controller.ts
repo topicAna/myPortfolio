@@ -71,5 +71,5 @@ router.delete('/:id', userService.verifyToken, (req: Request, res: Response) => 
     });
 });
 
-app.use('/toolboxItem', router);
+app.use('/api/toolboxItem', router);
 };

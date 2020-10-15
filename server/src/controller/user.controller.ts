@@ -43,5 +43,5 @@ export const UserController = (app: Application) => {
         });
     });
 
-    app.use('/auth', router);
+    app.use('/api/auth', router);
 };

@@ -60,5 +60,5 @@ export const ExperienceController = (app: Application) => {
             });
     });
 
-    app.use('/experience', router);
+    app.use('/api/experience', router);
 };

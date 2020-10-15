@@ -14,5 +14,5 @@ export const MailerController = (app: Application) => {
         res.status(200);
     });
 
-  app.use('/contact', router);
+  app.use('/api/contact', router);
 };

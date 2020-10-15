@@ -63,5 +63,5 @@ export const EducationController = (app: Application) => {
             });
     });
 
-    app.use('/education', router);
+    app.use('/api/education', router);
 };

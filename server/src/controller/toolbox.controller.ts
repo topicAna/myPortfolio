@@ -56,5 +56,5 @@ export const ToolboxController = (app: Application) => {
             });
     });
 
-    app.use('/toolbox', router);
+    app.use('/api/toolbox', router);
 };
